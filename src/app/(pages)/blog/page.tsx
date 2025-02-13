@@ -4,11 +4,10 @@
 
 export default function BlogPage() {
   return (
-    <main>
-      {/* <HeroSection />
-      <FeaturedPostsSection />
-      <AllPostsSection /> */}
-      <h1>CONTENT COMING SOON</h1>
+    <main className="min-h-screen flex items-center justify-center">
+      <h1 className="text-4xl font-kiona text-brand-brown-dark">
+        CONTENT COMING SOON
+      </h1>
     </main>
   );
 }
