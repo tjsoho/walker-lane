@@ -23,12 +23,11 @@ async function getBlogPost(slug: string) {
   return data;
 }
 
-type Props = {
+export default async function BlogPost({
+  params,
+}: {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export default async function BlogPost({ params }: Props) {
+}) {
   const post = await getBlogPost(params.slug);
 
   if (!post) {
