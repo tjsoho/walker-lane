@@ -58,7 +58,7 @@ export function DownloadSection() {
           >
             <button
               onClick={() => setIsModalOpen(true)}
-              className="inline-block bg-brand-cream text-brand-brown-dark px-8 py-4 rounded-sm text-lg font-kiona transition-colors hover:bg-brand-brown-light"
+              className="inline-block bg-brand-cream text-brand-brown-dark px-8 py-4 rounded-md text-lg font-kiona transition-colors hover:bg-brand-brown-light"
             >
               Get Now
             </button>
@@ -119,7 +119,7 @@ export function DownloadSection() {
               </div>
               <button
                 type="submit"
-                className="w-full bg-brand-brown-dark text-brand-cream px-8 py-4 rounded-sm text-lg font-kiona transition-colors hover:bg-brand-brown-dark/80"
+                className="w-full bg-brand-brown-dark text-brand-cream px-8 py-4 rounded-md text-lg font-kiona transition-colors hover:bg-brand-brown-dark/80"
               >
                 Download Now
               </button>

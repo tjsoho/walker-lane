@@ -190,7 +190,7 @@ export function Menu({
                   variants={itemVariants}
                   custom={0}
                   onClick={() => onUserTypeChange("clients")}
-                  className={`flex-1 px-4 py-2 text-sm transition-all duration-300 border rounded-sm ${
+                  className={`flex-1 px-4 py-2 text-sm transition-all duration-300 border rounded-md ${
                     userType === "clients"
                       ? "bg-brand-brown-light text-brand-black border-brand-brown-light"
                       : "bg-transparent text-brand-brown-light border-brand-brown-light"
@@ -202,7 +202,7 @@ export function Menu({
                   variants={itemVariants}
                   custom={0}
                   onClick={() => onUserTypeChange("advisors")}
-                  className={`flex-1 px-4 py-2 text-sm transition-all duration-300 border rounded-sm ${
+                  className={`flex-1 px-4 py-2 text-sm transition-all duration-300 border rounded-md ${
                     userType === "advisors"
                       ? "bg-brand-brown-light text-brand-black border-brand-brown-light"
                       : "bg-transparent text-brand-brown-light border-brand-brown-light"

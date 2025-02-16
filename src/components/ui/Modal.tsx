@@ -35,7 +35,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
               transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
               className="relative w-full max-w-lg"
             >
-              <div className="relative bg-brand-brown-dark p-6 md:p-8 rounded-sm shadow-xl">
+              <div className="relative bg-brand-brown-dark p-6 md:p-8 rounded-md shadow-xl">
                 {/* Close Button */}
                 <button
                   onClick={onClose}

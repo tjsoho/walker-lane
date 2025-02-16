@@ -35,14 +35,14 @@ export function AdminAuth() {
       <div className="w-full max-w-md">
         <form
           onSubmit={handleLogin}
-          className="bg-white shadow-md rounded-sm px-8 pt-6 pb-8 mb-4"
+          className="bg-white shadow-md rounded-md px-8 pt-6 pb-8 mb-4"
         >
           <h2 className="text-2xl font-kiona text-brand-brown-dark mb-6">
             Admin Login
           </h2>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-50 text-red-500 rounded-sm">
+            <div className="mb-4 p-3 bg-red-50 text-red-500 rounded-md">
               {error}
             </div>
           )}
@@ -59,7 +59,7 @@ export function AdminAuth() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 border border-brand-brown-dark/20 rounded-sm focus:outline-none focus:ring-2 focus:ring-brand-brown-dark text-brand-brown-dark"
+              className="w-full px-3 py-2 border border-brand-brown-dark/20 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-brown-dark text-brand-brown-dark"
               required
             />
           </div>
@@ -76,7 +76,7 @@ export function AdminAuth() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-brand-brown-dark/20 rounded-sm focus:outline-none focus:ring-2 focus:ring-brand-brown-dark text-brand-brown-dark"
+              className="w-full px-3 py-2 border border-brand-brown-dark/20 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-brown-dark text-brand-brown-dark"
               required
             />
           </div>
@@ -84,7 +84,7 @@ export function AdminAuth() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-brand-brown-dark text-brand-cream py-2 rounded-sm hover:bg-brand-brown-dark/90 transition-colors disabled:opacity-50"
+            className="w-full bg-brand-brown-dark text-brand-cream py-2 rounded-md hover:bg-brand-brown-dark/90 transition-colors disabled:opacity-50"
           >
             {loading ? "Logging in..." : "Login"}
           </button>

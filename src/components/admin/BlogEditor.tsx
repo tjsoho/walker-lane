@@ -18,7 +18,7 @@ export function BlogEditor() {
           </h1>
           <button
             onClick={handleBack}
-            className="px-4 py-2 bg-brand-brown-dark text-brand-cream rounded-sm"
+            className="px-4 py-2 bg-brand-brown-dark text-brand-cream rounded-md"
           >
             Back to Dashboard
           </button>

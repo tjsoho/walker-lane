@@ -20,7 +20,7 @@ export function Tooltip({ text, isVisible }: TooltipProps) {
           transition={{ duration: 0.15 }}
           className="absolute -bottom-10 left-0 whitespace-nowrap z-50"
         >
-          <div className="relative px-3 py-1.5 text-[10px] tracking-wider uppercase rounded-sm shadow-lg bg-brand-brown-light text-brand-black">
+          <div className="relative px-3 py-1.5 text-[10px] tracking-wider uppercase rounded-md shadow-lg bg-brand-brown-light text-brand-black">
             {text}
             <div className="absolute -top-1 left-4 w-2 h-2 transform rotate-45 bg-brand-brown-light" />
           </div>

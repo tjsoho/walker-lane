@@ -122,7 +122,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brand-brown-dark/80 hover:text-brand-brown-dark transition-colors border border-brand-brown-dark/20 p-2 rounded-sm"
+                    className="text-brand-brown-dark/80 hover:text-brand-brown-dark transition-colors border border-brand-brown-dark/20 p-2 rounded-md"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
@@ -143,12 +143,12 @@ export function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="w-full px-4 py-2 rounded-sm bg-transparent text-brand-brown-dark placeholder:text-brand-brown-dark/50 border border-brand-brown-dark/20 focus:outline-none focus:ring-2 focus:ring-brand-brown-dark"
+                    className="w-full px-4 py-2 rounded-md bg-transparent text-brand-brown-dark placeholder:text-brand-brown-dark/50 border border-brand-brown-dark/20 focus:outline-none focus:ring-2 focus:ring-brand-brown-dark"
                     required
                   />
                   <button
                     type="submit"
-                    className="w-full px-4 py-2 bg-brand-brown-dark text-brand-cream rounded-sm hover:bg-brand-brown-dark/90 transition-colors font-kiona"
+                    className="w-full px-4 py-2 bg-brand-brown-dark text-brand-cream rounded-md hover:bg-brand-brown-dark/90 transition-colors font-kiona"
                   >
                     Join
                   </button>

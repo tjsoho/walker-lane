@@ -85,7 +85,7 @@ export function AboutMe() {
               >
                 <Link
                   href="/about"
-                  className="inline-block bg-brand-brown-dark text-brand-cream px-8 py-4 rounded-sm text-lg font-kiona font-boldtransition-colors hover:bg-brand-brown-dark/80"
+                  className="inline-block bg-brand-brown-dark text-brand-cream px-8 py-4 rounded-md text-lg font-kiona font-boldtransition-colors hover:bg-brand-brown-dark/80"
                 >
                   Learn More
                 </Link>

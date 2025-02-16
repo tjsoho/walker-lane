@@ -62,7 +62,7 @@ export function WhatWeDo() {
           >
             <Link
               href="/services"
-              className="inline-block bg-brand-cream text-brand-brown px-8 py-4 rounded-sm text-lg font-kiona font-bold transition-colors hover:bg-brand-brown-light"
+              className="inline-block bg-brand-cream text-brand-brown px-8 py-4 rounded-md text-lg font-kiona font-bold transition-colors hover:bg-brand-brown-light"
             >
               Explore Our Services
             </Link>

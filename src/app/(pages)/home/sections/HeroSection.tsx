@@ -59,7 +59,7 @@ export function HeroSection() {
             onClick={() => setUserType("clients")}
             onMouseEnter={() => setHoveredButton("clients")}
             onMouseLeave={() => setHoveredButton(null)}
-            className={`px-6 py-2 text-sm border rounded-sm ${
+            className={`px-6 py-2 text-sm border rounded-md ${
               userType === "clients"
                 ? "bg-brand-brown-light text-brand-black border-brand-brown-light"
                 : "bg-transparent text-brand-brown-light border-brand-brown-light"
@@ -84,7 +84,7 @@ export function HeroSection() {
             onClick={() => setUserType("advisors")}
             onMouseEnter={() => setHoveredButton("advisors")}
             onMouseLeave={() => setHoveredButton(null)}
-            className={`px-6 py-2 text-sm border rounded-sm ${
+            className={`px-6 py-2 text-sm border rounded-md ${
               userType === "advisors"
                 ? "bg-brand-brown-light text-brand-black border-brand-brown-light"
                 : "bg-transparent text-brand-brown-light border-brand-brown-light"
