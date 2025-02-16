@@ -23,11 +23,12 @@ async function getBlogPost(slug: string) {
   return data;
 }
 
-export default async function BlogPost({
-  params,
-}: {
+type Props = {
   params: { slug: string };
-}) {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default async function BlogPost({ params }: Props) {
   const post = await getBlogPost(params.slug);
 
   if (!post) {
@@ -94,4 +95,16 @@ export default async function BlogPost({
       </div>
     </article>
   );
+}
+
+// Add this for static generation optimization (optional)
+export async function generateStaticParams() {
+  const { data: posts } = await supabase
+    .from("blog_posts")
+    .select("slug")
+    .eq("status", "published");
+
+  return (posts || []).map((post) => ({
+    slug: post.slug,
+  }));
 }

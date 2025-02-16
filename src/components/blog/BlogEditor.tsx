@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 import { BlogPosts } from "./BlogPosts";
 import { Info, Upload, X } from "lucide-react";
+import Link from "next/link";
 
 interface BlogPost {
   id?: string;
@@ -234,12 +235,12 @@ export function BlogEditor() {
               All Posts
             </button>
           </div>
-          <a
+          <Link
             href="/admin"
             className="px-4 py-2 bg-brand-brown-dark/5 text-brand-brown-dark rounded-md hover:bg-brand-brown-dark/10 transition-colors"
           >
             Back to Admin
-          </a>
+          </Link>
         </div>
 
         {view === "editor" ? (

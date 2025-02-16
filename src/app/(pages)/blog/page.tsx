@@ -149,7 +149,7 @@ export default function BlogPage() {
               {filteredPosts.map((post) => (
                 <Link
                   key={post.id}
-                  href={`/blog/${post.slug}`}
+                  href={`/${post.slug}`}
                   className="group block bg-white/90 backdrop-blur-md rounded-md overflow-hidden shadow-sm hover:shadow-md transition-all"
                 >
                   <div className="relative h-64">
