@@ -26,7 +26,7 @@ export function AdminDashboard() {
           </Link>
 
           <Link
-            href="/admin/pages"
+            href="/editor"
             className="block p-8 bg-white rounded-md shadow-md hover:shadow-xl transition-shadow"
           >
             <h2 className="text-2xl font-kiona text-brand-brown-dark mb-4">

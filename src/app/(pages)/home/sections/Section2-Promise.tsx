@@ -2,8 +2,25 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { EditableText } from "@/components/pageEditor/EditableText";
 
-export function PromiseSection() {
+export const defaultContent = {
+  "promise-heading": "Think of us as your financial friends",
+  "promise-text":
+    "Ready to simplify the complexities of money management so you can focus on what truly matters: your dreams.",
+};
+
+interface PromiseSectionProps {
+  isEditing?: boolean;
+  content?: typeof defaultContent;
+  onUpdate?: (id: string, value: string) => void;
+}
+
+export function PromiseSection({
+  isEditing = false,
+  content = defaultContent,
+  onUpdate,
+}: PromiseSectionProps) {
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -50,24 +67,30 @@ export function PromiseSection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <motion.h2
-            variants={textVariants}
-            className="text-xl md:text-4xl font-kiona mb-8 text-brand-cream"
-          >
-            Think of us as your financial friends
-          </motion.h2>
+          <motion.div variants={textVariants}>
+            <EditableText
+              id="promise-heading"
+              type="heading"
+              content={content["promise-heading"]}
+              isEditing={isEditing}
+              onUpdate={onUpdate}
+            />
+          </motion.div>
+
           <motion.div
             variants={textVariants}
             className="w-[40px] h-[1px] bg-brand-cream mx-auto mb-12"
           />
 
-          <motion.p
-            variants={textVariants}
-            className="text-xl md:text-2xl text-white max-w-3xl mx-auto mb-12 leading-none"
-          >
-            Ready to simplify the complexities of money management so you can
-            focus on what truly matters: your dreams.
-          </motion.p>
+          <motion.div variants={textVariants}>
+            <EditableText
+              id="promise-text"
+              type="paragraph"
+              content={content["promise-text"]}
+              isEditing={isEditing}
+              onUpdate={onUpdate}
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>
