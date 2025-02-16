@@ -4,6 +4,7 @@ import { kiona, ttNorms } from "./fonts";
 import { Header } from "@/components/ui/Header";
 import "./globals.css";
 import { Footer } from "@/components/ui/Footer";
+import { Toaster } from 'react-hot-toast';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,16 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Toaster 
+          position="top-center"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: '#333',
+              color: '#fff',
+            },
+          }}
+        />
       </body>
     </html>
   );

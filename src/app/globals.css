@@ -43,3 +43,20 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Add these at the end of your globals.css */
+.rich-text-editor .ql-container {
+  min-height: 200px;
+  border-bottom-left-radius: 0.125rem;
+  border-bottom-right-radius: 0.125rem;
+}
+
+.rich-text-editor .ql-toolbar {
+  border-top-left-radius: 0.125rem;
+  border-top-right-radius: 0.125rem;
+  background-color: #f8f8f8;
+}
+
+.rich-text-editor .ql-editor {
+  min-height: 200px;
+}
