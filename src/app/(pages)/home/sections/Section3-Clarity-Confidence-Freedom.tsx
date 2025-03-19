@@ -164,7 +164,7 @@ export function SupportSection() {
   };
 
   return (
-    <section className="relative bg-brand-brown py-20 md:py-32">
+    <section className="relative bg-brand-blue py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           variants={containerVariants}

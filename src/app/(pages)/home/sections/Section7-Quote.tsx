@@ -17,7 +17,7 @@ export function QuoteSection() {
   ];
 
   return (
-    <section className="relative bg-brand-brown py-20 md:py-32">
+    <section className="relative bg-brand-blue py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center text-center">
           <motion.h2

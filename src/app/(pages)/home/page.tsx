@@ -7,6 +7,7 @@ import { TestimonialsSection } from "./sections/Section6-Testimonials";
 import { QuoteSection } from "./sections/Section7-Quote";
 import { AboutMe } from "./sections/Section8-AboutUs";
 import { DownloadSection } from "./sections/Section9-Download";
+import Section3a from "./sections/Section3a";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <HeroSection />
       <PromiseSection />
       <SupportSection />
+      <Section3a />
       <WhatWeDo />
       <TargetMarket />
       <TestimonialsSection />
