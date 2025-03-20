@@ -12,7 +12,7 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         brand: {
-          blue: "#8797AE",
+          blue: "#4b637e",
           black: "#191515",
           cream: "#e1ded4",
           brown: {
@@ -27,6 +27,15 @@ const config: Config = {
         ttNorms: ['var(--font-tt-norms)'],
         sans: ['var(--font-geist-sans)'],
         mono: ['var(--font-geist-mono)'],
+      },
+      keyframes: {
+        'kenburns-zoom': {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.1)' },
+        },
+      },
+      animation: {
+        'kenburns-zoom': 'kenburns-zoom 20s ease-out forwards',
       },
     },
   },

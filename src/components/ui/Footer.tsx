@@ -53,12 +53,12 @@ export function Footer() {
   return (
     <>
       <footer className="bg-brand-blue">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 md:gap-8 ">
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 md:gap-8">
             {/* Logo & Description */}
             <div className="lg:col-span-2 flex flex-col justify-end h-full">
               <div>
-                <Link href="/" className="inline-block mb-6">
+                <Link href="/" className="inline-block mb-8">
                   <Image
                     src="/images/logo.png"
                     alt="Walker Lane"
@@ -67,7 +67,7 @@ export function Footer() {
                     className="h-12 w-auto -ml-5"
                   />
                 </Link>
-                <p className="text-brand-brown-dark text-lg max-w-md">
+                <p className="text-brand-cream/90 text-lg max-w-md leading-relaxed">
                   Empowering Australians to thrive financially through
                   personalized guidance and expert solutions.
                 </p>
@@ -76,15 +76,15 @@ export function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-brand-brown-dark font-kiona mb-4">
+              <h4 className="text-brand-cream font-kiona mb-6 text-lg">
                 Quick Links
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {links.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-brand-brown-dark/80 hover:text-brand-brown-dark transition-colors"
+                      className="text-brand-cream/70 hover:text-brand-cream transition-colors duration-300 text-sm tracking-wide"
                     >
                       {link.name}
                     </Link>
@@ -95,13 +95,15 @@ export function Footer() {
 
             {/* Legal Links */}
             <div>
-              <h4 className="text-brand-brown-dark font-kiona mb-4">Legal</h4>
-              <ul className="space-y-3">
+              <h4 className="text-brand-cream font-kiona mb-6 text-lg">
+                Legal
+              </h4>
+              <ul className="space-y-4">
                 {legalLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-brand-brown-dark/80 hover:text-brand-brown-dark transition-colors"
+                      className="text-brand-cream/70 hover:text-brand-cream transition-colors duration-300 text-sm tracking-wide"
                     >
                       {link.name}
                     </Link>
@@ -112,7 +114,7 @@ export function Footer() {
 
             {/* Social Links & Newsletter */}
             <div className="text-right">
-              <h4 className="text-brand-brown-dark font-kiona mb-4">
+              <h4 className="text-brand-cream font-kiona mb-6 text-lg">
                 Connect With Us
               </h4>
               <div className="flex justify-end space-x-4 mb-8">
@@ -122,7 +124,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-brand-brown-dark/80 hover:text-brand-brown-dark transition-colors border border-brand-brown-dark/20 p-2 rounded-md"
+                    className="text-brand-cream/70 hover:text-brand-cream hover:bg-brand-cream/10 transition-all duration-300 border border-brand-cream/10 p-3 rounded-lg"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
@@ -131,26 +133,26 @@ export function Footer() {
               </div>
               {/* Newsletter */}
               <div className="ml-auto">
-                <h4 className="text-brand-brown-dark font-kiona mb-4">
+                <h4 className="text-brand-cream font-kiona mb-6 text-lg">
                   Financial Insights
                 </h4>
                 <form
                   onSubmit={handleSubmit}
-                  className="flex flex-col gap-2 w-[200px] ml-auto"
+                  className="flex flex-col gap-3 w-[220px] ml-auto"
                 >
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="w-full px-4 py-2 rounded-md bg-transparent text-brand-brown-dark placeholder:text-brand-brown-dark/50 border border-brand-brown-dark/20 focus:outline-none focus:ring-2 focus:ring-brand-brown-dark"
+                    className="w-full px-4 py-3 rounded-lg bg-brand-cream/5 text-brand-cream placeholder:text-brand-cream/40 border border-brand-cream/10 focus:outline-none focus:ring-2 focus:ring-brand-cream/20 focus:border-transparent transition-all duration-300"
                     required
                   />
                   <button
                     type="submit"
-                    className="w-full px-4 py-2 bg-brand-brown-dark text-brand-cream rounded-md hover:bg-brand-brown-dark/90 transition-colors font-kiona"
+                    className="w-full px-4 py-3 bg-brand-cream/10 text-brand-cream rounded-lg hover:bg-brand-cream/20 transition-all duration-300 font-kiona text-sm tracking-wider border border-brand-cream/10"
                   >
-                    Join
+                    Subscribe
                   </button>
                 </form>
               </div>
@@ -158,8 +160,8 @@ export function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-12 pt-8 border-t border-brand-brown-dark/50">
-            <p className="text-brand-brown-dark text-sm text-center">
+          <div className="mt-16 pt-8 border-t border-brand-cream/10">
+            <p className="text-brand-cream/60 text-sm text-center tracking-wide">
               © {new Date().getFullYear()} Walker Lane. All rights reserved.
             </p>
           </div>
@@ -167,15 +169,15 @@ export function Footer() {
       </footer>
 
       {/* Designer Banner */}
-      <div className="bg-brand-brown-dark h-[50px] flex items-center justify-center">
+      <div className="bg-brand-brown h-[50px] flex items-center justify-center">
         <div className="max-w-7xl mx-auto px-4">
-          <p className="text-brand-cream/90 text-sm tracking-wider">
+          <p className="text-brand-brown-dark text-sm tracking-wider">
             Designed By{" "}
             <a
               href="https://www.ai-guy.co"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-brand-cream font-medium hover:text-brand-cream/80 transition-colors"
+              className="text-brand-brown-dark font-medium hover:text-brand-brown-dark/80 transition-colors"
             >
               AI GUY BUSINESS SOLUTIONS
             </a>

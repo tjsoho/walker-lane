@@ -5,7 +5,7 @@
 @layer base {
   /* Headings */
   h1, h2, h3 {
-    @apply font-kiona font-semibold;
+    @apply font-['var(--font-kiona)'] font-semibold;
   }
   
   h1 {
@@ -22,7 +22,7 @@
 
   /* Paragraphs */
   p {
-    @apply font-ttNorms font-extralight leading-relaxed tracking-[0.2em];
+    @apply font-['var(--font-tt-norms)'] font-extralight leading-relaxed tracking-[0.2em];
   }
 }
 
