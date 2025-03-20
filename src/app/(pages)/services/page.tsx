@@ -1,13 +1,17 @@
 import { HeroSection } from "./sections/HeroSection";
-// import { ServicesSection } from "./sections/ServicesSection";
-// import { PricingSection } from "./sections/PricingSection";
+import { ContentSection } from "./sections/ContentSection";
+import { OurWorkSection } from "./sections/OurWorkSection";
+import { CTASection } from "./sections/CTASection";
 
 export default function ServicesPage() {
   return (
     <main>
       <HeroSection />
-      {/* <ServicesSection />
-      <PricingSection /> */}
+      <ContentSection />
+
+      <OurWorkSection />
+
+      <CTASection />
     </main>
   );
-} 
+}

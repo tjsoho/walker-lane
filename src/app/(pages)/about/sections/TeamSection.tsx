@@ -144,7 +144,7 @@ const TeamSection = () => {
               initial="initial"
             >
               {/* Image Container */}
-              <div className="relative aspect-[3/4] overflow-hidden">
+              <div className="relative aspect-[3/4] overflow-hidden group">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -153,91 +153,36 @@ const TeamSection = () => {
                 />
 
                 {/* Quick Silver Flash */}
-                <motion.div
-                  initial="initial"
-                  variants={{
-                    initial: { opacity: 0, x: "-100%" },
-                    hover: {
-                      opacity: 1,
-                      x: "100%",
-                      transition: {
-                        duration: 0.6,
-                        ease: [0.45, 0, 0.55, 1],
-                      },
-                    },
-                  }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-[#C0C0C0]/80 to-transparent"
+                <div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent 
+                  opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full 
+                  transition-all duration-500 ease-in-out"
                 />
 
                 {/* Main Blue Overlay */}
-                <motion.div
-                  initial="initial"
-                  variants={{
-                    initial: { opacity: 0, x: "100%" },
-                    hover: {
-                      opacity: 1,
-                      x: 0,
-                      transition: {
-                        duration: 0.4,
-                        ease: [0.22, 1, 0.36, 1],
-                        delay: 0.4,
-                      },
-                    },
-                  }}
-                  className="absolute inset-0 bg-gradient-to-br from-[#1B3654]/95 via-[#284B73]/90 to-[#1B3654]/95 flex flex-col justify-center items-center p-6 text-center backdrop-blur-[4px] cursor-pointer"
+                <div
+                  className="absolute inset-0 bg-gradient-to-br from-brand-blue/95 to-brand-blue/90
+                  opacity-0 group-hover:opacity-100 translate-x-full group-hover:translate-x-0
+                  transition-all duration-500 ease-in-out delay-200
+                  flex flex-col justify-center items-center p-6 text-center backdrop-blur-[4px] cursor-pointer"
                 >
-                  <div className="flex flex-col items-center justify-center w-full">
-                    <motion.div
-                      variants={{
-                        initial: { opacity: 0, y: -20, scale: 0.8 },
-                        hover: {
-                          opacity: 1,
-                          y: 0,
-                          scale: 1,
-                          transition: {
-                            duration: 0.3,
-                            delay: 0.2,
-                          },
-                        },
-                      }}
-                      className="flex justify-center items-center text-white text-3xl mb-4 relative z-10"
-                    >
+                  <div className="flex flex-col items-center justify-center w-full space-y-4">
+                    {/* Icon */}
+                    <div className="text-white text-3xl transform -translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-300">
                       {icons[member.icon]}
-                    </motion.div>
-                    <motion.p
-                      variants={{
-                        initial: { opacity: 0, y: 20 },
-                        hover: {
-                          opacity: 1,
-                          y: 0,
-                          transition: {
-                            duration: 0.3,
-                            delay: 0.2,
-                          },
-                        },
-                      }}
-                      className="text-white text-sm mb-2 font-ttNorms relative z-10"
-                    >
+                    </div>
+
+                    {/* Fun Fact */}
+                    <p className="text-white text-sm mb-2 font-ttNorms transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-400">
                       {member.funFact}
-                    </motion.p>
-                    <motion.p
-                      variants={{
-                        initial: { opacity: 0, y: 20 },
-                        hover: {
-                          opacity: 1,
-                          y: 0,
-                          transition: {
-                            duration: 0.3,
-                            delay: 0.3,
-                          },
-                        },
-                      }}
-                      className="text-white text-sm italic font-light relative z-10"
-                    >
+                    </p>
+
+                    {/* Quote */}
+                    <p className="text-white text-sm italic font-light transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-500">
                       &ldquo;{member.quote}&rdquo;
-                    </motion.p>
+                    </p>
                   </div>
-                </motion.div>
+                </div>
               </div>
 
               {/* Name, Role and Plus Button Container */}
