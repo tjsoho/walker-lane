@@ -95,7 +95,7 @@ export default async function BlogPost({ params }: Props) {
         <div className="mt-12 pt-6 border-t border-brand-brown-dark/10">
           <div className="flex justify-between items-center text-sm text-brand-brown-dark/60">
             <span>
-              Published:{" "}
+              Published{" "}
               {new Date(post.created_at).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
