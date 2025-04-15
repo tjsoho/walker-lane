@@ -2,7 +2,7 @@
 
 import { HeroSection } from "./sections/HeroSection";
 import { TeamSection } from "./sections/TeamSection";
-import { ValuesSection } from "./sections/ValuesSection";
+
 import { ExpertiseSection } from "./sections/ExpertiseSection";
 import { ContactSection } from "./sections/ContactSection";
 import { WhoWeAreSection } from "./sections/WhoWeAreSection";
@@ -18,7 +18,7 @@ export default function AdvisorsPage() {
             <ClientFocusSection />
             <TeamSection />
             <OurOfferSection />
-            <ValuesSection />
+            
             <ExpertiseSection />
             <AdvisorBenefitsSection />
             <ContactSection />
