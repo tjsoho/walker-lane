@@ -21,7 +21,7 @@ export function ContactSection() {
     };
 
     return (
-        <section className="py-24 px-4 bg-white">
+        <section className="py-24 px-4 bg-white max-w-screen-1">
             <div className="max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-16 items-start">
                     <motion.div

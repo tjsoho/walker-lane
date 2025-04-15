@@ -190,26 +190,26 @@ export function Menu({
                   variants={itemVariants}
                   custom={0}
                   onClick={() => onUserTypeChange("clients")}
-                  className={`flex-1 px-4 py-2 text-sm transition-all duration-300 border rounded-md ${
-                    userType === "clients"
-                      ? "bg-brand-brown-light text-brand-black border-brand-brown-light"
-                      : "bg-transparent text-brand-brown-light border-brand-brown-light"
-                  }`}
+                  className={`flex-1 px-4 py-2 text-sm transition-all duration-300 border rounded-md ${userType === "clients"
+                    ? "bg-brand-brown-light text-brand-black border-brand-brown-light"
+                    : "bg-transparent text-brand-brown-light border-brand-brown-light"
+                    }`}
                 >
                   CLIENTS
                 </motion.button>
-                <motion.button
-                  variants={itemVariants}
-                  custom={0}
-                  onClick={() => onUserTypeChange("advisors")}
-                  className={`flex-1 px-4 py-2 text-sm transition-all duration-300 border rounded-md ${
-                    userType === "advisors"
+                <Link href="/advisors" className="flex-1">
+                  <motion.button
+                    variants={itemVariants}
+                    custom={0}
+                    onClick={onClose}
+                    className={`w-full px-4 py-2 text-sm transition-all duration-300 border rounded-md ${userType === "advisors"
                       ? "bg-brand-brown-light text-brand-black border-brand-brown-light"
                       : "bg-transparent text-brand-brown-light border-brand-brown-light"
-                  }`}
-                >
-                  ADVISORS
-                </motion.button>
+                      }`}
+                  >
+                    ADVISORS
+                  </motion.button>
+                </Link>
               </div>
 
               {/* Navigation Links */}
@@ -231,11 +231,10 @@ export function Menu({
                     >
                       <Link
                         href={item.href}
-                        className={`flex items-center text-4xl md:text-5xl transition-colors ${
-                          pathname === item.href
-                            ? "text-brand-brown-light"
-                            : "text-brand-cream hover:text-brand-brown-light"
-                        }`}
+                        className={`flex items-center text-4xl md:text-5xl transition-colors ${pathname === item.href
+                          ? "text-brand-brown-light"
+                          : "text-brand-cream hover:text-brand-brown-light"
+                          }`}
                         onClick={onClose}
                       >
                         <item.icon className="w-8 h-8 md:w-10 md:h-10 mr-4" />
@@ -270,7 +269,7 @@ export function Menu({
               <motion.div
                 variants={itemVariants}
                 custom={9}
-                className="mt-auto flex gap-6 items-center"
+                className="mt-auto flex gap-6 justify-start items-start md:justify-center md:items-center"
               >
                 <a
                   href="mailto:contact@walkerlane.com"
