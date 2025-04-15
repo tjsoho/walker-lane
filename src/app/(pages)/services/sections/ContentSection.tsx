@@ -23,22 +23,32 @@ export function ContentSection() {
         >
           {/* Left side image */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: 10 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative h-[600px] w-[95%] mx-auto"
+            className="relative h-[600px] w-[95%] mx-auto overflow-hidden rounded-xl"
           >
-            <Image
-              src="/images/meeting.jpg"
-              alt="Financial planning meeting"
-              fill
-              className="object-cover rounded-2xl shadow-2xl"
-              priority
-            />
+            <motion.div
+              initial={{ scale: 1.2 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 10, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="absolute inset-0"
+            >
+              <Image
+                src="/images/windyRoad1.jpg"
+                alt="Financial planning meeting"
+                fill
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/20" />
             {/* Decorative elements */}
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl" />
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl" />
+            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-brand-brown-dark/80 rounded-full blur-2xl" />
+            <div className="absolute -top-6 -left-6 w-32 h-32 bg-brand-brown-dark/10 rounded-full blur-2xl" />
           </motion.div>
 
           {/* Right side text content */}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Tooltip } from "@/components/ui/Tooltip";
 import { EditableText } from "@/components/pageEditor/EditableText";
+import Link from "next/link";
 
 export const defaultContent = {
   "hero-heading": "Welcome To Walker Lane",
@@ -76,22 +77,23 @@ export function HeroSection({
       {!isEditing && (
         <div className="absolute top-4 left-8 z-50 hidden md:flex gap-4">
           <div className="relative">
-            <motion.button
-              variants={buttonVariants}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
-              onClick={() => setUserType("clients")}
-              onMouseEnter={() => setHoveredButton("clients")}
-              onMouseLeave={() => setHoveredButton(null)}
-              className={`px-6 py-2 text-sm border rounded-md ${
-                userType === "clients"
+            <Link href="/">
+              <motion.button
+                variants={buttonVariants}
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                onClick={() => setUserType("clients")}
+                onMouseEnter={() => setHoveredButton("clients")}
+                onMouseLeave={() => setHoveredButton(null)}
+                className={`px-6 py-2 text-sm border rounded-md ${userType === "clients"
                   ? "bg-brand-brown-light text-brand-black border-brand-brown-light"
                   : "bg-transparent text-brand-brown-light border-brand-brown-light"
-              }`}
-            >
-              CLIENTS
-            </motion.button>
+                  }`}
+              >
+                CLIENTS
+              </motion.button>
+            </Link>
             <Tooltip
               text="For Individual Investors"
               isVisible={hoveredButton === "clients"}
@@ -101,22 +103,23 @@ export function HeroSection({
           </div>
 
           <div className="relative">
-            <motion.button
-              variants={buttonVariants}
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
-              onClick={() => setUserType("advisors")}
-              onMouseEnter={() => setHoveredButton("advisors")}
-              onMouseLeave={() => setHoveredButton(null)}
-              className={`px-6 py-2 text-sm border rounded-md ${
-                userType === "advisors"
+            <Link href="/advisors">
+              <motion.button
+                variants={buttonVariants}
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                onClick={() => setUserType("advisors")}
+                onMouseEnter={() => setHoveredButton("advisors")}
+                onMouseLeave={() => setHoveredButton(null)}
+                className={`px-6 py-2 text-sm border rounded-md ${userType === "advisors"
                   ? "bg-brand-brown-light text-brand-black border-brand-brown-light"
                   : "bg-transparent text-brand-brown-light border-brand-brown-light"
-              }`}
-            >
-              ADVISORS
-            </motion.button>
+                  }`}
+              >
+                ADVISORS
+              </motion.button>
+            </Link>
             <Tooltip
               text="For Financial Advisors"
               isVisible={hoveredButton === "advisors"}

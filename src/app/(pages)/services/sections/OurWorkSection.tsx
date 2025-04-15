@@ -18,42 +18,42 @@ export function OurWorkSection() {
       title: "Portfolio Management",
       description:
         "We build and manage investment portfolios tailored to your goals, maximizing growth and minimizing risk.",
-      image: "/images/family-gathering.jpg",
+      image: "/images/1.png",
     },
     {
       id: "debt-cashflow",
       title: "Debt & Cashflow",
       description:
         "We optimize your finances by strategically managing debt and cash flow to achieve your financial objectives.",
-      image: "/images/client-meeting.jpg",
+      image: "/images/2.png",
     },
     {
       id: "strategic-planning",
       title: "Strategic Planning",
       description:
         "We create personalized financial roadmaps to guide you toward long-term financial security and success.",
-      image: "/images/planning-session.jpg",
+      image: "/images/3.png",
     },
     {
       id: "protection",
       title: "Protection",
       description:
         "We safeguard your assets and family's future with comprehensive insurance and risk mitigation strategies.",
-      image: "/images/advisory-meeting.jpg",
+      image: "/images/4.png",
     },
     {
       id: "smsf-super",
       title: "SMSF & Super",
       description:
         "We help you maximize your superannuation and SMSF to achieve a secure and fulfilling retirement.",
-      image: "/images/advisory-meeting.jpg",
+      image: "/images/5.png",
     },
     {
       id: "estate-planning",
       title: "Estate Planning",
       description:
         "We structure your estate to protect your assets and ensure a smooth transfer of wealth to your beneficiaries.",
-      image: "/images/advisory-meeting.jpg",
+      image: "/images/6.png",
     },
   ];
 
@@ -84,9 +84,9 @@ export function OurWorkSection() {
             {/* Section Header */}
             <div>
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 0.5, y: 0 }}
+                transition={{ duration: 0.2 }}
                 viewport={{ once: true }}
               >
                 <h2 className="text-sm uppercase tracking-wider mb-6 font-[family-name:var(--font-tt-norms)] text-brand-brown text-center md:text-left">
@@ -105,11 +105,10 @@ export function OurWorkSection() {
                 <button
                   key={service.id}
                   onClick={() => setActiveService(service)}
-                  className={`text-left w-full py-2 border-l-2 pl-6 transition-all duration-300 font-[family-name:var(--font-tt-norms)] text-brand-brown-dark ${
-                    activeService.id === service.id
-                      ? "border-brand-blue font-medium"
-                      : "border-transparent hover:border-gray-300"
-                  }`}
+                  className={`text-left w-full py-2 border-l-2 pl-6 transition-all duration-300 font-[family-name:var(--font-tt-norms)] text-brand-brown-dark ${activeService.id === service.id
+                    ? "border-brand-blue font-medium"
+                    : "border-transparent hover:border-gray-300"
+                    }`}
                 >
                   {service.title}
                 </button>
@@ -149,7 +148,7 @@ export function OurWorkSection() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.1 }}
                       className="text-center mb-2 w-full"
                     >
                       <h4 className="text-2xl font-medium text-brand-brown-dark font-[family-name:var(--font-tt-norms)] px-8">
@@ -220,13 +219,20 @@ export function OurWorkSection() {
                 className="bg-white rounded-lg shadow-sm mx-4"
               >
                 <div className="relative h-[250px] w-full overflow-hidden rounded-t-lg">
-                  <Image
-                    src={activeService.image}
-                    alt={activeService.title}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={activeService.image}
+                      alt={activeService.title}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </motion.div>
                 </div>
                 <div className="p-6 space-y-4">
                   <h4 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown">
@@ -244,9 +250,13 @@ export function OurWorkSection() {
           <div className="hidden md:block md:col-span-8 lg:col-span-8 ml-12 pt-24">
             <motion.div
               key={activeService.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+                opacity: { duration: 0.6 }
+              }}
               className="bg-white rounded-lg shadow-sm"
             >
               <div className="relative h-[300px] w-full overflow-hidden rounded-t-lg">
@@ -263,6 +273,39 @@ export function OurWorkSection() {
                   {activeService.title}
                 </h4>
                 <p className="text-lg leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown">
+                  {activeService.description}
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Mobile Content Card */}
+          <div className="md:hidden">
+            <motion.div
+              key={activeService.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+                opacity: { duration: 0.6 }
+              }}
+              className="bg-white rounded-lg shadow-sm mx-4"
+            >
+              <div className="relative h-[250px] w-full overflow-hidden rounded-t-lg">
+                <Image
+                  src={activeService.image}
+                  alt={activeService.title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="p-6 space-y-4">
+                <h4 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown">
+                  {activeService.title}
+                </h4>
+                <p className="text-base leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown">
                   {activeService.description}
                 </p>
               </div>

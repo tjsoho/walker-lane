@@ -3,6 +3,19 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { TipTapContent } from "@/components/blog/TipTapContent";
 
+
+interface BlogPost {
+  id: string;
+  title: string;
+  subtitle: string;
+  slug: string;
+  content: string;
+  tags: string[];
+  image_url: string;
+  views: number;
+  created_at: string;
+}
+
 async function getBlogPost(slug: string) {
   const { data, error } = await supabase
     .from("blog_posts")
@@ -20,16 +33,16 @@ async function getBlogPost(slug: string) {
     .update({ views: (data.views || 0) + 1 })
     .eq("id", data.id);
 
-  return data;
+  return data as BlogPost;
 }
 
-interface BlogPostPageProps {
-  params: { slug: string };
-  searchParams: Record<string, string | string[] | undefined>;
-}
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
-export default async function BlogPost(props: BlogPostPageProps) {
-  const post = await getBlogPost(props.params.slug);
+export default async function BlogPost({ params }: Props) {
+  const resolvedParams = await params;
+  const post = await getBlogPost(resolvedParams.slug);
 
   if (!post) {
     notFound();

@@ -11,14 +11,14 @@ const Section3a = () => {
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-black/50" /> {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/70" /> {/* Dark overlay */}
       </div>
 
       {/* Testimonial Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-40">
         <div className="max-w-xl lg:max-w-lg">
-          <blockquote className="text-white">
-            <p className="text-2xl font-medium italic mb-4">
+          <blockquote className="text-brand-cream">
+            <p className="text-2xl font-bold italic mb-4 font-ttNorms ">
               “As a young family, we felt lost with so many options. Walker Lane
               guided us with clear, honest advice that made all the difference!”
             </p>

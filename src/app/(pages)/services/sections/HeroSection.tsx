@@ -9,13 +9,13 @@ export function HeroSection() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/sydney.jpg"
+          src="/images/serviceDesk1.png"
           alt="Abstract background"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-[10%]"></div>
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-[10%]"></div>
       </div>
 
       {/* Content */}

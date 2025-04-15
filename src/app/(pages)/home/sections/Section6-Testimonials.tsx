@@ -77,7 +77,7 @@ export function TestimonialsSection() {
                 <p className="text-xl font-kiona mb-2">
                   {testimonials[current].author}
                 </p>
-                <p className="text-brand-brown-light">
+                <p className="text-brand-brown-light font-ttNorms font-bold">
                   {testimonials[current].role}
                 </p>
               </div>

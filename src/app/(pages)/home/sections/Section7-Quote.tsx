@@ -54,11 +54,11 @@ export function QuoteSection() {
           buttonRef={buttonRef}
         >
           <>
-            <p className="text-lg mb-6">
+            <p className="text-lg mb-6 font-ttNorms">
               We believe in providing straightforward, personalized financial
               guidance that puts your interests first. Our approach is built on:
             </p>
-            <ul className="space-y-4">
+            <ul className="space-y-4 font-ttNorms text-white">
               {listItems.map((item, index) => (
                 <AnimatedListItem key={item} index={index}>
                   {item}

@@ -1,29 +1,38 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 import { Edit2, X } from "lucide-react";
 import toast from "react-hot-toast";
 
-interface PageSectionEditorProps {
+interface SectionComponentProps {
+  isPreview?: boolean;
+  content?: Record<string, string>;
+  isEditing?: boolean;
+  onUpdate?: (id: string, value: string) => void;
+}
+
+interface SectionEditorProps {
   pageId: string;
   sectionId: string;
+  section: {
+    id: string;
+    content: Record<string, unknown>;
+    // add other section properties
+  };
+  // add other props
 }
 
 export function PageSectionEditor({
   pageId,
   sectionId,
-}: PageSectionEditorProps) {
+}: SectionEditorProps) {
   const [content, setContent] = useState<Record<string, string> | null>(null);
-  const [Component, setComponent] = useState<any>(null);
+  const [Component, setComponent] = useState<React.ComponentType<SectionComponentProps> | null>(null);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
 
-  useEffect(() => {
-    loadSection();
-  }, [pageId, sectionId]);
-
-  async function loadSection() {
+  const loadSection = useCallback(async () => {
     setLoading(true);
     try {
       console.log("1. Starting to load section...");
@@ -44,7 +53,7 @@ export function PageSectionEditor({
       }
 
       // Get content
-      let { data, error } = await supabase
+      const { data, error } = await supabase
         .from("page_content")
         .select("content")
         .eq("page_id", pageId)
@@ -77,7 +86,11 @@ export function PageSectionEditor({
     } finally {
       setLoading(false);
     }
-  }
+  }, [pageId, sectionId]);
+
+  useEffect(() => {
+    loadSection();
+  }, [loadSection]);
 
   async function handleUpdate(id: string, value: string) {
     const newContent = {

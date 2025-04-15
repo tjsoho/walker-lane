@@ -37,7 +37,7 @@ export function AboutMe() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-100px" }}
                 transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                className="text-xl text-brand-brown-dark mb-4"
+                className="text-xl text-brand-brown-dark mb-4 font-ttNorms"
               >
                 ABOUT US
               </motion.h3>
@@ -66,7 +66,7 @@ export function AboutMe() {
                   delay: 0.2,
                   ease: [0.4, 0, 0.2, 1],
                 }}
-                className="text-lg text-brand-brown-dark mb-8"
+                className="text-lg text-brand-brown-dark mb-8 font-ttNorms font-bold"
               >
                 Our dedicated team embodies expertise and a down-to-earth
                 approach—pairing in-depth knowledge with a genuine desire to

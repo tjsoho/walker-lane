@@ -38,9 +38,8 @@ export function PageEditor() {
                   : "Select Page"}
               </span>
               <ChevronDown
-                className={`w-4 h-4 transition-transform ${
-                  pagesOpen ? "rotate-180" : ""
-                }`}
+                className={`w-4 h-4 transition-transform ${pagesOpen ? "rotate-180" : ""
+                  }`}
               />
             </button>
 
@@ -74,23 +73,21 @@ export function PageEditor() {
                 setPagesOpen(false);
               }}
               disabled={!selectedPage}
-              className={`flex items-center gap-2 px-3 py-2 rounded-md text-brand-brown-dark ${
-                selectedPage
+              className={`flex items-center gap-2 px-3 py-2 rounded-md text-brand-brown-dark ${selectedPage
                   ? "hover:bg-brand-brown-dark/5"
                   : "opacity-50 cursor-not-allowed"
-              }`}
+                }`}
             >
               <span className="min-w-[120px]">
                 {selectedSection
                   ? getPageSections(selectedPage!).find(
-                      (s) => s.id === selectedSection
-                    )?.name
+                    (s) => s.id === selectedSection
+                  )?.name
                   : "Select Section"}
               </span>
               <ChevronDown
-                className={`w-4 h-4 transition-transform ${
-                  sectionsOpen ? "rotate-180" : ""
-                }`}
+                className={`w-4 h-4 transition-transform ${sectionsOpen ? "rotate-180" : ""
+                  }`}
               />
             </button>
 
@@ -121,6 +118,7 @@ export function PageEditor() {
             <PageSectionEditor
               pageId={selectedPage!}
               sectionId={selectedSection}
+              section={{ id: selectedSection, content: {} }}
             />
           </DevicePreview>
         ) : (

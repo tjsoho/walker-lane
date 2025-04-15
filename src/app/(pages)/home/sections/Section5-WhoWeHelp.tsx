@@ -47,7 +47,7 @@ const MarketCard = ({
     <h3 className="text-2xl md:text-3xl font-kiona text-brand-brown-dark mb-4">
       {title}
     </h3>
-    <p className="text-brand-brown-dark mb-6 max-w-xs text-lg">{subtitle}</p>
+    <p className="text-brand-brown-dark mb-6 max-w-xs text-lg font-ttNorms font-bold">{subtitle}</p>
     <div
       ref={buttonRef}
       className="[&_*]:border-brand-brown-dark [&>div>div>div]:bg-brand-brown-dark"
@@ -65,12 +65,12 @@ const marketData = [
       "Set your family up for success with smart financial planning from day one.",
     content: (
       <>
-        <p className="text-lg mb-6">
+        <p className="text-lg mb-6 font-ttNorms">
           Starting a family is an exciting journey that comes with new financial
           responsibilities. We help young families build strong financial
           foundations through:
         </p>
-        <ul className="space-y-4">
+        <ul className="space-y-4 font-ttNorms text-white">
           {[
             "Education savings and college planning",
             "Life insurance and family protection",
@@ -91,11 +91,11 @@ const marketData = [
       "With kids in high school and retirement on the horizon, now's the time to make your money work harder.",
     content: (
       <>
-        <p className="text-lg mb-6">
+        <p className="text-lg mb-6 font-ttNorms">
           Your peak earning years are crucial for building lasting wealth. Our
           strategies help you:
         </p>
-        <ul className="space-y-4">
+        <ul className="space-y-4 font-ttNorms text-white">
           {[
             "Maximize retirement contributions",
             "Balance college savings with retirement",
@@ -116,10 +116,10 @@ const marketData = [
       "Ensure your wealth supports the lifestyle you want—now and for years to come.",
     content: (
       <>
-        <p className="text-lg mb-6">
+        <p className="text-lg mb-6 font-ttNorms">
           Make your retirement dreams a reality with our comprehensive planning:
         </p>
-        <ul className="space-y-4">
+        <ul className="space-y-4 font-ttNorms text-white">
           {[
             "Income distribution strategies",
             "Estate planning and legacy",

@@ -40,7 +40,7 @@ export function WhatWeDo() {
           {/* Subtitle */}
           <motion.h3
             variants={itemVariants}
-            className="text-lg md:text-xl text-brand-cream mb-4"
+            className="text-lg md:text-xl text-brand-cream mb-4 font-ttNorms"
           >
             WHAT WE DO
           </motion.h3>
