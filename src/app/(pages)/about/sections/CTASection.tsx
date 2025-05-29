@@ -20,7 +20,7 @@ export const CTASection = () => {
               href="/contact"
               className="inline-block bg-brand-cream text-brand-brown-dark px-8 py-4 rounded-md font-kiona hover:bg-brand-cream/90 transition-colors"
             >
-              Schedule a Consultation
+              Book a Free Intro Call
             </Link>
           </motion.div>
         </div>

@@ -16,7 +16,7 @@ const advisors: Advisor[] = [
     {
         id: 1,
         name: "Joshua Cratchley",
-        role: "Chief Financial Officer",
+        role: "Chief Executive Officer",
         bio: "Joshua Cratchley has been advising clients in financial services for the better part of two decades. Previously an Accountant, Josh became a financial adviser in 2010 and started Plenary Wealth in 2013. In mid-2018 Josh helped establish Walker Lane and has been acting as the Chief Financial Officer whilst continuing to advise clients at Plenary Wealth.",
         image: "/images/josh.jpg",
         expertise: ["Financial Planning", "Wealth Management", "Business Strategy"]

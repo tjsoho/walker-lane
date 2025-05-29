@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export const defaultContent = {
   "hero-heading": "Welcome To Walker Lane",
-  "hero-subtext": "YOUR FINANCIAL ADVISORS",
+  "hero-subtext": "YOUR FINANCIAL ADVISERS",
 };
 
 interface HeroSectionProps {
@@ -62,7 +62,7 @@ export function HeroSection({
         }}
       >
         <Image
-          src="/images/boatHero.jpeg"
+          src="/images/familyHero.png"
           alt="Luxury Boat"
           fill
           priority
@@ -117,11 +117,11 @@ export function HeroSection({
                   : "bg-transparent text-brand-brown-light border-brand-brown-light"
                   }`}
               >
-                ADVISORS
+                ADVISERS
               </motion.button>
             </Link>
             <Tooltip
-              text="For Financial Advisors"
+              text="For Financial Advisers"
               isVisible={hoveredButton === "advisors"}
               userType="advisors"
               isActive={userType === "advisors"}

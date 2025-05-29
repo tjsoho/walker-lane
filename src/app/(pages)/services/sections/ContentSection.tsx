@@ -60,7 +60,7 @@ export function ContentSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="text-lg leading-relaxed text-gray-700 dark:text-gray-300 font-[family-name:var(--font-tt-norms)]"
+                className="text-lg leading-relaxed text-gray-700 dark:text-white font-[family-name:var(--font-tt-norms)]"
               >
                 {text}
               </motion.p>

@@ -10,13 +10,13 @@ export function CTASection() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/images/wealth-management.jpg"
+          src="/images/boatHero.jpeg"
           alt="Strategic investment"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-brand-blue/80 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-brand-brown/80 backdrop-blur-[2px]" />
       </div>
 
       {/* Content */}
@@ -34,9 +34,9 @@ export function CTASection() {
           </h2>
           <Link
             href="/book-consultation"
-            className="inline-block bg-white px-8 py-4 rounded text-brand-blue font-[family-name:var(--font-tt-norms)] hover:bg-opacity-90 transition-all duration-300"
+            className="inline-block bg-white px-8 py-4 font-bold rounded text-brand-brown-dark font-[family-name:var(--font-tt-norms)] hover:bg-opacity-90 transition-all duration-300"
           >
-            Book a Strategy Session
+            Book a Free Intro Call
           </Link>
         </motion.div>
       </div>

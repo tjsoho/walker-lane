@@ -59,7 +59,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-brand-cream prose prose-invert prose-cream max-w-none"
+                  className="text-brand-cream prose prose-invert prose-cream max-w-none font-[family-name:var(--font-tt-norms)]"
                 >
                   {children}
                 </motion.div>

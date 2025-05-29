@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu } from "./Menu";
 
 const menuVariants = {
@@ -44,10 +44,21 @@ const middleLineVariants = {
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [userType, setUserType] = useState<"clients" | "advisors">("clients");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-20">
+      <header className={`fixed top-0 left-0 right-0 z-20 transition-colors duration-300 ${isScrolled ? 'bg-brand-cream backdrop-blur-xl' : 'bg-transparent'
+        }`}>
         <div className="mx-auto px-6 flex items-center justify-between">
           {/* Left space for symmetry - hidden on mobile */}
           <div className="w-32 hidden md:block" />

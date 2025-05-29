@@ -207,7 +207,7 @@ export function Menu({
                       : "bg-transparent text-brand-brown-light border-brand-brown-light"
                       }`}
                   >
-                    ADVISORS
+                    ADVISERS
                   </motion.button>
                 </Link>
               </div>

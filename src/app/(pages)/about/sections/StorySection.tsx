@@ -6,7 +6,7 @@ const StorySection = () => {
   // Split text into smaller paragraphs
   const leftColumnText = [
     "At Walker Lane, we believe financial planning is more than just numbers; it's about building a life you love.",
-    "We're a team of four dedicated financial advisors based in Sydney, Australia passionately committed to guiding Australians like you toward financial security.",
+    "We're a team of four dedicated financial advisers based in Sydney, Australia passionately committed to guiding Australians like you toward financial security.",
   ];
 
   const rightColumnText = [

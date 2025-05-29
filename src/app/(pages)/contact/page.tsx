@@ -88,7 +88,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-brand-brown mb-1">Phone</h3>
-                    <p className="text-brand-brown/70">+61 (0) 123 456 789</p>
+                    <p className="text-brand-brown/70">02 9135 2935</p>
                   </div>
                 </div>
 
@@ -100,7 +100,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-brand-brown mb-1">Email</h3>
-                    <p className="text-brand-brown/70">contact@walkerlane.com.au</p>
+                    <p className="text-brand-brown/70">ops@walkerlane.com.au</p>
                   </div>
                 </div>
 
@@ -113,7 +113,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-brand-brown mb-1">Address</h3>
-                    <p className="text-brand-brown/70">123 Financial District<br />Sydney, NSW 2000</p>
+                    <p className="text-brand-brown/70">3 Spring Street<br />Sydney, NSW 2000</p>
                   </div>
                 </div>
               </div>

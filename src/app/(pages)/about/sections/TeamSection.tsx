@@ -68,52 +68,52 @@ interface TeamMember {
   name: string;
   role: string;
   image: string;
-  funFact: string;
   quote: string;
   icon: keyof typeof icons;
   bio: string;
+  badges: string[];
 }
 
 const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Josh Cratchley",
-    role: "Chief Financial Officer",
+    role: "Chief Executive Officer",
     image: "/images/josh.jpg",
-    funFact: "Completed 12 marathons across 7 countries",
     quote: "Success is built on daily disciplines",
     icon: "chart",
-    bio: "Sam brings over 15 years of financial planning expertise...",
+    bio: "Josh is an experienced financial adviser and co-founder of Walker Lane, dedicated to helping clients achieve their financial goals.",
+    badges: ["Financial Planning", "Wealth Management", "Business Strategy"],
   },
   {
     id: 2,
-    name: "Patrik Casey",
+    name: "Patrick Casey",
     role: "Chairman",
     image: "/images/pat.jpg",
-    funFact: "Speaks three languages fluently",
     quote: "Every decision shapes tomorrow",
     icon: "handshake",
-    bio: "With a passion for helping families secure their future...",
+    bio: "Pat is a seasoned executive in financial services with deep expertise in wealth management and AFSL operations.",
+    badges: ["Executive Leadership", "Financial Services", "Business Development"],
   },
   {
     id: 3,
     name: "Sam Carroll",
     role: "Responsible Manager",
     image: "/images/sam.jpg",
-    funFact: "Published author on wealth management",
     quote: "Simplicity is the ultimate sophistication",
     icon: "lightbulb",
-    bio: "Specializing in retirement planning and wealth preservation...",
+    bio: "Sam specializes in succession planning and business growth for financial advice practices.",
+    badges: ["Succession Planning", "Business Growth", "Financial Advice"],
   },
   {
     id: 4,
     name: "Joel Taylor",
     role: "Risk & Compliance Manager",
     image: "/images/joel.jpg",
-    funFact: "Former professional chess player",
     quote: "Strategy turns dreams into reality",
     icon: "star",
-    bio: "A strategic thinker with a proven track record...",
+    bio: "Joel is a strategic thinker with a proven track record in risk and compliance management.",
+    badges: ["Risk Management", "Compliance", "Strategic Planning"],
   },
 ];
 
@@ -171,12 +171,14 @@ const TeamSection = () => {
                     <div className="text-white text-3xl transform -translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-300">
                       {icons[member.icon]}
                     </div>
-
-                    {/* Fun Fact */}
-                    <p className="text-white text-sm mb-2 font-ttNorms transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-400">
-                      {member.funFact}
-                    </p>
-
+                    {/* Badges */}
+                    <div className="flex flex-wrap gap-2 justify-center mt-2">
+                      {member.badges.map((badge) => (
+                        <span key={badge} className="px-3 py-1 bg-white/20 text-white rounded-full text-sm font-ttNorms font-bold">
+                          {badge}
+                        </span>
+                      ))}
+                    </div>
                     {/* Quote */}
                     <p className="text-white text-sm italic font-light transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-500">
                       &ldquo;{member.quote}&rdquo;
@@ -231,7 +233,7 @@ const TeamSection = () => {
             buttonRef={memberRef}
           >
             <div className="flex items-start gap-6">
-              <div className="relative w-48 h-64">
+              <div className="relative w-56 h-64 rounded-sm overflow-hidden">
                 <Image
                   src={selectedMember.image}
                   alt={selectedMember.name}
@@ -240,20 +242,18 @@ const TeamSection = () => {
                 />
               </div>
               <div>
-                <p className="text-gray-600 mb-4 font-ttNorms">
+                <p className="text-white mb-4 font-ttNorms">
                   {selectedMember.role}
                 </p>
-                <p className="text-lg mb-6">{selectedMember.bio}</p>
-                <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <span className="text-brand-brown-light mr-2">•</span>
-                    <span>{selectedMember.funFact}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-brand-brown-light mr-2">•</span>
-                    <span>&ldquo;{selectedMember.quote}&rdquo;</span>
-                  </li>
-                </ul>
+                <p className="text-lg mb-4 font-[family-name:var(--font-tt-norms)] text-white">{selectedMember.bio}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {selectedMember.badges.map((badge) => (
+                    <span key={badge} className="px-3 py-1 bg-brand-blue text-white rounded-full text-sm font-ttNorms font-bold border border-white/20">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+                <p className="italic text-brand-brown-light">&ldquo;{selectedMember.quote}&rdquo;</p>
               </div>
             </div>
           </Modal>

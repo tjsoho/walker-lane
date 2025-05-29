@@ -71,7 +71,7 @@ export function HeroSection() {
                             onMouseLeave={() => setHoveredButton(null)}
                             className="px-6 py-2 text-sm border rounded-md bg-brand-brown-light text-brand-black border-brand-brown-light hover:bg-brand-brown-light/90"
                         >
-                            ADVISORS
+                            ADVISERS
                         </motion.button>
                     </Link>
                     <Tooltip
