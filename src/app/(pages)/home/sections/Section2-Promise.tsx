@@ -5,7 +5,7 @@ import Image from "next/image";
 import { EditableText } from "@/components/pageEditor/EditableText";
 
 export const defaultContent = {
-  "promise-heading": "Think of us as your financial friends",
+  "promise-heading": "Trusted Advice from Advisers Who Understand Your Goals",
   "promise-text":
     "Ready to simplify the complexities of money management so you can focus on what truly matters: your dreams.",
 };

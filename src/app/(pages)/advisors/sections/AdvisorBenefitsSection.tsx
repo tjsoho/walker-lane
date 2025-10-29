@@ -100,8 +100,9 @@ export function AdvisorBenefitsSection() {
                     className="text-center mb-20"
                 >
                     <h2 className="text-4xl md:text-5xl font-light font-[family-name:var(--font-kiona)] text-brand-brown mb-6 tracking-wide">
-                        Adviser Benefits
+                        Why choose walker lane
                     </h2>
+                    <p className="text-lg mt-4 tracking-wider mb-6 font-[family-name:var(--font-tt-norms)] text-brand-brown-dark text-center md:text-left max-w-4xl mx-auto">At Walker Lane, we know what it takes to succeed as a financial adviser because we’ve lived it ourselves. Drawing on decades of industry experience, we’ve built a firm that equips advisers with the guidance, resources, and strategies needed to grow their businesses with confidence.</p>
                     <div className="w-24 h-0.5 bg-brand-brown mx-auto"></div>
                 </motion.div>
 

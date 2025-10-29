@@ -88,13 +88,13 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="relative z-10 text-center px-4 max-w-4xl mx-auto"
+                className="relative z-10 text-center px-4 max-w-6xl mx-auto"
             >
                 <h1 className="text-4xl md:text-6xl font-light font-[family-name:var(--font-kiona)] text-white mb-6">
-                    Meet Our Advisory Team
+                    Adviser Owned. Client Focused. Results Driven.
                 </h1>
-                <p className="text-xl text-white/90 font-[family-name:var(--font-tt-norms)] max-w-2xl mx-auto">
-                    Experienced professionals dedicated to guiding you through your financial journey with expertise and care
+                <p className="text-2xl text-white font-[family-name:var(--font-tt-norms)] max-w-2xl mx-auto">
+                Helping financial advisers build successful businesses through tailored services, strategic support, and diversified investment solutions.
                 </p>
             </motion.div>
         </section>

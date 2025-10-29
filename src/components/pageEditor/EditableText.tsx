@@ -34,7 +34,7 @@ export function EditableText({
         );
       case "subtext":
         return (
-          <p className="text-2xl mb-8 max-w-2xl mx-auto font-ttNorms">
+          <p className="text-3xl mb-8 max-w-2xl mx-auto font-ttNorms font-normal">
             {content || "No content"}
           </p>
         );

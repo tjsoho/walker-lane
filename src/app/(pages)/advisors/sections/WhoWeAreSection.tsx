@@ -30,15 +30,15 @@ export function WhoWeAreSection() {
                     >
                         <div className="relative">
                             <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-brand-brown/20"></div>
-                            <h3 className="text-2xl font-medium text-brand-brown mb-6 pl-4">Our Profile</h3>
-                            <div className="space-y-6 text-brand-brown/70 pl-4">
-                                <p className="text-lg leading-relaxed">
+                            
+                            <div className="space-y-6 text-brand-brown-dark pl-4 font-[family-name:var(--font-tt-norms)]">
+                                <p className="text-lg leading-relaxed font-[family-name:var(--font-tt-norms)] ">
                                     Walker Lane is a boutique Financial Advisory and investment management firm, built by professional financial advisers to deliver high quality financial advice to clients. We are owned by advisers and staff only.
                                 </p>
-                                <p className="text-lg leading-relaxed">
+                                <p className="text-lg leading-relaxed font-[family-name:var(--font-tt-norms)]">
                                     We strive to partner with high-quality advisers to build successful advice businesses through the provision of quality tailored services and support, financial products and education to enhance the overall experience of all involved.
                                 </p>
-                                <p className="text-lg leading-relaxed">
+                                <p className="text-lg leading-relaxed font-[family-name:var(--font-tt-norms)]">
                                     We offer diversified managed account solutions, suited to different investor risk profiles, with a strong focus on wealth preservation.
                                 </p>
                             </div>

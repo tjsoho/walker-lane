@@ -51,7 +51,7 @@ export function WhatWeDo() {
             variants={itemVariants}
             className="text-3xl md:text-4xl lg:text-5xl font-kiona text-brand-cream mb-12"
           >
-            Wealth Management & Investment Guidance
+            Strategic financial advice  <br></br>& wealth management
           </motion.h2>
 
           {/* Button */}

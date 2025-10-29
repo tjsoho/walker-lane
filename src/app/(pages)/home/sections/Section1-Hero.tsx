@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export const defaultContent = {
   "hero-heading": "Welcome To Walker Lane",
-  "hero-subtext": "YOUR FINANCIAL ADVISERS",
+  "hero-subtext": "Making meaningful difference in our client's lives",
 };
 
 interface HeroSectionProps {

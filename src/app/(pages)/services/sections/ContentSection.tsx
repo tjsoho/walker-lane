@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function ContentSection() {
   const paragraphs = [
-    "Your financial journey is unique, and your financial strategy should be too. At Walker Lane, we provide personalized financial planning and investment management tailored to your specific needs and goals.",
+    "Your financial journey is unique, and your financial strategy should be too. At Walker Lane, we provide personalized financial advice and investment management tailored to your specific needs and goals.",
     "Whether you're a young professional strategically investing your first substantial savings, or a seasoned executive optimizing your portfolio for growth, we're here to help.",
     "For high-net-worth individuals seeking sophisticated wealth preservation strategies, we offer the expertise and dedication to help you reach your financial aspirations.",
     "We take a holistic approach, ensuring that your financial plan aligns seamlessly with your lifestyle and long-term objectives.",

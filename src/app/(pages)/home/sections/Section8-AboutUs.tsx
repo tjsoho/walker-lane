@@ -54,7 +54,7 @@ export function AboutMe() {
                 className="text-3xl md:text-4xl lg:text-5xl font-kiona text-brand-brown-dark mb-6"
               >
                 At Walker Lane, we&apos;re passionate about empowering
-                Australians to thrive financially.
+                our clients to build wealth with confidence.
               </motion.h2>
 
               <motion.p

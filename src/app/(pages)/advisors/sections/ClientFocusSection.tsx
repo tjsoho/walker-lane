@@ -15,38 +15,45 @@ type FocusCard = {
 const focusCards: FocusCard[] = [
     {
         id: 1,
-        title: "Client Focus",
-        subtitle: "How We Can Help You",
-        content: "A Walker Lane Financial Adviser can work with you to help you understand and articulate your needs and personal priorities, plus the effects your financial decisions can have on your ability to achieve your life goals.",
+        title: "Products & Services",
+        subtitle: "Comprehensive Solutions",
+        content: "We offer a full suite of financial products and services, tailored to meet the diverse needs of advisers and their clients, helping you deliver comprehensive, high-quality advice.",
         image: "/images/client7.png"
     },
     {
         id: 2,
-        title: "Financial Well-Being",
-        subtitle: "Our Approach",
-        content: "Our team of professional Financial Advisers can provide you with a complete set of financial solutions and investment recommendations to better ensure your financial security. Our approach remains consultative at all times, with the end goal of setting you on the path towards financial well-being.",
+        title: "Compliance Guidance",
+        subtitle: "Stay Confident",
+        content: "Stay confident with up-to-date, practical compliance support, designed to keep your practice aligned with regulations and reduce risk.",
         image: "/images/client9.png"
     },
     {
         id: 3,
-        title: "True Value",
-        subtitle: "Advice & Guidance",
-        content: "We believe that the true value of advice goes beyond a simple product recommendation; it comes from working with you on your personal goals (both short and long term) and assisting you to work through some of the competing complexities that life can throw at you.",
+        title: "Professional Development & Events",
+        subtitle: "Enhance Your Expertise",
+        content: "Enhance your expertise and grow your business through targeted training, workshops, and industry events curated for financial advisers.",
         image: "/images/client1.png"
     },
     {
         id: 4,
-        title: "Tailored For You",
-        subtitle: "Advice Designed For You",
-        content: "There is no \"one size fits all\" advice solution. Regardless of where you are in life, there is little doubt that the right advice can make a real difference, setting you down the path of future financial prosperity and security. Our financial advisers work closely with you to provide a financial plan that is tailored specifically to your needs.",
+        title: "Technology Solutions",
+        subtitle: "Streamline Operations",
+        content: "Leverage smart, user-friendly systems and tools that streamline operations, improve efficiency, and enhance client experiences.",
         image: "/images/client5.png"
     },
     {
         id: 5,
-        title: "Financial Advice",
-        subtitle: "That Endures",
-        content: "Your life changes, so should your financial plan. At Walker Lane, our advisers focus on helping you grow your wealth as your career develops, protect your investments in retirement and leave a legacy for the people and causes close to your heart.",
+        title: "Paraplanning Services",
+        subtitle: "Expert Support",
+        content: "Access expert paraplanning support to save time, reduce administrative burden, and ensure every client receives thorough, high-quality advice.",
         image: "/images/success.png"
+    },
+    {
+        id: 6,
+        title: "Regular Revenue Payments",
+        subtitle: "Financial Stability",
+        content: "Enjoy predictable, reliable revenue payments, helping to support your practice's cash flow and financial stability.",
+        image: "/images/client7.png"
     }
 ];
 
@@ -59,7 +66,7 @@ export function ClientFocusSection() {
         setActiveIndex(index);
     };
 
- 
+
 
     const handlePrev = () => {
         const prevIndex = activeIndex === 0 ? focusCards.length - 1 : activeIndex - 1;
@@ -80,12 +87,12 @@ export function ClientFocusSection() {
                                 transition={{ duration: 0.2 }}
                                 viewport={{ once: true }}
                             >
-                                <h2 className="text-sm uppercase tracking-wider mb-6 font-[family-name:var(--font-tt-norms)] text-brand-brown text-center md:text-left">
-                                    Client Focus
-                                </h2>
-                                <h3 className="text-3xl md:text-4xl font-light leading-tight font-[family-name:var(--font-kiona)] text-brand-brown text-center md:text-left">
-                                    How we can help you achieve your financial goals
+                                <h3 className="text-3xl md:text-4xl font-light leading-tight font-[family-name:var(--font-kiona)] text-brand-brown-dark text-center md:text-left">
+                                    What we provide
                                 </h3>
+                                <p className="text-lg mt-4 tracking-wider mb-6 font-[family-name:var(--font-tt-norms)] text-brand-brown-dark text-center md:text-left">
+                                    At Walker Lane, we understand that financial advisers need dealer groups that deliver meaningful support and real results. <br></br> <br></br>Our focus is helping you stay competitive by providing a comprehensive suite of solutions, maintaining strong, current compliance, and offering streamlined systems to make your practice more efficient.
+                                </p>
                             </motion.div>
                         </div>
 
@@ -97,8 +104,8 @@ export function ClientFocusSection() {
                                     key={card.id}
                                     onClick={() => handleCardChange(card, index)}
                                     className={`text-left w-full py-2 border-l-2 pl-6 transition-all duration-300 font-[family-name:var(--font-tt-norms)] text-brand-brown-dark ${activeCard === card.id
-                                            ? "border-brand-blue font-medium"
-                                            : "border-transparent hover:border-gray-300"
+                                        ? "border-brand-blue font-medium"
+                                        : "border-transparent hover:border-gray-300"
                                         }`}
                                 >
                                     {card.title}

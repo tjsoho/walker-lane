@@ -15,44 +15,44 @@ export function OurWorkSection() {
   const services: ServiceItem[] = [
     {
       id: "portfolio",
-      title: "Portfolio Management",
+      title: "Investment Strategy & Portfolio Management",
       description:
-        "We build and manage investment portfolios tailored to your goals, maximizing growth and minimizing risk.",
+        "We'll partner with you to create a tailored investment strategy that reflects your goals, preferences, and comfort with risk. Our approach combines careful risk management with smart diversification—using a strategic mix of local and international investments managed by specialists across different markets and styles.",
       image: "/images/1.png",
     },
-    {
-      id: "debt-cashflow",
-      title: "Debt & Cashflow",
-      description:
-        "We optimize your finances by strategically managing debt and cash flow to achieve your financial objectives.",
-      image: "/images/2.png",
-    },
+    // {
+    //   id: "debt-cashflow",
+    //   title: "Debt & Cashflow",
+    //   description:
+    //     "We optimize your finances by strategically managing debt and cash flow to achieve your financial objectives.",
+    //   image: "/images/2.png",
+    // },
     {
       id: "strategic-planning",
-      title: "Strategic Planning",
+      title: "Retirement Planning",
       description:
-        "We create personalized financial roadmaps to guide you toward long-term financial security and success.",
+        "We're passionate about helping you achieve the retirement you've always envisioned. We start by understanding your ideal lifestyle, then carefully consider every factor to build a plan that gives you confidence and comfort in your retirement years.",
       image: "/images/3.png",
     },
     {
       id: "protection",
       title: "Protection",
       description:
-        "We safeguard your assets and family's future with comprehensive insurance and risk mitigation strategies.",
+        "Life is unpredictable. Without proper protection, unexpected events can devastate your family both emotionally and financially. We'll help you build a safety net that protects your loved ones and secures the future you've planned for—no matter what life brings.",
       image: "/images/4.png",
     },
     {
       id: "smsf-super",
       title: "SMSF & Super",
       description:
-        "We help you maximize your superannuation and SMSF to achieve a secure and fulfilling retirement.",
+        "For most Australians, superannuation represents their biggest financial asset and primary retirement income source, plus it's one of the smartest tax strategies available for growing your wealth.",
       image: "/images/5.png",
     },
     {
       id: "estate-planning",
-      title: "Estate Planning",
+      title: "Intergenerational Wealth Management",
       description:
-        "We structure your estate to protect your assets and ensure a smooth transfer of wealth to your beneficiaries.",
+        "Passing wealth between generations is complex and emotional—you shouldn't navigate it alone. We manage family dynamics, competing interests, and the practical transfer of assets at the right time, in the right way—while empowering the next generation to take ownership.",
       image: "/images/6.png",
     },
   ];
@@ -235,10 +235,10 @@ export function OurWorkSection() {
                   </motion.div>
                 </div>
                 <div className="p-6 space-y-4">
-                  <h4 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown">
+                  <h4 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown-dark">
                     {activeService.title}
                   </h4>
-                  <p className="text-base leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown">
+                  <p className="text-base leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown-dark">
                     {activeService.description}
                   </p>
                 </div>
@@ -269,10 +269,10 @@ export function OurWorkSection() {
                 />
               </div>
               <div className="p-8 space-y-6">
-                <h4 className="text-3xl font-light font-[family-name:var(--font-kiona)] text-brand-brown">
+                <h4 className="text-3xl font-light font-[family-name:var(--font-kiona)] text-brand-brown-dark">
                   {activeService.title}
                 </h4>
-                <p className="text-lg leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown">
+                <p className="text-lg leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown-dark">
                   {activeService.description}
                 </p>
               </div>
