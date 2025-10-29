@@ -15,12 +15,12 @@ export default function AdvisorsPage() {
         <main className="min-h-screen bg-brand-cream">
             <HeroSection />
              <WhoWeAreSection />
+            <AdvisorBenefitsSection />
             <ClientFocusSection />
             <TeamSection />
             <OurOfferSection />
             
             <ExpertiseSection />
-            <AdvisorBenefitsSection />
              <ContactSection /> 
         </main>
     );

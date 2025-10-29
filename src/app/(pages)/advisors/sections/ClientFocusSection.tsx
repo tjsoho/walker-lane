@@ -74,7 +74,7 @@ export function ClientFocusSection() {
     };
 
     return (
-        <section className="relative bg-brand-cream min-h-screen">
+        <section className="relative bg-white min-h-screen">
             <div className="container mx-auto pl-4 pr-0 min-h-screen">
                 <div className="grid md:grid-cols-12 gap-8 lg:gap-24">
                     {/* Left Side - Header and Menu */}
