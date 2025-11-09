@@ -1,7 +1,7 @@
 "use client";
 
 import { HeroSection } from "./sections/HeroSection";
-import { TeamSection } from "./sections/TeamSection";
+import TeamSection from "./sections/TeamSection";
 
 import { ExpertiseSection } from "./sections/ExpertiseSection";
 import { ContactSection } from "./sections/ContactSection";

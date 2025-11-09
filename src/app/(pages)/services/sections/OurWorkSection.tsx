@@ -89,10 +89,10 @@ export function OurWorkSection() {
                 transition={{ duration: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-sm uppercase tracking-wider mb-6 font-[family-name:var(--font-tt-norms)] text-brand-brown text-center md:text-left">
+                <h2 className="text-sm uppercase tracking-wider mb-6 font-kiona text-brand-brown-dark text-center md:text-left">
                   Our Work
                 </h2>
-                <h3 className="text-3xl md:text-4xl font-light leading-tight font-[family-name:var(--font-kiona)] text-brand-brown text-center md:text-left">
+                <h3 className="text-3xl md:text-4xl font-light leading-tight font-[family-name:var(--font-kiona)] text-brand-brown-dark text-center md:text-left">
                   Advice to help guide our clients and manage complexity
                 </h3>
               </motion.div>
@@ -105,8 +105,8 @@ export function OurWorkSection() {
                 <button
                   key={service.id}
                   onClick={() => setActiveService(service)}
-                  className={`text-left w-full py-2 border-l-2 pl-6 transition-all duration-300 font-[family-name:var(--font-tt-norms)] text-brand-brown-dark ${activeService.id === service.id
-                    ? "border-brand-blue font-medium"
+                  className={`text-left w-full py-2 border-l-2 pl-6 transition-all duration-300 font-inter font-light tracking-wide text-brand-brown-dark ${activeService.id === service.id
+                    ? "border-brand-blue "
                     : "border-transparent hover:border-gray-300"
                     }`}
                 >

@@ -47,7 +47,7 @@ const MarketCard = ({
     <h3 className="text-2xl md:text-3xl font-kiona text-brand-brown-dark mb-4">
       {title}
     </h3>
-    <p className="text-brand-brown-dark mb-6 max-w-xs text-lg font-ttNorms font-bold">{subtitle}</p>
+    <p className="text-brand-brown-dark mb-6 max-w-xs text-lg ">{subtitle}</p>
     <div
       ref={buttonRef}
       className="[&_*]:border-brand-brown-dark [&>div>div>div]:bg-brand-brown-dark"
@@ -72,7 +72,7 @@ const marketData = [
         </p>
         <ul className="space-y-4 font-ttNorms text-white">
           {[
-            "Education savings and college planning",
+            "Education savings and university planning",
             "Life insurance and family protection",
             "Budget optimization for growing families",
           ].map((item, index) => (
@@ -98,7 +98,7 @@ const marketData = [
         <ul className="space-y-4 font-ttNorms text-white">
           {[
             "Maximize retirement contributions",
-            "Balance college savings with retirement",
+            "Balance university savings with retirement",
             "Optimize tax strategies",
           ].map((item, index) => (
             <AnimatedListItem key={item} index={index}>

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export function WhoWeAreSection() {
     return (
-        <section className="py-32 px-4 bg-white">
+        <section className="lg:py-32 py-16 px-4 bg-white">
             <div className="max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ export function WhoWeAreSection() {
                     >
                         <div className="relative">
                             <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-brand-brown/20"></div>
-                            
+
                             <div className="space-y-6 text-brand-brown-dark pl-4 font-[family-name:var(--font-tt-norms)]">
                                 <p className="text-lg leading-relaxed font-[family-name:var(--font-tt-norms)] ">
                                     Walker Lane is a boutique Financial Advisory and investment management firm, built by professional financial advisers to deliver high quality financial advice to clients. We are owned by advisers and staff only.
@@ -60,10 +60,12 @@ export function WhoWeAreSection() {
                                 className="object-cover"
                                 priority
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent"></div>
-                            <div className="absolute bottom-0 left-0 right-0 p-10">
-                                <h3 className="text-3xl font-medium text-white mb-6">Our Focus</h3>
-                                <div className="space-y-6 text-white/90">
+                            {/* Gradient overlay - hidden on mobile, visible on desktop */}
+                            <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent"></div>
+                            {/* Text overlay - hidden on mobile, visible on desktop */}
+                            <div className="hidden md:block absolute bottom-0 left-0 right-0 p-10">
+                                <h3 className="text-3xl font-kiona font-medium text-white mb-6">Our Focus</h3>
+                                <div className="space-y-6 text-white">
                                     <p className="text-lg leading-relaxed">
                                         At Walker Lane, we always act in the best interests of our clients. We do our own research, build our own systems and think for ourselves to deliver investment insights that add value for our clients.
                                     </p>
@@ -71,6 +73,18 @@ export function WhoWeAreSection() {
                                         We exist to make a positive difference to our adviser&apos;s and client&apos;s lives.
                                     </p>
                                 </div>
+                            </div>
+                        </div>
+                        {/* Text below image - visible on mobile, hidden on desktop */}
+                        <div className="md:hidden mt-6 p-6">
+                            <h3 className="text-3xl font-kiona font-medium text-brand-brown mb-6">Our Focus</h3>
+                            <div className="space-y-6 text-brand-brown-dark">
+                                <p className="text-lg leading-relaxed">
+                                    At Walker Lane, we always act in the best interests of our clients. We do our own research, build our own systems and think for ourselves to deliver investment insights that add value for our clients.
+                                </p>
+                                <p className="text-lg leading-relaxed">
+                                    We exist to make a positive difference to our adviser&apos;s and client&apos;s lives.
+                                </p>
                             </div>
                         </div>
                     </motion.div>

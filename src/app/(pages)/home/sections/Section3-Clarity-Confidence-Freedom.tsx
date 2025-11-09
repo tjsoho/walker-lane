@@ -83,13 +83,13 @@ const modalContent = {
     position: "center" as const,
     content: (
       <>
-        <p className="text-lg mb-6 font-[family-name:var(--font-tt-norms)] text-white">
+        <p className="text-lg mb-6  text-white">
           With our guidance, you&apos;ll gain the confidence to navigate any
           financial challenge. We&apos;ll work alongside you, crafting a tailored
           plan aligned with your values and goals to secure your future and
           achieve your financial aspirations.
         </p>
-        <ul className="space-y-4 font-[family-name:var(--font-tt-norms)] text-white">
+        <ul className="space-y-4  text-white ">
           <ListItem index={0}>Expert guidance and education</ListItem>
           <ListItem index={1}>Proactive risk management</ListItem>
           <ListItem index={2}>Long-term partnership focus</ListItem>
@@ -102,14 +102,14 @@ const modalContent = {
     position: "right" as const,
     content: (
       <>
-        <p className="text-lg mb-6 font-[family-name:var(--font-tt-norms)] text-white">
+        <p className="text-lg mb-6  text-white">
           Picture yourself living life exactly as you envision it. We help you
           design a financial roadmap to turn these dreams into realities.
           Whether it&apos;s early retirement, pursuing passions, or simply
           enjoying more financial security, we&apos;ll work with you to build
           a future where financial freedom is your reality.
         </p>
-        <ul className="space-y-4 font-[family-name:var(--font-tt-norms)] text-white">
+        <ul className="space-y-4  text-white">
           <ListItem index={0}>Personalized wealth strategies</ListItem>
           <ListItem index={1}>Goal-oriented planning</ListItem>
           <ListItem index={2}>Lifestyle-focused solutions</ListItem>

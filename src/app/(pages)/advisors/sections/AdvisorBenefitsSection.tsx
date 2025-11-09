@@ -90,7 +90,7 @@ export function AdvisorBenefitsSection() {
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
     return (
-        <section className="py-32 px-4 bg-brand-cream">
+        <section className="lg:py-32 py-16 px-4 bg-brand-cream">
             <div className="max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -99,10 +99,10 @@ export function AdvisorBenefitsSection() {
                     viewport={{ once: true }}
                     className="text-center mb-20"
                 >
-                    <h2 className="text-4xl md:text-5xl font-light font-[family-name:var(--font-kiona)] text-brand-brown mb-6 tracking-wide">
+                    <h2 className="text-4xl md:text-5xl font-light font-kiona text-brand-brown mb-6 tracking-wide">
                         Why choose walker lane
                     </h2>
-                    <p className="text-lg mt-4 tracking-wider mb-6 font-[family-name:var(--font-tt-norms)] text-brand-brown-dark text-center max-w-4xl mx-auto">At Walker Lane, we know what it takes to succeed as a financial adviser because we’ve lived it ourselves. Drawing on decades of industry experience, we’ve built a firm that equips advisers with the guidance, resources, and strategies needed to grow their businesses with confidence.</p>
+                    <p className="text-lg mt-4 tracking-wider mb-6 text-brand-brown-dark text-center max-w-4xl mx-auto">At Walker Lane, we know what it takes to succeed as a financial adviser because we’ve lived it ourselves. Drawing on decades of industry experience, we’ve built a firm that equips advisers with the guidance, resources, and strategies needed to grow their businesses with confidence.</p>
                     <div className="w-24 h-0.5 bg-brand-brown mx-auto"></div>
                 </motion.div>
 
@@ -126,11 +126,12 @@ export function AdvisorBenefitsSection() {
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     priority
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/20 opacity-0 transition-opacity duration-500 group-hover:opacity-80"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/80 to-black opacity-0 transition-opacity duration-500 group-hover:opacity-80 backdrop-blur-xl"></div>
+                                <div className={`absolute inset-0 bg-brand-brown-dark/80 backdrop-blur-xl transition-opacity duration-500 ${hoveredItem === item.id ? "opacity-100" : "opacity-0"}`}></div>
 
                                 <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-500">
-                                    <h3 className="text-xl font-medium text-white mb-1">{item.title}</h3>
-                                    <h4 className="text-base text-white/80 mb-3">{item.subtitle}</h4>
+                                    <h3 className="text-xl font-kiona text-white mb-1">{item.title}</h3>
+                                    <p className="text-lg text-white mb-3 font-kiona">{item.subtitle}</p>
 
                                     <AnimatePresence>
                                         {hoveredItem === item.id && (
@@ -155,7 +156,7 @@ export function AdvisorBenefitsSection() {
                             </div>
 
                             <motion.div
-                                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center"
+                                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/90 backdrop-blur-lg flex items-center justify-center"
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{
                                     opacity: hoveredItem === item.id ? 1 : 0.7,
@@ -196,11 +197,12 @@ export function AdvisorBenefitsSection() {
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                                     priority
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-80"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/90 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-80"></div>
+                                <div className={`absolute inset-0 bg-brand-brown-dark/80 backdrop-blur-xl transition-opacity duration-500 ${hoveredItem === item.id ? "opacity-100" : "opacity-0"}`}></div>
 
                                 <div className="absolute bottom-0 left-0 right-0 p-6 transform transition-transform duration-500">
-                                    <h3 className="text-xl font-medium text-white mb-1">{item.title}</h3>
-                                    <h4 className="text-base text-white/80 mb-3">{item.subtitle}</h4>
+                                    <h3 className="text-xl font-medium text-white mb-1 font-kiona">{item.title}</h3>
+                                    <h4 className="text-base text-white/80 mb-3 font-kiona">{item.subtitle}</h4>
 
                                     <AnimatePresence>
                                         {hoveredItem === item.id && (

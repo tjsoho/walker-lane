@@ -28,13 +28,13 @@ export function EditableText({
         );
       case "paragraph":
         return (
-          <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-none font-ttNorms">
+          <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-none font-inter text-brand-cream ">
             {content || "No content"}
           </p>
         );
       case "subtext":
         return (
-          <p className="text-3xl mb-8 max-w-2xl mx-auto font-ttNorms font-normal">
+          <p className="text-3xl mb-8 max-w-2xl mx-auto ">
             {content || "No content"}
           </p>
         );

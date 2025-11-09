@@ -11,7 +11,7 @@ export const CTASection = () => {
           <h2 className="text-4xl md:text-5xl font-kiona text-brand-cream mb-6">
             Ready to Secure Your Financial Future?
           </h2>
-          <p className="text-lg text-white mb-12 font-ttNorms">
+          <p className="text-xl text-white mb-12 ">
             We&apos;ll help you achieve financial confidence with a
             complimentary consultation.
           </p>

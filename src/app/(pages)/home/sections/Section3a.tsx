@@ -18,7 +18,7 @@ const Section3a = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-40">
         <div className="max-w-xl lg:max-w-lg">
           <blockquote className="text-brand-cream">
-            <p className="text-2xl font-bold italic mb-4 font-ttNorms ">
+            <p className="text-2xl font-inter italic mb-4  ">
               “We had no idea which way to go until some friends told us about Walker Lane. We met with them who showed us how we could become financially independent in our retirement and maintain the lifestyle we love”
             </p>
             <footer className="text-lg">

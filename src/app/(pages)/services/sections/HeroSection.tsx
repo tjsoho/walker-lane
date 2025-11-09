@@ -25,10 +25,10 @@ export function HeroSection() {
         transition={{ duration: 0.8 }}
         className="relative z-10 max-w-4xl mx-auto text-center"
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 font-[family-name:var(--font-geist-sans)] text-white">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 font-kiona text-white">
           Our Services
         </h1>
-        <p className="text-xl text-gray-200 font-ttNorms">
+        <p className="text-xl text-brand-cream font-inter">
           Discover what we can do for you
         </p>
       </motion.div>

@@ -32,10 +32,10 @@ export function ContactSection() {
                         className="space-y-12"
                     >
                         <div>
-                            <h2 className="text-3xl font-light font-[family-name:var(--font-kiona)] text-brand-brown mb-6">
+                            <h2 className="text-3xl font-light font-[family-name:var(--font-kiona)] text-brand-brown-dark mb-6">
                                 Get in Touch
                             </h2>
-                            <p className="text-lg text-brand-brown/80 font-ttNorms">
+                            <p className="text-lg text-brand-brown-dark">
                                 We&apos;re here to help you navigate your financial journey with confidence and clarity.
                             </p>
                         </div>
@@ -48,8 +48,8 @@ export function ContactSection() {
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-medium text-brand-brown mb-1">Phone</h3>
-                                    <p className="text-brand-brown/70">02 9135 2935</p>
+                                    <h3 className="text-lg font-medium text-brand-brown-dark mb-1 font-kiona">Phone</h3>
+                                    <p className="text-brand-brown">02 9135 2935</p>
                                 </div>
                             </div>
 
@@ -60,7 +60,7 @@ export function ContactSection() {
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-medium text-brand-brown mb-1">Email</h3>
+                                    <h3 className="text-lg font-medium text-brand-brown-dark mb-1 font-kiona">Email</h3>
                                     <p className="text-brand-brown/70">info@walkerlane.com.au</p>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@ export function ContactSection() {
                                     </svg>
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-medium text-brand-brown mb-1">Address</h3>
+                                    <h3 className="text-lg font-medium text-brand-brown-dark mb-1 font-kiona">Address</h3>
                                     <p className="text-brand-brown/70">3 Spring Street<br />Sydney NSW 2000</p>
                                 </div>
                             </div>
@@ -88,17 +88,17 @@ export function ContactSection() {
                         className="bg-brand-cream/50 backdrop-blur-sm rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 border border-white/20"
                     >
                         <div className="mb-6">
-                            <h2 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown mb-2">
+                            <h2 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown-dark mb-2">
                                 Send us a Message
                             </h2>
-                            <p className="text-sm text-brand-brown/60 font-ttNorms">
+                            <p className="text-sm text-brand-brown-dark">
                                 We&apos;ll get back to you within 24 hours
                             </p>
                         </div>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-brand-brown/80 mb-1.5">
+                                    <label htmlFor="name" className="block text-sm font-medium text-brand-brown-dark mb-1.5 font-kiona">
                                         Name
                                     </label>
                                     <input
@@ -114,7 +114,7 @@ export function ContactSection() {
                                 </div>
 
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium text-brand-brown/80 mb-1.5">
+                                    <label htmlFor="email" className="block text-sm font-medium text-brand-brown-dark mb-1.5 font-kiona">
                                         Email
                                     </label>
                                     <input
@@ -131,7 +131,7 @@ export function ContactSection() {
                             </div>
 
                             <div>
-                                <label htmlFor="phone" className="block text-sm font-medium text-brand-brown/80 mb-1.5">
+                                <label htmlFor="phone" className="block text-sm font-medium text-brand-brown-dark mb-1.5 font-kiona">
                                     Phone
                                 </label>
                                 <input
@@ -146,7 +146,7 @@ export function ContactSection() {
                             </div>
 
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-brand-brown/80 mb-1.5">
+                                <label htmlFor="message" className="block text-sm font-medium text-brand-brown-dark mb-1.5 font-kiona">
                                     Message
                                 </label>
                                 <textarea

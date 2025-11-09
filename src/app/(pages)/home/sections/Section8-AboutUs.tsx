@@ -66,7 +66,7 @@ export function AboutMe() {
                   delay: 0.2,
                   ease: [0.4, 0, 0.2, 1],
                 }}
-                className="text-lg text-brand-brown-dark mb-8 font-ttNorms font-bold"
+                className="text-lg text-brand-brown-dark mb-8 "
               >
                 Our dedicated team embodies expertise and a down-to-earth
                 approach—pairing in-depth knowledge with a genuine desire to

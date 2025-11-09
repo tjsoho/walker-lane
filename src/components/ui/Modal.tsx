@@ -26,16 +26,16 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
           />
 
           {/* Modal Container - This is the key change */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 overflow-y-auto">
             {/* Modal Content */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-              className="relative w-full max-w-lg"
+              className="relative w-full max-w-sm md:max-w-4xl my-auto"
             >
-              <div className="relative bg-brand-brown-dark p-6 md:p-8 rounded-md shadow-xl">
+              <div className="relative bg-brand-brown-dark p-4 md:p-6 lg:p-10 rounded-lg shadow-xl">
                 {/* Close Button */}
                 <button
                   onClick={onClose}
@@ -49,7 +49,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-2xl md:text-3xl font-kiona text-brand-cream mb-6"
+                  className="text-xl md:text-2xl lg:text-3xl font-kiona text-brand-cream mb-4 md:mb-6 pr-8"
                 >
                   {title}
                 </motion.h3>

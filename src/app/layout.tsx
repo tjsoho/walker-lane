@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { kiona, ttNorms } from "./fonts";
 import { Header } from "@/components/ui/Header";
 import "./globals.css";
@@ -14,6 +14,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -34,13 +40,14 @@ export default function RootLayout({
           ${geistMono.variable} 
           ${kiona.variable} 
           ${ttNorms.variable} 
+          ${inter.variable} 
           antialiased
         `}
       >
         <Header />
         {children}
         <Footer />
-        <Toaster 
+        <Toaster
           position="top-center"
           toastOptions={{
             duration: 3000,

@@ -7,7 +7,6 @@ import Image from "next/image";
 type FocusCard = {
     id: number;
     title: string;
-    subtitle: string;
     content: string;
     image: string;
 };
@@ -16,42 +15,36 @@ const focusCards: FocusCard[] = [
     {
         id: 1,
         title: "Products & Services",
-        subtitle: "Comprehensive Solutions",
         content: "We offer a full suite of financial products and services, tailored to meet the diverse needs of advisers and their clients, helping you deliver comprehensive, high-quality advice.",
         image: "/images/client7.png"
     },
     {
         id: 2,
         title: "Compliance Guidance",
-        subtitle: "Stay Confident",
         content: "Stay confident with up-to-date, practical compliance support, designed to keep your practice aligned with regulations and reduce risk.",
         image: "/images/client9.png"
     },
     {
         id: 3,
         title: "Professional Development & Events",
-        subtitle: "Enhance Your Expertise",
         content: "Enhance your expertise and grow your business through targeted training, workshops, and industry events curated for financial advisers.",
         image: "/images/client1.png"
     },
     {
         id: 4,
         title: "Technology Solutions",
-        subtitle: "Streamline Operations",
         content: "Leverage smart, user-friendly systems and tools that streamline operations, improve efficiency, and enhance client experiences.",
         image: "/images/client5.png"
     },
     {
         id: 5,
         title: "Paraplanning Services",
-        subtitle: "Expert Support",
         content: "Access expert paraplanning support to save time, reduce administrative burden, and ensure every client receives thorough, high-quality advice.",
         image: "/images/success.png"
     },
     {
         id: 6,
         title: "Regular Revenue Payments",
-        subtitle: "Financial Stability",
         content: "Enjoy predictable, reliable revenue payments, helping to support your practice's cash flow and financial stability.",
         image: "/images/client7.png"
     }
@@ -74,7 +67,7 @@ export function ClientFocusSection() {
     };
 
     return (
-        <section className="relative bg-white min-h-screen">
+        <section className="relative bg-white min-h-screen pb-16">
             <div className="container mx-auto pl-4 pr-0 min-h-screen">
                 <div className="grid md:grid-cols-12 gap-8 lg:gap-24">
                     {/* Left Side - Header and Menu */}
@@ -210,14 +203,12 @@ export function ClientFocusSection() {
                                         />
                                     </motion.div>
                                 </div>
-                                <div className="p-6 space-y-4">
-                                    <h4 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown">
+                                <div className="p-6 space-y-4 ">
+                                    <h4 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown-dark">
                                         {focusCards[activeIndex].title}
                                     </h4>
-                                    <h5 className="text-xl text-brand-brown/80">
-                                        {focusCards[activeIndex].subtitle}
-                                    </h5>
-                                    <p className="text-base leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown">
+                                    
+                                    <p className="text-base leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown-dark">
                                         {focusCards[activeIndex].content}
                                     </p>
                                 </div>
@@ -247,14 +238,12 @@ export function ClientFocusSection() {
                                     priority
                                 />
                             </div>
-                            <div className="p-8 space-y-6">
+                            <div className="p-8 space-y-6 border-l border-r border-b border-brand-brown/30 rounded-b-xl ">
                                 <div>
                                     <h4 className="text-3xl font-light font-[family-name:var(--font-kiona)] text-brand-brown">
                                         {focusCards[activeIndex].title}
                                     </h4>
-                                    <h5 className="text-xl text-brand-brown/80 mt-2">
-                                        {focusCards[activeIndex].subtitle}
-                                    </h5>
+                                    
                                 </div>
                                 <p className="text-lg leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown">
                                     {focusCards[activeIndex].content}

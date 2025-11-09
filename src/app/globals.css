@@ -20,9 +20,21 @@
     @apply text-2xl md:text-3xl lg:text-4xl;
   }
 
-  /* Paragraphs */
+  /* Paragraphs - All p tags use Inter by default */
   p {
-    @apply font-['var(--font-tt-norms)'] font-extralight leading-relaxed tracking-[0.2em];
+    font-family: var(--font-inter) !important;
+    font-weight: 200;
+    line-height: 1.75;
+    letter-spacing: 0.2em;
+  }
+
+  /* Lists - All ul tags use Inter by default */
+  ul {
+    font-family: var(--font-inter) !important;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 1.75;
+    letter-spacing: 0.2em;
   }
 }
 
