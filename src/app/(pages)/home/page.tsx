@@ -8,6 +8,7 @@ import { QuoteSection } from "./sections/Section7-Quote";
 import { AboutMe } from "./sections/Section8-AboutUs";
 import { DownloadSection } from "./sections/Section9-Download";
 import Section3a from "./sections/Section3a";
+import { CTASection } from "../about/sections/CTASection";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
       <QuoteSection />
       <AboutMe />
       <DownloadSection />
+      <CTASection />
     </main>
   );
 }

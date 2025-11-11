@@ -16,37 +16,37 @@ const focusCards: FocusCard[] = [
         id: 1,
         title: "Products & Services",
         content: "We offer a full suite of financial products and services, tailored to meet the diverse needs of advisers and their clients, helping you deliver comprehensive, high-quality advice.",
-        image: "/images/client7.png"
+        image: "/images/6.png"
     },
     {
         id: 2,
         title: "Compliance Guidance",
         content: "Stay confident with up-to-date, practical compliance support, designed to keep your practice aligned with regulations and reduce risk.",
-        image: "/images/client9.png"
+        image: "/images/4.png"
     },
     {
         id: 3,
         title: "Professional Development & Events",
         content: "Enhance your expertise and grow your business through targeted training, workshops, and industry events curated for financial advisers.",
-        image: "/images/client1.png"
+        image: "/images/3.png"
     },
     {
         id: 4,
         title: "Technology Solutions",
         content: "Leverage smart, user-friendly systems and tools that streamline operations, improve efficiency, and enhance client experiences.",
-        image: "/images/client5.png"
+        image: "/images/5.png"
     },
     {
         id: 5,
         title: "Paraplanning Services",
         content: "Access expert paraplanning support to save time, reduce administrative burden, and ensure every client receives thorough, high-quality advice.",
-        image: "/images/success.png"
+        image: "/images/1.png"
     },
     {
         id: 6,
         title: "Regular Revenue Payments",
         content: "Enjoy predictable, reliable revenue payments, helping to support your practice's cash flow and financial stability.",
-        image: "/images/client7.png"
+        image: "/images/2.png"
     }
 ];
 

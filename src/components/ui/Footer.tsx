@@ -68,7 +68,7 @@ export function Footer() {
                   />
                 </Link>
                 <p className="text-brand-cream/90 text-lg max-w-md leading-relaxed">
-                  Empowering our clietns to build wealth with confidence through
+                  Empowering our clients to build wealth with confidence through
                   personalised guidance and expert solutions.
                 </p>
               </div>

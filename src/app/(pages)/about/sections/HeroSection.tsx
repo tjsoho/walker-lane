@@ -14,11 +14,13 @@ const HeroSection = () => {
           transition={{ duration: 20, ease: "easeOut" }}
           className="relative w-full h-full"
         >
+          {/* move the focus point of the image to the top of the image */}
+
           <Image
-            src="/images/teamShots.png"
+            src="/images/Group_05.jpg"
             alt="Our Team"
             fill
-            className="object-cover"
+            className="object-cover object-[top]"
             priority
           />
         </motion.div>

@@ -23,14 +23,14 @@ export function HeroSection() {
     };
 
     return (
-        <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <section className="relative h-[100vh] flex items-center justify-center overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0">
                 <Image
-                    src="/images/teamShots.png"
+                    src="/images/Group_02.jpg"
                     alt="Our Advisory Team"
                     fill
-                    className="object-cover object-[center_30%]"
+                    className="object-cover object-[center_33%]"
                     priority
                 />
                 <div className="absolute inset-0 bg-black/65" />

@@ -62,16 +62,16 @@ export function HeroSection({
         }}
       >
         <Image
-          src="/images/familyHero.png"
+          src="/images/Group_04.jpg"
           alt="Luxury Boat"
           fill
           priority
-          className="object-cover md:object-center object-[70%_center]"
+          className="object-cover  object-[top]"
         />
       </motion.div>
 
       {/* Overlay - Made darker */}
-      <div className="absolute inset-0 bg-black/65 " />
+      <div className="absolute inset-0 bg-black/55 " />
 
       {/* User Type Selector - Desktop Only */}
       {!isEditing && (

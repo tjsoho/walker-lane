@@ -53,17 +53,7 @@ export function ContactSection() {
                                 </div>
                             </div>
 
-                            <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center flex-shrink-0">
-                                    <svg className="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-medium text-brand-brown-dark mb-1 font-kiona">Email</h3>
-                                    <p className="text-brand-brown/70">info@walkerlane.com.au</p>
-                                </div>
-                            </div>
+                         
 
                             <div className="flex items-start space-x-4">
                                 <div className="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center flex-shrink-0">

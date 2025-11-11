@@ -68,6 +68,7 @@ interface TeamMember {
   name: string;
   role: string;
   image: string;
+  alternativeImage?: string;
   quote: string;
   icon?: string;
   bio: string;
@@ -78,32 +79,62 @@ const teamMembers: TeamMember[] = [
   {
     id: 1,
     name: "Josh Cratchley",
-    role: "Chief Executive Officer",
-    image: "/images/josh.jpg",
+    role: "Chief Executive Officer & Founding Partner",
+    image: "/images/Josh Cratchley_02.jpg",
+    alternativeImage: "/images/Josh Cratchley_05.jpg",
     quote: "Success is built on daily disciplines",
     icon: "chart",
-    bio: "Josh is an experienced financial adviser and co-founder of Walker Lane, dedicated to helping clients achieve their financial goals.",
+    bio: `With more than 20 years' experience in financial services, Josh pairs strategic expertise with a strong focus on delivering real value to clients and advisers. Starting his career in accounting, he moved into financial advice in 2010 and went on to co-found Plenary Wealth in 2013.
+
+In 2018, Josh co-founded Walker Lane, where he now serves as CEO and Chief Financial Officer. In this dual role, he leads the strategic direction and financial management of the business, while continuing to deliver expert advice to clients. His ability to balance high-level leadership with hands-on advisory work reflects his deep commitment to both the profession and the people he serves.
+
+Recognised for his grounded approach and clear, actionable advice, Josh combines deep technical knowledge with a strong focus on people. His leadership reflects Walker Lane's broader vision—to support and grow exceptional advice businesses built on integrity, trust and meaningful value.`,
     badges: ["Financial Planning", "Wealth Management", "Business Strategy"],
   },
   {
     id: 2,
     name: "Patrick Casey",
-    role: "Chairman",
-    image: "/images/pat.jpg",
+    role: "Chairman & Founding Partner",
+    image: "/images/Pat Casey_02.jpg",
+    alternativeImage: "/images/Pat Casey_03.jpg",
     quote: "Every decision shapes tomorrow",
     icon: "handshake",
-    bio: "Pat is a seasoned executive in financial services with deep expertise in wealth management and AFSL operations.",
+    bio: `Pat Casey is a seasoned financial services executive with over 23 years of experience in wealth management and financial planning. Having held senior leadership roles at Colonial First State and Suncorp Group, he played a key role in transforming their financial advice businesses.
+
+Driven by a desire to make a more personal impact, Pat shifted his focus from large-scale corporate roles to providing strategic advice to individuals and families. His deep expertise in wealth-building strategies and long-term financial planning enables clients to achieve financial freedom with clarity and confidence.
+
+As Co-Founder and Chairman of Walker Lane, he shapes the firm's strategic direction, leveraging his deep expertise in AFSL operations, governance, and regulatory engagement to support the growth and success of high-quality financial advice businesses.`,
     badges: ["Executive Leadership", "Financial Services", "Business Development"],
   },
   {
     id: 3,
     name: "Sam Carroll",
-    role: "Responsible Manager",
-    image: "/images/sam.jpg",
+    role: "Responsible Manager & Founding Partner",
+    image: "/images/Sam Carroll_01.jpg",
+    alternativeImage: "/images/Sam Carroll_05.jpg",
     quote: "Simplicity is the ultimate sophistication",
     icon: "lightbulb",
-    bio: "Sam specializes in succession planning and business growth for financial advice practices.",
+    bio: `Sam Carroll is a highly experienced financial services professional with over 20 years in the industry. He began his career in a family-founded financial planning practice with a 29-year legacy, where he developed a strong understanding of business continuity, client relationships, and the lasting value of quality advice. In 2019, he took on full leadership of the firm, successfully guiding its succession and future direction.
+
+As Co-Founder of Walker Lane, Sam helps shape the group's strategic vision and growth. As one of two Responsible Managers on the Walker Lane licence, he is committed to building a strong, supportive community of advice businesses.
+
+In his role as a Financial Adviser, Sam works with a diverse range of clients—from young professionals and families to business owners and retirees. He thrives on simplifying complex financial decisions and providing clear, personalised advice that helps clients build lasting financial confidence and security.`,
     badges: ["Succession Planning", "Business Growth", "Financial Advice"],
+  },
+  {
+    id: 4,
+    name: "Joel Taylor",
+    role: "Head of Growth & Risk",
+    image: "/images/Joel Taylor_01.jpg",
+    alternativeImage: "/images/Joel Taylor_02.jpg",
+    quote: "Strategy turns dreams into reality",
+    icon: "star",
+    bio: `Joel Taylor is an accomplished financial services executive with 20 years' experience across financial advice, investments, and compliance. As Head of Growth at Walker Lane and a non-voting risk member of the AAC, he plays a key role in maintaining strong regulatory standards and governance frameworks.
+
+A specialist in Best Interests Duty and compliance, Joel has extensive experience designing risk frameworks and organisational structures, establishing and managing multiple investment services, and holding senior leadership roles—including Responsible Manager, General Manager, and Managing Director—across several AFSLs.
+
+His career spans both major institutions such as AMP, TAL, MLC, and CBA, as well as mid-tier AFSLs, giving him a comprehensive perspective on the financial services industry. Joel is recognised as a trusted authority in regulatory compliance, risk management, and financial services leadership.`,
+    badges: ["Risk Management", "Compliance", "Strategic Planning"],
   },
 
 ];
@@ -126,7 +157,7 @@ const TeamSection = () => {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {teamMembers.map((member) => (
             <motion.div
               key={member.id}
@@ -136,12 +167,26 @@ const TeamSection = () => {
             >
               {/* Image Container */}
               <div className="relative aspect-[3/4] overflow-hidden group">
+                {/* Main Image */}
                 <Image
                   src={member.image}
                   alt={member.name}
-                  fill
-                  className="object-cover rounded-md"
+                  width={500}
+                  height={500}
+                  className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${member.alternativeImage ? 'group-hover:opacity-0 delay-300' : ''
+                    }`}
                 />
+
+                {/* Alternative Image - shows after silver flash */}
+                {member.alternativeImage && (
+                  <Image
+                    src={member.alternativeImage}
+                    alt={member.name}
+                    width={500}
+                    height={500}
+                    className="absolute inset-0 w-full h-full object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
+                  />
+                )}
 
                 {/* Quick Silver Flash */}
                 <div
@@ -244,8 +289,8 @@ const TeamSection = () => {
                 </div>
 
                 {/* Bio */}
-                <div>
-                  <p className="text-brand-cream text-sm md:text-base leading-relaxed">
+                <div className="overflow-y-auto max-h-[60vh] scrollbar-hide">
+                  <p className="text-brand-cream text-sm md:text-base leading-relaxed whitespace-pre-line">
                     {selectedMember.bio}
                   </p>
                 </div>

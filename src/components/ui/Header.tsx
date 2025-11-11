@@ -61,15 +61,24 @@ export function Header() {
         }`}>
         <div className="mx-auto px-6 flex items-center justify-between">
           {/* Left space for symmetry - hidden on mobile */}
-          <div className="w-32 hidden md:block" />
+          <div className={`hidden md:block ${isScrolled ? 'w-32' : 'w-40'}`} />
 
           {/* Logo - left on mobile, center on md+ */}
           <Link href="/" className="relative w-48 md:w-64 h-16">
+            {/* Regular Logo */}
             <Image
               src="/images/logo.png"
               alt="Walker Lane"
               fill
-              className="object-contain"
+              className={`object-contain transition-opacity duration-300 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}
+              priority
+            />
+            {/* Dark Logo */}
+            <Image
+              src="/images/walkerdark.png"
+              alt="Walker Lane"
+              fill
+              className={`object-contain transition-opacity duration-300 -mt-1 w-full scale-110 ml-3 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}
               priority
             />
           </Link>
@@ -84,15 +93,15 @@ export function Header() {
               onClick={() => setIsMenuOpen(true)}
             >
               <motion.span
-                className="h-[1px] bg-brand-brown-light"
+                className={`h-[1px] ${isScrolled ? 'bg-brand-brown-dark' : 'bg-brand-brown-light'}`}
                 variants={lineVariants}
               />
               <motion.span
-                className="h-[1px] bg-brand-brown-light"
+                className={`h-[1px] ${isScrolled ? 'bg-brand-brown-dark' : 'bg-brand-brown-light'}`}
                 variants={middleLineVariants}
               />
               <motion.span
-                className="h-[1px] bg-brand-brown-light"
+                className={`h-[1px] ${isScrolled ? 'bg-brand-brown-dark' : 'bg-brand-brown-light'}`}
                 variants={lineVariants}
               />
             </motion.button>

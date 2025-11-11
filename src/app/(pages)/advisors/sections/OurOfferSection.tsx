@@ -55,7 +55,7 @@ export function OurOfferSection() {
                         <div className={`relative transition-all duration-500 ${activeOption === "diy" ? "scale-[1.01]" : ""}`}
                             onMouseEnter={() => setActiveOption("diy")}
                             onMouseLeave={() => setActiveOption(null)}>
-                            <div className="absolute top-0 left-0 w-full h-full bg-brand-cream/30 rounded-lg"></div>
+                            <div className="absolute top-0 left-0 w-full h-full bg-brand-cream rounded-lg"></div>
                             <div className="relative p-8 border border-brand-brown/10 rounded-lg backdrop-blur-sm">
                                 <div className="flex items-center gap-6 mb-6">
                                     <div className="w-16 h-16 bg-brand-brown flex items-center justify-center flex-shrink-0">
@@ -88,7 +88,7 @@ export function OurOfferSection() {
                         <div className={`relative transition-all duration-500 ${activeOption === "difm" ? "scale-[1.01]" : ""}`}
                             onMouseEnter={() => setActiveOption("difm")}
                             onMouseLeave={() => setActiveOption(null)}>
-                            <div className="absolute top-0 left-0 w-full h-full bg-brand-cream/30 rounded-lg"></div>
+                            <div className="absolute top-0 left-0 w-full h-full bg-brand-cream rounded-lg"></div>
                             <div className="relative p-8 border border-brand-brown/10 rounded-lg backdrop-blur-sm">
                                 <div className="flex items-center gap-6 mb-6">
                                     <div className="w-16 h-16 bg-brand-brown flex items-center justify-center flex-shrink-0">

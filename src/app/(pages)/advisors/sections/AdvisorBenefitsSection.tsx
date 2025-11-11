@@ -7,7 +7,7 @@ import Image from "next/image";
 type BenefitItem = {
     id: string;
     title: string;
-    subtitle: string;
+    subtitle?: string;
     content: string[];
     image: string;
 };
@@ -16,7 +16,7 @@ const benefitItems: BenefitItem[] = [
     {
         id: "built-by-advisers",
         title: "Adviser Benefits",
-        subtitle: "Built By Advisers, For Advisers",
+        
         content: [
             "Walker Lane is an Australian Financial Services Licencee (AFSL) that was built by Financial Advisers who wanted to provide a professional AFSL service with other like-minded professionals.",
             "We believe in the power of community. That's why it's important to us that we partner with the right business and advice leaders who are culturally aligned, share similar values, and believe great advice changes lives."
@@ -25,8 +25,8 @@ const benefitItems: BenefitItem[] = [
     },
     {
         id: "business-processes",
-        title: "Better Business",
-        subtitle: "Processes",
+        title: "Better Business Processes",
+
         content: [
             "Our partnering advisers can benefit from a reliable, high-quality investment process and managed account solution, allowing you to operate more competitively whilst experiencing less time pressure. Our AFSL was built to ensure advisers can access the support of a professional and experienced management, professional standards and compliance team."
         ],
@@ -34,8 +34,8 @@ const benefitItems: BenefitItem[] = [
     },
     {
         id: "community",
-        title: "A Sense of",
-        subtitle: "Community",
+        title: "A Sense of Community",
+        
         content: [
             "At Walker Lane, we have a strong sense of community and foster this by running a range of events throughout the year for our Advisers.",
             "Events include Investment MasterClasses to assist in professional development, an annual conference, social events, as well as weekly online catch-up meetings with Walker Lane Management."
@@ -44,8 +44,8 @@ const benefitItems: BenefitItem[] = [
     },
     {
         id: "investment-solutions",
-        title: "Investment",
-        subtitle: "Solutions",
+        title: "Investment Solutions",
+        
         content: [
             "Our approved product list is extensive, containing many major retail insurance providers and mainstream wrap administration platforms. Advisers are able to develop the strategies and use the products that you believe delivers the best possible outcome for your clients.",
             "Walker Lane have a number of Managed Accounts which are available on various platforms."
@@ -53,9 +53,9 @@ const benefitItems: BenefitItem[] = [
         image: "/images/solutions.png"
     },
     {
-        id: "investment-beliefs",
-        title: "Investment",
-        subtitle: "Beliefs",
+        id: "investment-beliefs ",
+        title: "Investment Beliefs",
+        
         content: [
             "At Walker Lane you'll find a community of Financial Advisers that sticks to a simple, high quality investment philosophy.",
             "We do our own research on all aspects of the portfolio management process, plus bring in specialists where required.",
@@ -65,8 +65,8 @@ const benefitItems: BenefitItem[] = [
     },
     {
         id: "investment-proposition",
-        title: "Investment",
-        subtitle: "Proposition",
+        title: "Investment Proposition",
+        
         content: [
             "As THE managed account specialists, we currently run a suite of managed accounts to fit different investor risk profiles including:",
             "- Dynamic Asset Allocation (DAA) Portfolios",
@@ -77,8 +77,8 @@ const benefitItems: BenefitItem[] = [
     },
     {
         id: "compliance",
-        title: "Best Interests Duty and",
-        subtitle: "Compliance",
+        title: "Best Interests Duty and Compliance",
+        
         content: [
             "We are experts in this space – we know how to keep you safe and where danger sits in relation to your core legal obligations, plus specific regulations related to personal financial advice."
         ],
