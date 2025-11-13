@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+// import { useState } from "react";
 import {
-  RiInstagramLine,
-  RiFacebookBoxLine,
   RiLinkedinBoxLine,
 } from "react-icons/ri";
 
@@ -25,30 +23,20 @@ const legalLinks = [
 
 const socialLinks = [
   {
-    icon: RiInstagramLine,
-    href: "https://instagram.com",
-    label: "Follow us on Instagram",
-  },
-  {
-    icon: RiFacebookBoxLine,
-    href: "https://facebook.com",
-    label: "Follow us on Facebook",
-  },
-  {
     icon: RiLinkedinBoxLine,
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/company/walker-lane/",
     label: "Follow us on LinkedIn",
   },
 ];
 
 export function Footer() {
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Newsletter signup:", email);
-    setEmail("");
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   console.log("Newsletter signup:", email);
+  //   setEmail("");
+  // };
 
   return (
     <>
@@ -56,22 +44,21 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 md:gap-8">
             {/* Logo & Description */}
-            <div className="lg:col-span-2 flex flex-col justify-end h-full">
-              <div>
-                <Link href="/" className="inline-block mb-8">
-                  <Image
-                    src="/images/logo.png"
-                    alt="Walker Lane"
-                    width={180}
-                    height={60}
-                    className="h-12 w-auto -ml-5"
-                  />
-                </Link>
-                <p className="text-brand-cream/90 text-lg max-w-md leading-relaxed">
-                  Empowering our clients to build wealth with confidence through
-                  personalised guidance and expert solutions.
-                </p>
-              </div>
+            <div className="lg:col-span-2 flex flex-col">
+              <Link href="/" className="inline-block mb-6">
+                <Image
+                  src="/images/logo.png"
+                  alt="Walker Lane"
+                  width={180}
+                  height={60}
+                  className="h-12 w-auto -ml-5"
+                />
+              </Link>
+              <p className="text-brand-cream/90 text-lg max-w-md leading-relaxed mb-6">
+                Empowering our clients to build wealth with confidence through
+                personalised guidance and expert solutions.
+              </p>
+
             </div>
 
             {/* Quick Links */}
@@ -113,11 +100,11 @@ export function Footer() {
             </div>
 
             {/* Social Links & Newsletter */}
-            <div className="text-right">
+            <div className="lg:text-right">
               <h4 className="text-brand-cream font-kiona mb-6 text-lg">
                 Connect With Us
               </h4>
-              <div className="flex justify-end space-x-4 mb-8">
+              <div className="flex lg:justify-end justify-start space-x-4 mb-8">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
@@ -131,8 +118,13 @@ export function Footer() {
                   </a>
                 ))}
               </div>
+              <p>Level 18, Suite 18.03
+
+                1 Margaret Street
+
+                Sydney NSW 2000</p>
               {/* Newsletter */}
-              <div className="ml-auto">
+              {/* <div className="ml-auto">
                 <h4 className="text-brand-cream font-kiona mb-6 text-lg">
                   Financial Insights
                 </h4>
@@ -155,7 +147,7 @@ export function Footer() {
                     Subscribe
                   </button>
                 </form>
-              </div>
+              </div> */}
             </div>
           </div>
 

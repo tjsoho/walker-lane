@@ -26,7 +26,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
           />
 
           {/* Modal Container - This is the key change */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 overflow-y-auto overflow-x-hidden">
             {/* Modal Content */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -35,7 +35,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
               transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
               className="relative w-full max-w-sm md:max-w-4xl my-auto"
             >
-              <div className="relative bg-brand-brown-dark p-4 md:p-6 lg:p-10 rounded-lg shadow-xl">
+              <div className="relative bg-brand-brown-dark p-4 md:p-6 lg:p-10 rounded-lg shadow-xl overflow-x-hidden">
                 {/* Close Button */}
                 <button
                   onClick={onClose}
@@ -59,7 +59,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className="text-brand-cream prose prose-invert prose-cream max-w-none font-[family-name:var(--font-tt-norms)]"
+                  className="text-brand-cream prose prose-invert prose-cream max-w-none font-[family-name:var(--font-tt-norms)] overflow-x-hidden"
                 >
                   {children}
                 </motion.div>

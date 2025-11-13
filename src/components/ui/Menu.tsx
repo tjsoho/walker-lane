@@ -7,11 +7,11 @@ import {
   RiHome5Line,
   RiInformationLine,
   RiBriefcase2Line,
-  RiNewspaperLine,
+  // RiNewspaperLine,
   RiMailLine,
   RiLinkedinBoxLine,
-  RiTwitterXLine,
-  RiInstagramLine,
+  // RiTwitterXLine,
+  // RiInstagramLine,
   // RiArrowRightLine,
 } from "react-icons/ri";
 
@@ -53,14 +53,13 @@ export function Menu({
     { title: "Home", href: "/", icon: RiHome5Line },
     { title: "About", href: "/about", icon: RiInformationLine },
     { title: "Services", href: "/services", icon: RiBriefcase2Line },
-    { title: "Blog", href: "/blog", icon: RiNewspaperLine },
+    // { title: "Blog", href: "/blog", icon: RiNewspaperLine },
     { title: "Contact", href: "/contact", icon: RiMailLine },
   ];
 
   const socialLinks = [
-    { icon: RiLinkedinBoxLine, href: "#", label: "LinkedIn" },
-    { icon: RiTwitterXLine, href: "#", label: "Twitter" },
-    { icon: RiInstagramLine, href: "#", label: "Instagram" },
+    { icon: RiLinkedinBoxLine, href: "https://www.linkedin.com/company/walker-lane/", label: "LinkedIn" },
+    
   ];
 
   const itemVariants = {

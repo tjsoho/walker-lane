@@ -50,9 +50,9 @@ export function TestimonialsSection() {
           src="/images/coupleHouse.jpeg"
           alt="Couple in front of house"
           fill
-          className="object-cover"
+          className="object-cover object-left md:object-[center_right_80%]"
         />
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/70 lg:bg-black/50 " />
       </div>
 
       {/* Content */}
@@ -90,11 +90,10 @@ export function TestimonialsSection() {
               <button
                 key={index}
                 onClick={() => setCurrent(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === current
+                className={`h-2 rounded-full transition-all duration-300 ${index === current
                     ? "w-8 bg-brand-cream"
                     : "w-2 bg-brand-cream/50"
-                }`}
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}

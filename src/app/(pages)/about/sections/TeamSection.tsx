@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Modal } from "@/components/ui/Modal";
@@ -141,6 +141,87 @@ His career spans both major institutions such as AMP, TAL, MLC, and CBA, as well
 const TeamSection = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const memberRef = useRef<HTMLDivElement>(null);
+  const bioScrollRef = useRef<HTMLDivElement>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  // Check scroll position
+  useEffect(() => {
+    const getScrollElement = () => {
+      const isMobile = window.innerWidth < 768;
+      return isMobile ? mobileScrollRef.current : bioScrollRef.current;
+    };
+
+    const checkScrollPosition = () => {
+      const element = getScrollElement();
+      if (!element) return;
+      const { scrollTop, scrollHeight, clientHeight } = element;
+      // Check if at bottom with a more lenient threshold (accounting for rounding)
+      const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
+      const isBottom = distanceFromBottom <= 10; // 10px threshold
+      setIsAtBottom(isBottom);
+    };
+
+    const handleScroll = () => {
+      requestAnimationFrame(checkScrollPosition);
+    };
+
+    const handleResize = () => {
+      // Re-check when window is resized (mobile/desktop switch)
+      setTimeout(checkScrollPosition, 100);
+    };
+
+    // Listen to both scroll elements (only one will be active at a time)
+    const mobileElement = mobileScrollRef.current;
+    const bioElement = bioScrollRef.current;
+
+    if (mobileElement) {
+      mobileElement.addEventListener('scroll', handleScroll, { passive: true });
+    }
+    if (bioElement) {
+      bioElement.addEventListener('scroll', handleScroll, { passive: true });
+    }
+    window.addEventListener('resize', handleResize);
+
+    // Check initial state and after a short delay to ensure element is rendered
+    checkScrollPosition();
+    const timeout1 = setTimeout(checkScrollPosition, 100);
+    const timeout2 = setTimeout(checkScrollPosition, 300);
+
+    return () => {
+      if (mobileElement) {
+        mobileElement.removeEventListener('scroll', handleScroll);
+      }
+      if (bioElement) {
+        bioElement.removeEventListener('scroll', handleScroll);
+      }
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+    };
+  }, [selectedMember]);
+
+  const handleScrollClick = () => {
+    // On mobile, use mobileScrollRef; on desktop, use bioScrollRef
+    const isMobile = window.innerWidth < 768;
+    const scrollElement = isMobile ? mobileScrollRef.current : bioScrollRef.current;
+    if (!scrollElement) return;
+
+    if (isAtBottom) {
+      scrollElement.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      scrollElement.scrollTo({ top: scrollElement.scrollHeight, behavior: 'smooth' });
+    }
+
+    // Check position after scroll animation completes
+    setTimeout(() => {
+      if (!scrollElement) return;
+      const { scrollTop, scrollHeight, clientHeight } = scrollElement;
+      const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
+      const isBottom = distanceFromBottom <= 10;
+      setIsAtBottom(isBottom);
+    }, 600);
+  };
 
   return (
     <section className="bg-brand-cream py-24">
@@ -170,8 +251,8 @@ const TeamSection = () => {
                 <Image
                   src={member.image}
                   alt={member.name}
-                  width={500}
-                  height={500}
+                  width={1500}
+                  height={1500}
                   className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${member.alternativeImage ? 'group-hover:opacity-0 delay-300' : ''
                     }`}
                 />
@@ -181,8 +262,8 @@ const TeamSection = () => {
                   <Image
                     src={member.alternativeImage}
                     alt={member.name}
-                    width={500}
-                    height={500}
+                    width={1500}
+                    height={1500}
                     className="absolute inset-0 w-full h-full object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
                   />
                 )}
@@ -267,9 +348,63 @@ const TeamSection = () => {
             title={selectedMember.name}
             buttonRef={memberRef}
           >
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6 lg:gap-8 -ml-4 md:-ml-6 lg:-ml-16 pl-4 md:pl-6 lg:pl-10 ">
+            {/* Mobile: Entire container scrollable */}
+            <div
+              ref={mobileScrollRef}
+              className="md:hidden overflow-y-auto overflow-x-hidden max-h-[70vh] scrollbar-hide relative w-full"
+            >
+              <div className="flex flex-col gap-4 pb-12 w-full">
+                {/* Image */}
+                <div className="relative w-full max-w-64 mx-auto aspect-[3/4]">
+                  <Image
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+
+                {/* Role */}
+                <div className="border-b border-brand-cream/20 pb-3">
+                  <p className="text-brand-cream/80 text-base font-medium">
+                    {selectedMember.role}
+                  </p>
+                </div>
+
+                {/* Bio */}
+                <div>
+                  <p className="text-brand-cream text-sm leading-relaxed whitespace-pre-line">
+                    {selectedMember.bio}
+                  </p>
+                </div>
+              </div>
+
+              {/* Scroll Arrow Button - Mobile */}
+              <button
+                onClick={handleScrollClick}
+                className="fixed bottom-4 right-4 w-8 h-8 rounded-full border border-brand-cream/40 bg-brand-cream/10 hover:bg-brand-cream/20 transition-all duration-300 flex items-center justify-center group z-10"
+                aria-label={isAtBottom ? "Scroll to top" : "Scroll to bottom"}
+              >
+                <svg
+                  className={`w-4 h-4 text-brand-cream transition-transform duration-300 ${isAtBottom ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Desktop: Only bio section scrollable */}
+            <div className="hidden md:flex flex-row gap-4 md:gap-6 lg:gap-8 overflow-x-hidden w-full">
               {/* Image - Left Side */}
-              <div className="relative w-full md:w-72 lg:w-80 md:flex-shrink-0 aspect-[3/4] md:aspect-auto md:h-auto md:min-h-[400px] ">
+              <div className="relative w-64 md:w-72 lg:w-80 md:flex-shrink-0 aspect-[3/4] md:aspect-auto md:h-auto md:min-h-[400px] ">
                 <Image
                   src={selectedMember.image}
                   alt={selectedMember.name}
@@ -279,7 +414,7 @@ const TeamSection = () => {
               </div>
 
               {/* Content - Right Side */}
-              <div className="flex-1 space-y-3 md:space-y-4 min-w-0">
+              <div className="flex-1 space-y-3 md:space-y-4 min-w-0 relative">
                 {/* Role */}
                 <div className="border-b border-brand-cream/20 pb-3 md:pb-4">
                   <p className="text-brand-cream/80 text-base md:text-lg font-medium">
@@ -288,11 +423,32 @@ const TeamSection = () => {
                 </div>
 
                 {/* Bio */}
-                <div className="overflow-y-auto max-h-[60vh] scrollbar-hide">
+                <div ref={bioScrollRef} className="overflow-y-auto max-h-[60vh] scrollbar-hide pr-10">
                   <p className="text-brand-cream text-sm md:text-base leading-relaxed whitespace-pre-line">
                     {selectedMember.bio}
                   </p>
                 </div>
+
+                {/* Scroll Arrow Button - Desktop */}
+                <button
+                  onClick={handleScrollClick}
+                  className="absolute bottom-2 right-2 w-8 h-8 rounded-full border border-brand-cream/40 bg-brand-cream/10 hover:bg-brand-cream/20 transition-all duration-300 flex items-center justify-center group z-10"
+                  aria-label={isAtBottom ? "Scroll to top" : "Scroll to bottom"}
+                >
+                  <svg
+                    className={`w-4 h-4 text-brand-cream transition-transform duration-300 ${isAtBottom ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
               </div>
             </div>
           </Modal>

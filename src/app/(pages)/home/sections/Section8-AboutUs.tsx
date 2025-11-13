@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export function AboutMe() {
   return (
-    <section className="relative bg-brand-cream py-20 md:py-0 md:h-screen">
+    <section className="relative bg-brand-cream  md:py-0 md:h-screen">
       <div className="h-full">
         <div className="grid grid-cols-1 md:grid-cols-2 h-full">
           {/* Image */}
@@ -19,7 +19,7 @@ export function AboutMe() {
           >
             <div className="relative h-[500px] md:h-full w-full">
               <Image
-                src="/images/profile.jpeg"
+                src="/images/Group_01.jpg"
                 alt="Financial Advisor"
                 fill
                 className="object-cover"

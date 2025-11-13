@@ -8,7 +8,7 @@ export function OurOfferSection() {
     const [activeInclusion, setActiveInclusion] = useState<string | null>(null);
 
     return (
-        <section className="py-32 px-4 bg-white relative overflow-hidden">
+        <section className="lg:py-32 py-16 px-4 bg-white relative overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-brown/10 to-transparent"></div>
             <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-brown/10 to-transparent"></div>

@@ -27,9 +27,7 @@ export function QuoteSection() {
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             className="text-3xl md:text-4xl lg:text-5xl font-kiona text-brand-cream mb-8"
           >
-            &quot;Personalized, honest advice{" "}
-            <span className="inline-block w-8 h-[2px] bg-brand-cream mx-3 align-middle"></span>{" "}
-            just for you.&quot;
+            &quot;Personalized, honest advice just for you.&quot;
           </motion.h2>
 
           <motion.div

@@ -171,9 +171,10 @@ const TeamSection = () => {
                 <Image
                   src={member.image}
                   alt={member.name}
-                  width={500}
-                  height={500}
-                  className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${member.alternativeImage ? 'group-hover:opacity-0 delay-300' : ''
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
+                  quality={100}
+                  className={`object-cover rounded-md transition-opacity duration-500 ${member.alternativeImage ? 'group-hover:opacity-0 delay-300' : ''
                     }`}
                 />
 
@@ -182,9 +183,10 @@ const TeamSection = () => {
                   <Image
                     src={member.alternativeImage}
                     alt={member.name}
-                    width={500}
-                    height={500}
-                    className="absolute inset-0 w-full h-full object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
+                    quality={100}
+                    className="object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
                   />
                 )}
 
@@ -275,6 +277,7 @@ const TeamSection = () => {
                   src={selectedMember.image}
                   alt={selectedMember.name}
                   fill
+                  quality={100}
                   className="object-contain"
                 />
               </div>

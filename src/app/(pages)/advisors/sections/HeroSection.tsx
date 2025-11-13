@@ -33,7 +33,7 @@ export function HeroSection() {
                     className="object-cover object-[center_33%]"
                     priority
                 />
-                <div className="absolute inset-0 bg-black/65" />
+                <div className="absolute inset-0 bg-black/75 lg:bg-black/65" />
             </div>
 
             {/* User Type Selector - Desktop Only */}

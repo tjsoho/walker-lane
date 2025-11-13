@@ -28,7 +28,7 @@ export function EditableText({
         );
       case "paragraph":
         return (
-          <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-none font-inter text-brand-cream ">
+          <p className="text-lg md:text-2xl mb-12 max-w-3xl mx-auto leading-none font-inter text-brand-cream ">
             {content || "No content"}
           </p>
         );

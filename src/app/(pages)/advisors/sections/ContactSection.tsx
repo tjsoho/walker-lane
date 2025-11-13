@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import toast from "react-hot-toast";
 
 export function ContactSection() {
     const [formData, setFormData] = useState({
@@ -10,10 +12,43 @@ export function ContactSection() {
         phone: "",
         message: "",
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission
+        setIsSubmitting(true);
+
+        try {
+            // EmailJS configuration - you'll need to set these up in your .env.local file
+            const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+            const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+            const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
+            if (!serviceId || !templateId || !publicKey) {
+                throw new Error("EmailJS configuration is missing. Please check your environment variables.");
+            }
+
+            await emailjs.send(
+                serviceId,
+                templateId,
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    phone: formData.phone,
+                    message: formData.message,
+                    to_email: process.env.NEXT_PUBLIC_RECIPIENT_EMAIL || "your-email@example.com",
+                },
+                publicKey
+            );
+
+            toast.success("Message sent successfully! We'll get back to you soon.");
+            setFormData({ name: "", email: "", phone: "", message: "" });
+        } catch (error) {
+            console.error("EmailJS error:", error);
+            toast.error("Failed to send message. Please try again or contact us directly.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -21,7 +56,7 @@ export function ContactSection() {
     };
 
     return (
-        <section className="py-24 px-4 bg-white max-w-screen-1">
+        <section className="lg:py-32 py-16 px-4 bg-white max-w-screen-1">
             <div className="max-w-7xl mx-auto">
                 <div className="grid md:grid-cols-2 gap-16 items-start">
                     <motion.div
@@ -153,9 +188,10 @@ export function ContactSection() {
 
                             <button
                                 type="submit"
-                                className="w-full bg-brand-blue text-white py-2.5 px-4 rounded-md hover:bg-brand-blue/90 transition-all duration-300 font-medium text-sm shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.08)] hover:-translate-y-0.5"
+                                disabled={isSubmitting}
+                                className="w-full bg-brand-blue text-white py-2.5 px-4 rounded-md hover:bg-brand-blue/90 transition-all duration-300 font-medium text-sm shadow-[0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                             >
-                                Send Message
+                                {isSubmitting ? "Sending..." : "Send Message"}
                             </button>
                         </form>
                     </motion.div>

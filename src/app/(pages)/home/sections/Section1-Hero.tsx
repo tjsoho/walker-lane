@@ -71,7 +71,7 @@ export function HeroSection({
       </motion.div>
 
       {/* Overlay - Made darker */}
-      <div className="absolute inset-0 bg-black/55 " />
+      <div className="absolute inset-0 lg:bg-black/55 bg-black/75 " />
 
       {/* User Type Selector - Desktop Only */}
       {!isEditing && (

@@ -66,9 +66,14 @@ export function ClientFocusSection() {
         handleCardChange(focusCards[prevIndex], prevIndex);
     };
 
+    const handleNext = () => {
+        const nextIndex = (activeIndex + 1) % focusCards.length;
+        handleCardChange(focusCards[nextIndex], nextIndex);
+    };
+
     return (
         <section className="relative bg-white min-h-screen pb-16">
-            <div className="container mx-auto pl-4 pr-0 min-h-screen">
+            <div className="container mx-auto px-4 md:pl-4 md:pr-0 min-h-screen">
                 <div className="grid md:grid-cols-12 gap-8 lg:gap-24">
                     {/* Left Side - Header and Menu */}
                     <div className="md:col-span-4 lg:col-span-4 pt-16 space-y-8">
@@ -109,73 +114,80 @@ export function ClientFocusSection() {
                         {/* Mobile Layout */}
                         <div className="md:hidden flex flex-col gap-8 pb-12">
                             {/* Mobile Menu Carousel */}
-                            <div className="relative h-[140px] flex items-center">
-                                {/* Up Arrow */}
-                                <button
-                                    onClick={handlePrev}
-                                    className="absolute top-0 left-1/2 -translate-x-1/2 p-2 text-brand-brown/60 hover:text-brand-brown z-10"
+                            <div className="relative flex flex-col items-center">
+                                {/* Current Card Title */}
+                                <motion.div
+                                    key={activeIndex}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ duration: 0.1 }}
+                                    className="text-center w-full mb-4"
                                 >
-                                    <svg
-                                        className="w-6 h-6"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
+                                    <h4 className="text-2xl font-medium text-brand-brown-dark font-[family-name:var(--font-tt-norms)]">
+                                        {focusCards[activeIndex].title}
+                                    </h4>
+                                </motion.div>
+
+                                {/* Left and Right Arrows */}
+                                <div className="flex items-center justify-center gap-8 mb-4">
+                                    <button
+                                        onClick={handlePrev}
+                                        className="p-2 text-brand-brown/60 hover:text-brand-brown transition-colors"
+                                        aria-label="Previous"
                                     >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={1}
-                                            d="M5 15l7-7 7 7"
-                                        />
-                                    </svg>
-                                </button>
-
-                                {/* Current and Next Card Titles */}
-                                <div className="relative w-full text-center px-4">
-                                    <div className="overflow-hidden flex flex-col items-center">
-                                        {/* Current Card */}
-                                        <motion.div
-                                            key={activeIndex}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -20 }}
-                                            transition={{ duration: 0.1 }}
-                                            className="text-center mb-2 w-full"
+                                        <svg
+                                            className="w-6 h-6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
                                         >
-                                            <h4 className="text-2xl font-medium text-brand-brown-dark font-[family-name:var(--font-tt-norms)] px-8">
-                                                {focusCards[activeIndex].title}
-                                            </h4>
-                                        </motion.div>
-
-                                        {/* Next Card Preview */}
-                                        <motion.div
-                                            key={`next-${activeIndex}`}
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            className="text-center text-sm text-brand-brown/40 w-full px-8"
-                                        >
-                                            {focusCards[(activeIndex + 1) % focusCards.length].title}
-                                        </motion.div>
-                                    </div>
-
-                                    {/* Right-side Pagination */}
-                                    <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-1.5">
-                                        {focusCards.map((_, index) => (
-                                            <motion.button
-                                                key={index}
-                                                onClick={() => handleCardChange(focusCards[index], index)}
-                                                className="w-1.5 h-6 rounded-full bg-brand-brown/20"
-                                                animate={{
-                                                    backgroundColor:
-                                                        index === activeIndex
-                                                            ? "var(--brand-blue)"
-                                                            : "rgba(var(--brand-brown-rgb), 0.2)",
-                                                    width: index === activeIndex ? "2px" : "1.5px",
-                                                }}
-                                                transition={{ duration: 0.2 }}
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={1}
+                                                d="M15 19l-7-7 7-7"
                                             />
-                                        ))}
-                                    </div>
+                                        </svg>
+                                    </button>
+                                    <button
+                                        onClick={handleNext}
+                                        className="p-2 text-brand-brown/60 hover:text-brand-brown transition-colors"
+                                        aria-label="Next"
+                                    >
+                                        <svg
+                                            className="w-6 h-6"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={1}
+                                                d="M9 5l7 7-7 7"
+                                            />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                {/* Pagination Dots */}
+                                <div className="flex gap-1.5 justify-center">
+                                    {focusCards.map((_, index) => (
+                                        <motion.button
+                                            key={index}
+                                            onClick={() => handleCardChange(focusCards[index], index)}
+                                            className="h-1.5 rounded-full bg-brand-brown/20"
+                                            animate={{
+                                                backgroundColor:
+                                                    index === activeIndex
+                                                        ? "var(--brand-blue)"
+                                                        : "rgba(var(--brand-brown-rgb), 0.2)",
+                                                width: index === activeIndex ? "24px" : "6px",
+                                            }}
+                                            transition={{ duration: 0.2 }}
+                                        />
+                                    ))}
                                 </div>
                             </div>
 
@@ -207,7 +219,7 @@ export function ClientFocusSection() {
                                     <h4 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown-dark">
                                         {focusCards[activeIndex].title}
                                     </h4>
-                                    
+
                                     <p className="text-base leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown-dark">
                                         {focusCards[activeIndex].content}
                                     </p>
@@ -243,7 +255,7 @@ export function ClientFocusSection() {
                                     <h4 className="text-3xl font-light font-[family-name:var(--font-kiona)] text-brand-brown">
                                         {focusCards[activeIndex].title}
                                     </h4>
-                                    
+
                                 </div>
                                 <p className="text-lg leading-relaxed font-[family-name:var(--font-tt-norms)] text-brand-brown">
                                     {focusCards[activeIndex].content}

@@ -14,14 +14,23 @@ export default function AdvisorsPage() {
     return (
         <main className="min-h-screen bg-brand-cream">
             <HeroSection />
-             <WhoWeAreSection />
+            <WhoWeAreSection />
             <AdvisorBenefitsSection />
             <ClientFocusSection />
             <TeamSection />
             <OurOfferSection />
             
             <ExpertiseSection />
-             <ContactSection /> 
+            <ContactSection />
+            
+             {/* 
+            
+            <ClientFocusSection />
+            <TeamSection />
+            <OurOfferSection />
+            
+            <ExpertiseSection />
+             <ContactSection />  */}
         </main>
     );
 } 
