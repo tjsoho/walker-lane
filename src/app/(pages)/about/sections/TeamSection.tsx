@@ -270,8 +270,8 @@ const TeamSection = () => {
                     transform: "translateZ(0)",
                   }}
                   className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${member.alternativeImage
-                      ? "group-hover:opacity-0 delay-300"
-                      : ""
+                    ? "group-hover:opacity-0 delay-300"
+                    : ""
                     }`}
                 />
 
