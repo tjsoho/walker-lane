@@ -246,13 +246,13 @@ const TeamSection = () => {
         </div>
 
         {/* Team Grid */}
-        <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {teamMembers.map((member) => (
             <div
               key={member.id}
-              className="relative w-full max-w-none md:max-w-[350px] lg:max-w-sm"
-              // whileHover="hover"
-              // initial="initial"
+              className="relative"
+            // whileHover="hover"
+            // initial="initial"
             >
               {/* Image Container */}
               <div className="relative aspect-[3/4] overflow-hidden group">
@@ -269,11 +269,10 @@ const TeamSection = () => {
                     WebkitBackfaceVisibility: "hidden",
                     transform: "translateZ(0)",
                   }}
-                  className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${
-                    member.alternativeImage
+                  className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${member.alternativeImage
                       ? "group-hover:opacity-0 delay-300"
                       : ""
-                  }`}
+                    }`}
                 />
 
                 {/* Alternative Image - shows after silver flash */}
