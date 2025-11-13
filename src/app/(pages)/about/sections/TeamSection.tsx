@@ -262,6 +262,13 @@ const TeamSection = () => {
                   alt={member.name}
                   width={800}
                   height={800}
+                  style={{
+                    willChange: "opacity",
+                    imageRendering: "-webkit-optimize-contrast",
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    transform: "translateZ(0)",
+                  }}
                   className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${
                     member.alternativeImage
                       ? "group-hover:opacity-0 delay-300"
@@ -276,6 +283,14 @@ const TeamSection = () => {
                     alt={member.name}
                     width={800}
                     height={800}
+                    loading="eager"
+                    style={{
+                      willChange: "opacity",
+                      imageRendering: "-webkit-optimize-contrast",
+                      backfaceVisibility: "hidden",
+                      WebkitBackfaceVisibility: "hidden",
+                      transform: "translateZ(0)",
+                    }}
                     className="absolute inset-0 w-full h-full object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
                   />
                 )}
