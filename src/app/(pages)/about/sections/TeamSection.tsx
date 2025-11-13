@@ -104,7 +104,11 @@ Recognised for his grounded approach and clear, actionable advice, Josh combines
 Driven by a desire to make a more personal impact, Pat shifted his focus from large-scale corporate roles to providing strategic advice to individuals and families. His deep expertise in wealth-building strategies and long-term financial planning enables clients to achieve financial freedom with clarity and confidence.
 
 As Co-Founder and Chairman of Walker Lane, he shapes the firm's strategic direction, leveraging his deep expertise in AFSL operations, governance, and regulatory engagement to support the growth and success of high-quality financial advice businesses.`,
-    badges: ["Executive Leadership", "Financial Services", "Business Development"],
+    badges: [
+      "Executive Leadership",
+      "Financial Services",
+      "Business Development",
+    ],
   },
   {
     id: 3,
@@ -176,12 +180,12 @@ const TeamSection = () => {
     const bioElement = bioScrollRef.current;
 
     if (mobileElement) {
-      mobileElement.addEventListener('scroll', handleScroll, { passive: true });
+      mobileElement.addEventListener("scroll", handleScroll, { passive: true });
     }
     if (bioElement) {
-      bioElement.addEventListener('scroll', handleScroll, { passive: true });
+      bioElement.addEventListener("scroll", handleScroll, { passive: true });
     }
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Check initial state and after a short delay to ensure element is rendered
     checkScrollPosition();
@@ -190,12 +194,12 @@ const TeamSection = () => {
 
     return () => {
       if (mobileElement) {
-        mobileElement.removeEventListener('scroll', handleScroll);
+        mobileElement.removeEventListener("scroll", handleScroll);
       }
       if (bioElement) {
-        bioElement.removeEventListener('scroll', handleScroll);
+        bioElement.removeEventListener("scroll", handleScroll);
       }
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
       clearTimeout(timeout1);
       clearTimeout(timeout2);
     };
@@ -204,13 +208,18 @@ const TeamSection = () => {
   const handleScrollClick = () => {
     // On mobile, use mobileScrollRef; on desktop, use bioScrollRef
     const isMobile = window.innerWidth < 768;
-    const scrollElement = isMobile ? mobileScrollRef.current : bioScrollRef.current;
+    const scrollElement = isMobile
+      ? mobileScrollRef.current
+      : bioScrollRef.current;
     if (!scrollElement) return;
 
     if (isAtBottom) {
-      scrollElement.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollElement.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      scrollElement.scrollTo({ top: scrollElement.scrollHeight, behavior: 'smooth' });
+      scrollElement.scrollTo({
+        top: scrollElement.scrollHeight,
+        behavior: "smooth",
+      });
     }
 
     // Check position after scroll animation completes
@@ -237,13 +246,13 @@ const TeamSection = () => {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
           {teamMembers.map((member) => (
-            <motion.div
+            <div
               key={member.id}
-              className="relative"
-              whileHover="hover"
-              initial="initial"
+              className="relative w-full max-w-none md:max-w-[350px] lg:max-w-sm"
+              // whileHover="hover"
+              // initial="initial"
             >
               {/* Image Container */}
               <div className="relative aspect-[3/4] overflow-hidden group">
@@ -251,10 +260,13 @@ const TeamSection = () => {
                 <Image
                   src={member.image}
                   alt={member.name}
-                  width={1500}
-                  height={1500}
-                  className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${member.alternativeImage ? 'group-hover:opacity-0 delay-300' : ''
-                    }`}
+                  width={800}
+                  height={800}
+                  className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${
+                    member.alternativeImage
+                      ? "group-hover:opacity-0 delay-300"
+                      : ""
+                  }`}
                 />
 
                 {/* Alternative Image - shows after silver flash */}
@@ -262,16 +274,16 @@ const TeamSection = () => {
                   <Image
                     src={member.alternativeImage}
                     alt={member.name}
-                    width={1500}
-                    height={1500}
+                    width={800}
+                    height={800}
                     className="absolute inset-0 w-full h-full object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
                   />
                 )}
 
                 {/* Quick Silver Flash */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent 
-                  opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full 
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent
+                  opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full
                   transition-all duration-500 ease-in-out"
                 />
 
@@ -336,7 +348,7 @@ const TeamSection = () => {
                   </div>
                 </motion.button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
@@ -386,7 +398,7 @@ const TeamSection = () => {
                 aria-label={isAtBottom ? "Scroll to top" : "Scroll to bottom"}
               >
                 <svg
-                  className={`w-4 h-4 text-brand-cream transition-transform duration-300 ${isAtBottom ? 'rotate-180' : ''}`}
+                  className={`w-4 h-4 text-brand-cream transition-transform duration-300 ${isAtBottom ? "rotate-180" : ""}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -423,7 +435,10 @@ const TeamSection = () => {
                 </div>
 
                 {/* Bio */}
-                <div ref={bioScrollRef} className="overflow-y-auto max-h-[60vh] scrollbar-hide pr-10">
+                <div
+                  ref={bioScrollRef}
+                  className="overflow-y-auto max-h-[60vh] scrollbar-hide pr-10"
+                >
                   <p className="text-brand-cream text-sm md:text-base leading-relaxed whitespace-pre-line">
                     {selectedMember.bio}
                   </p>
@@ -436,7 +451,7 @@ const TeamSection = () => {
                   aria-label={isAtBottom ? "Scroll to top" : "Scroll to bottom"}
                 >
                   <svg
-                    className={`w-4 h-4 text-brand-cream transition-transform duration-300 ${isAtBottom ? 'rotate-180' : ''}`}
+                    className={`w-4 h-4 text-brand-cream transition-transform duration-300 ${isAtBottom ? "rotate-180" : ""}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
