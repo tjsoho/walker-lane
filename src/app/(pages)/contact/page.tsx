@@ -74,7 +74,7 @@ export default function ContactPage() {
                 <h2 className="text-3xl font-light font-[family-name:var(--font-kiona)] text-brand-brown mb-6">
                   Get in Touch
                 </h2>
-                <p className="text-lg text-brand-brown/80 font-[family-name:var(--font-tt-norms)]">
+                <p className="text-lg text-brand-brown-dark font-[family-name:var(--font-tt-norms)]">
                   We&apos;re here to help you navigate your financial journey with confidence and clarity.
                 </p>
               </div>
@@ -131,7 +131,7 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-light font-[family-name:var(--font-kiona)] text-brand-brown mb-2">
                   Send us a Message
                 </h2>
-                <p className="text-sm text-brand-brown/60 font-[family-name:var(--font-tt-norms)]">
+                <p className="text-sm text-brand-brown-dark font-[family-name:var(--font-tt-norms)]">
                   We&apos;ll get back to you within 24 hours
                 </p>
               </div>
