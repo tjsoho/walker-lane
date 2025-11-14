@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { kiona, ttNorms } from "./fonts";
-import { Header } from "@/components/ui/Header";
+// import { Header } from "@/components/ui/Header";
 import "./globals.css";
-import { Footer } from "@/components/ui/Footer";
+// import { Footer } from "@/components/ui/Footer";
 import { Toaster } from 'react-hot-toast';
 
 const geistSans = Geist({
@@ -44,9 +44,9 @@ export default function RootLayout({
           antialiased
         `}
       >
-        <Header />
+        {/* <Header /> */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
         <Toaster
           position="top-center"
           toastOptions={{
