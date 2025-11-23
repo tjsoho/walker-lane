@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-// import { useState } from "react";
-// import { Tooltip } from "@/components/ui/Tooltip";
+import { useState } from "react";
+import { Tooltip } from "@/components/ui/Tooltip";
 import { EditableText } from "@/components/pageEditor/EditableText";
-// import Link from "next/link";
+import Link from "next/link";
 
 export const defaultContent = {
   "hero-heading": "Welcome To Walker Lane",
@@ -25,23 +25,23 @@ export function HeroSection({
 }: HeroSectionProps) {
   console.log("HeroSection rendering with:", { isEditing, content });
 
-  // const [userType, setUserType] = useState<"clients" | "advisors">("clients");
-  // const [hoveredButton, setHoveredButton] = useState<
-  //   "clients" | "advisors" | null
-  // >(null);
+  const [userType, setUserType] = useState<"clients" | "advisors">("clients");
+  const [hoveredButton, setHoveredButton] = useState<
+    "clients" | "advisors" | null
+  >(null);
 
   // Simplified button variants for clearer animation
-  // const buttonVariants = {
-  //   initial: { scale: 1 },
-  //   hover: {
-  //     scale: 1.02,
-  //     transition: { duration: 0.2, ease: "easeInOut" },
-  //   },
-  //   tap: {
-  //     scale: 0.98,
-  //     transition: { duration: 0.1, ease: "easeInOut" },
-  //   },
-  // };
+  const buttonVariants = {
+    initial: { scale: 1 },
+    hover: {
+      scale: 1.02,
+      transition: { duration: 0.2, ease: "easeInOut" },
+    },
+    tap: {
+      scale: 0.98,
+      transition: { duration: 0.1, ease: "easeInOut" },
+    },
+  };
 
   // Ensure content has all required fields
   const safeContent = {
@@ -71,10 +71,10 @@ export function HeroSection({
       </motion.div>
 
       {/* Overlay - Made darker */}
-      <div className="absolute inset-0 lg:bg-black/75 bg-black/75 " />
+      <div className="absolute inset-0 lg:bg-black/55 bg-black/55 " />
 
       {/* User Type Selector - Desktop Only */}
-      {/* {!isEditing && (
+       {!isEditing && (
         <div className="absolute top-4 left-8 z-50 hidden md:flex gap-4">
           <div className="relative">
             <Link href="/">
@@ -128,7 +128,7 @@ export function HeroSection({
             />
           </div>
         </div>
-      )} */}
+      )} 
 
       {/* Content */}
       <motion.div
@@ -145,16 +145,16 @@ export function HeroSection({
             isEditing={isEditing}
             onUpdate={onUpdate}
           />
-          {/* <EditableText
+          <EditableText
             id="hero-subtext"
             type="subtext"
             content={safeContent["hero-subtext"]}
             isEditing={isEditing}
             onUpdate={onUpdate}
-          /> */}
+          />
 
           {/* P text for New site coming shortly. Please email ops@walkerlane.com.au for any enquiries in the meantime */}
-          <p className="text-2xl text-brand-cream font-inter">Our new site is coming soon. <br></br> Please email ops@walkerlane.com.au  <br></br>for any enquiries in the meantime</p>
+        
         </div>
       </motion.div>
     </section>
