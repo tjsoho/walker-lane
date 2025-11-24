@@ -1,7 +1,7 @@
 
 import { HeroSection } from "./(pages)/home/sections/Section1-Hero";
 import { PromiseSection } from "./(pages)/home/sections/Section2-Promise";
-import { TargetMarket } from "./(pages)/home/sections/Section5-WhoWeHelp";
+// import { TargetMarket } from "./(pages)/home/sections/Section5-WhoWeHelp";
 import { TestimonialsSection } from "./(pages)/home/sections/Section6-Testimonials";
 import { WhatWeDo } from "./(pages)/home/sections/Section4-WhatWeDo";
 import Section3a from "./(pages)/home/sections/Section3a";
@@ -19,7 +19,7 @@ export default function Page() {
   <SupportSection />
   <Section3a />
   <WhatWeDo />
-  <TargetMarket />
+  {/* <TargetMarket /> */}
   <TestimonialsSection />
   <QuoteSection />
   <AboutMe />
