@@ -14,7 +14,7 @@ const advisers = [
   },
   {
     name: "Josh Cratchley",
-    url: "https://calendly.com/plenary-josh/15min",
+    url: "https://calendly.com/walkerlane-josh/30min",
   },
 ];
 
