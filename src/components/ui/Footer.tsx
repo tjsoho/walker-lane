@@ -16,9 +16,8 @@ const links = [
 ];
 
 const legalLinks = [
-  { name: "Terms & Conditions", href: "/terms" },
-  { name: "Privacy Policy", href: "/privacy" },
-  { name: "Cookie Policy", href: "/cookies" },
+  { name: "Privacy Policy", href: "/documents/Privacy_Policy.pdf", isPdf: true },
+  { name: "Financial Services Guide", href: "/documents/Financial_Services_Guide.pdf", isPdf: true },
 ];
 
 const socialLinks = [
@@ -88,12 +87,23 @@ export function Footer() {
               <ul className="space-y-4">
                 {legalLinks.map((link) => (
                   <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-brand-cream/70 hover:text-brand-cream transition-colors duration-300 text-sm tracking-wide"
-                    >
-                      {link.name}
-                    </Link>
+                    {link.isPdf ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-brand-cream/70 hover:text-brand-cream transition-colors duration-300 text-sm tracking-wide"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-brand-cream/70 hover:text-brand-cream transition-colors duration-300 text-sm tracking-wide"
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
