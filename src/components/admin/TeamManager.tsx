@@ -341,12 +341,12 @@ export function TeamManager() {
             for (const section of teamSections) {
                 if (section.id.startsWith("temp-")) {
                     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                    const { id, created_at, updated_at, ...data } = section;
+                    const { id: _id, created_at: _created_at, updated_at: _updated_at, ...data } = section;
                     const { error } = await supabase.from("team_sections").insert([data]);
                     if (error) throw error;
                 } else {
                     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                    const { id, created_at, updated_at, ...data } = section;
+                    const { id, created_at: _created_at, updated_at: _updated_at, ...data } = section;
                     const { error } = await supabase
                         .from("team_sections")
                         .update(data)
@@ -361,7 +361,7 @@ export function TeamManager() {
 
             for (const member of existingMembers) {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                const { id, created_at, updated_at, ...data } = member;
+                const { id, created_at: _created_at, updated_at: _updated_at, ...data } = member;
                 const { error } = await supabase
                     .from("team_members")
                     .update(data)
@@ -371,7 +371,7 @@ export function TeamManager() {
 
             if (newMembers.length > 0) {
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                const newMembersData = newMembers.map(({ id, created_at, updated_at, ...data }) => data);
+                const newMembersData = newMembers.map(({ id: _id, created_at: _created_at, updated_at: _updated_at, ...data }) => data);
                 const { error } = await supabase.from("team_members").insert(newMembersData);
                 if (error) throw error;
             }

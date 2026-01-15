@@ -56,6 +56,7 @@ export function ImageLibrary({ onSelect, onClose, multiple = false }: ImageLibra
                     sortBy: { column: "created_at", order: "desc" },
                 });
 
+            // Log warning if folder doesn't exist (non-critical)
             if (contentError) {
                 console.warn("Error fetching content images:", contentError);
             }
@@ -313,8 +314,8 @@ export function ImageLibrary({ onSelect, onClose, multiple = false }: ImageLibra
                                                     <button
                                                         onClick={() => handleSelect(image.url)}
                                                         className={`p-2 rounded-full ${isSelected || !multiple
-                                                                ? "bg-brand-cream text-brand-brown-dark"
-                                                                : "bg-white/90 text-brand-brown-dark hover:bg-white"
+                                                            ? "bg-brand-cream text-brand-brown-dark"
+                                                            : "bg-white/90 text-brand-brown-dark hover:bg-white"
                                                             } transition-all opacity-0 group-hover:opacity-100`}
                                                         title={multiple ? (isSelected ? "Deselect" : "Select") : "Select"}
                                                     >
