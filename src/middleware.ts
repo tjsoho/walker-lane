@@ -1,48 +1,35 @@
-import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextResponse, NextRequest } from "next/server";
+import { createClient } from "./utils/server";
 
-export async function middleware(req: NextRequest) {
-  const res = NextResponse.next();
-  const supabase = createMiddlewareClient({ req, res });
-
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  console.log("Middleware - Session:", session);
-
-  // If user is not signed in and trying to access protected routes
-  if (!session && req.nextUrl.pathname.startsWith('/admin')) {
-    // Don't redirect if already on the login page
-    if (req.nextUrl.pathname === '/admin') {
-      return res;
+// This function can be marked `async` if using `await` inside
+export async function middleware(request: NextRequest) {
+  const supabase = await createClient();
+  
+  // Only run on admin routes
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    // Allow access to login page
+    if (request.nextUrl.pathname === "/admin/login") {
+      return NextResponse.next();
     }
-    
-    console.log("No session, redirecting to login");
-    const redirectUrl = req.nextUrl.clone();
-    redirectUrl.pathname = '/admin';
-    return NextResponse.redirect(redirectUrl);
+
+    // Check if user is authenticated
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    // Redirect to login if not authenticated
+    if (!user) {
+      return NextResponse.redirect(new URL("/admin/login", request.url));
+    }
+
+    // Allow access if authenticated
+    return NextResponse.next();
   }
 
-  // If user is signed in and on the login page, redirect to dashboard
-  if (session && req.nextUrl.pathname === '/admin') {
-    console.log("Has session, redirecting to dashboard");
-    const redirectUrl = req.nextUrl.clone();
-    redirectUrl.pathname = '/admin/dashboard';
-    return NextResponse.redirect(redirectUrl);
-  }
-
-  // Set the auth cookie
-  const response = NextResponse.next({
-    request: {
-      headers: req.headers,
-    },
-  });
-
-  return response;
+  return NextResponse.next();
 }
 
+// Configure which routes to run middleware on
 export const config = {
-  matcher: '/admin/:path*',
-}; 
+  matcher: ["/admin", "/admin/:path*"],
+};

@@ -12,7 +12,7 @@ export function AdminDashboard() {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Link
             href="/blog-editor"
             className="block p-8 bg-white rounded-md shadow-md hover:shadow-xl transition-shadow"
@@ -34,6 +34,30 @@ export function AdminDashboard() {
             </h2>
             <p className="text-brand-brown-dark/80">
               Edit website content and sections
+            </p>
+          </Link>
+
+          <Link
+            href="/admin/image-library"
+            className="block p-8 bg-white rounded-md shadow-md hover:shadow-xl transition-shadow"
+          >
+            <h2 className="text-2xl font-kiona text-brand-brown-dark mb-4">
+              Image Library
+            </h2>
+            <p className="text-brand-brown-dark/80">
+              Upload, manage, and select images
+            </p>
+          </Link>
+
+          <Link
+            href="/admin/team"
+            className="block p-8 bg-white rounded-md shadow-md hover:shadow-xl transition-shadow"
+          >
+            <h2 className="text-2xl font-kiona text-brand-brown-dark mb-4">
+              Walk Lane Team
+            </h2>
+            <p className="text-brand-brown-dark/80">
+              Manage team members and profiles
             </p>
           </Link>
         </div>

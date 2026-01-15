@@ -15,16 +15,40 @@ export function AdminAuth() {
     setError(null);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      // Check if Supabase is configured
+      if (!supabase) {
+        throw new Error("Supabase client not configured. Please check your environment variables.");
+      }
+
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error("Login error:", error);
+        throw error;
+      }
+
+      if (data?.session) {
+        // Wait a moment for the session to be stored, then reload
+        // The onAuthStateChange in the parent component will handle the redirect
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
+      }
     } catch (error) {
-      setError(
-        error instanceof Error ? error.message : "An unknown error occurred"
-      );
+      console.error("Login failed:", error);
+      if (error instanceof Error) {
+        // Check for network errors
+        if (error.message.includes("Failed to fetch") || error.message.includes("NetworkError")) {
+          setError("Unable to connect to authentication server. Please check your internet connection and Supabase configuration.");
+        } else {
+          setError(error.message);
+        }
+      } else {
+        setError("An unknown error occurred. Please try again.");
+      }
     } finally {
       setLoading(false);
     }

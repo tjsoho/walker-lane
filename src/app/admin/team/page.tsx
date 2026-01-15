@@ -1,11 +1,11 @@
 import { createClient } from "@/utils/server";
 import { redirect } from "next/navigation";
-import { AdminDashboard } from "@/components/admin/AdminDashboard";
+import { TeamManager } from "@/components/admin/TeamManager";
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
 
-export default async function AdminPage() {
+export default async function TeamPage() {
   const supabase = await createClient();
   
   // Get the current user
@@ -18,6 +18,6 @@ export default async function AdminPage() {
     redirect("/admin/login");
   }
 
-  // Show dashboard if authenticated
-  return <AdminDashboard />;
+  return <TeamManager />;
 }
+
