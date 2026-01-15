@@ -1,12 +1,26 @@
 -- ============================================
--- Team Members Table Setup
+-- Team Management Database Setup
 -- Walker Lane Private Wealth
 -- ============================================
 -- Run this script in your Supabase SQL Editor
+-- This creates tables, indexes, triggers, and RLS policies
 -- ============================================
 
 -- ============================================
--- 1. CREATE TEAM MEMBERS TABLE
+-- 1. CREATE UPDATED_AT TRIGGER FUNCTION (if not exists)
+-- ============================================
+-- This function is used by the triggers to auto-update updated_at timestamps
+
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- ============================================
+-- 2. CREATE TABLES
 -- ============================================
 
 -- Team Sections Table (for dynamic categories)
@@ -36,7 +50,7 @@ CREATE TABLE IF NOT EXISTS team_members (
 );
 
 -- ============================================
--- 2. CREATE INDEXES
+-- 3. CREATE INDEXES
 -- ============================================
 
 CREATE INDEX IF NOT EXISTS idx_team_sections_order ON team_sections(order_index);
@@ -44,7 +58,7 @@ CREATE INDEX IF NOT EXISTS idx_team_members_section_id ON team_members(section_i
 CREATE INDEX IF NOT EXISTS idx_team_members_order ON team_members(section_id, order_index);
 
 -- ============================================
--- 3. CREATE UPDATED_AT TRIGGER
+-- 4. CREATE TRIGGERS
 -- ============================================
 
 CREATE TRIGGER update_team_sections_updated_at
@@ -58,12 +72,18 @@ CREATE TRIGGER update_team_members_updated_at
   EXECUTE FUNCTION update_updated_at_column();
 
 -- ============================================
--- 4. ROW LEVEL SECURITY (RLS) POLICIES
+-- 5. ROW LEVEL SECURITY (RLS) POLICIES
 -- ============================================
 
--- Enable RLS
+-- Enable RLS on all tables
 ALTER TABLE team_sections ENABLE ROW LEVEL SECURITY;
 ALTER TABLE team_members ENABLE ROW LEVEL SECURITY;
+
+-- Drop existing policies if they exist (to allow re-running)
+DROP POLICY IF EXISTS "Authenticated users full access to team_sections" ON team_sections;
+DROP POLICY IF EXISTS "Public can read team_sections" ON team_sections;
+DROP POLICY IF EXISTS "Authenticated users full access to team_members" ON team_members;
+DROP POLICY IF EXISTS "Public can read team_members" ON team_members;
 
 -- Team Sections Policies
 CREATE POLICY "Authenticated users full access to team_sections"
@@ -94,7 +114,7 @@ CREATE POLICY "Public can read team_members"
   USING (true);
 
 -- ============================================
--- 5. INSERT DEFAULT TEAM SECTIONS
+-- 6. INSERT DEFAULT TEAM SECTIONS
 -- ============================================
 
 INSERT INTO team_sections (name, display_name, order_index) VALUES
@@ -107,12 +127,10 @@ INSERT INTO team_sections (name, display_name, order_index) VALUES
 ON CONFLICT (name) DO NOTHING;
 
 -- ============================================
--- 6. INSERT DEFAULT TEAM MEMBERS (Leadership)
--- ============================================
--- Note: These will be populated with full data from the existing TeamSection component
--- The admin interface will allow you to add the complete data including images and bios
-
--- ============================================
 -- SETUP COMPLETE
 -- ============================================
+-- Next steps:
+-- 1. Run the team-migration-complete.sql script to populate existing team data
+-- 2. Go to /admin/team to manage your team members
+-- 3. Add new sections and members as needed
 
