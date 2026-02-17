@@ -219,3 +219,4 @@ CREATE POLICY "Authenticated users can read images"
 -- 3. Create an admin user account in Authentication > Users
 -- 4. Test the setup by logging in and creating a blog post
 
+

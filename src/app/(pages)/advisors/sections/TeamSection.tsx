@@ -1,147 +1,154 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Modal } from "@/components/ui/Modal";
+import { createClient } from "@/utils/client";
+import { TeamMember } from "@/lib/team-config";
 
-// const icons = {
-//   chart: (
-//     <svg
-//       viewBox="0 0 24 24"
-//       fill="none"
-//       stroke="currentColor"
-//       strokeWidth="1"
-//       className="w-8 h-8"
-//     >
-//       <path d="M3 20h18M5 4v12m4-8v8m4-10v10m4-6v6" strokeLinecap="round" />
-//     </svg>
-//   ),
-//   handshake: (
-//     <svg
-//       viewBox="0 0 24 24"
-//       fill="none"
-//       stroke="currentColor"
-//       strokeWidth="1"
-//       className="w-8 h-8"
-//     >
-//       <path
-//         d="M8 12l2-2m0 0l8-8m-8 8L2 18m8-8l8 8"
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//       />
-//     </svg>
-//   ),
-//   lightbulb: (
-//     <svg
-//       viewBox="0 0 24 24"
-//       fill="none"
-//       stroke="currentColor"
-//       strokeWidth="1"
-//       className="w-8 h-8"
-//     >
-//       <path
-//         d="M12 2v2m0 16v2M4 12H2m20 0h-2m-2.828-6.586l-1.414 1.414M6.242 17.758l-1.414 1.414M17.758 17.758l1.414 1.414M6.242 6.242L4.828 4.828M12 6a6 6 0 100 12 6 6 0 000-12z"
-//         strokeLinecap="round"
-//       />
-//     </svg>
-//   ),
-//   star: (
-//     <svg
-//       viewBox="0 0 24 24"
-//       fill="none"
-//       stroke="currentColor"
-//       strokeWidth="1"
-//       className="w-8 h-8"
-//     >
-//       <path
-//         d="M12 2l2.4 7.4h7.6l-6 4.6 2.4 7.4-6-4.6-6 4.6 2.4-7.4-6-4.6h7.6z"
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//       />
-//     </svg>
-//   ),
-// };
-
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  alternativeImage?: string;
-  quote: string;
-  icon?: string;
-  bio: string;
-  badges: string[];
-}
-
-const teamMembers: TeamMember[] = [
-  {
-    id: 1,
-    name: "Josh Cratchley",
-    role: "Chief Executive Officer & Founding Partner",
-    image: "/images/Josh Cratchley_02.jpg",
-    alternativeImage: "/images/Josh Cratchley_05.jpg",
-    quote: "Success is built on daily disciplines",
-    icon: "chart",
-    bio: `With more than 20 years' experience in financial services, Josh pairs strategic expertise with a strong focus on delivering real value to clients and advisers. Starting his career in accounting, he moved into financial advice in 2010 and went on to co-found Plenary Wealth in 2013.
-
-In 2018, Josh co-founded Walker Lane, where he now serves as CEO and Chief Financial Officer. In this dual role, he leads the strategic direction and financial management of the business, while continuing to deliver expert advice to clients. His ability to balance high-level leadership with hands-on advisory work reflects his deep commitment to both the profession and the people he serves.
-
-Recognised for his grounded approach and clear, actionable advice, Josh combines deep technical knowledge with a strong focus on people. His leadership reflects Walker Lane's broader vision—to support and grow exceptional advice businesses built on integrity, trust and meaningful value.`,
-    badges: ["Financial Planning", "Wealth Management", "Business Strategy"],
-  },
-  {
-    id: 2,
-    name: "Patrick Casey",
-    role: "Chairman & Founding Partner",
-    image: "/images/Pat Casey_02.jpg",
-    alternativeImage: "/images/Pat Casey_03.jpg",
-    quote: "Every decision shapes tomorrow",
-    icon: "handshake",
-    bio: `Pat Casey is a seasoned financial services executive with over 23 years of experience in wealth management and financial planning. Having held senior leadership roles at Colonial First State and Suncorp Group, he played a key role in transforming their financial advice businesses.
-
-Driven by a desire to make a more personal impact, Pat shifted his focus from large-scale corporate roles to providing strategic advice to individuals and families. His deep expertise in wealth-building strategies and long-term financial planning enables clients to achieve financial freedom with clarity and confidence.
-
-As Co-Founder and Chairman of Walker Lane, he shapes the firm's strategic direction, leveraging his deep expertise in AFSL operations, governance, and regulatory engagement to support the growth and success of high-quality financial advice businesses.`,
-    badges: ["Executive Leadership", "Financial Services", "Business Development"],
-  },
-  {
-    id: 3,
-    name: "Sam Carroll",
-    role: "Responsible Manager & Founding Partner",
-    image: "/images/Sam Carroll_01.jpg",
-    alternativeImage: "/images/Sam Carroll_05.jpg",
-    quote: "Simplicity is the ultimate sophistication",
-    icon: "lightbulb",
-    bio: `Sam Carroll is a highly experienced financial services professional with over 20 years in the industry. He began his career in a family-founded financial planning practice with a 29-year legacy, where he developed a strong understanding of business continuity, client relationships, and the lasting value of quality advice. In 2019, he took on full leadership of the firm, successfully guiding its succession and future direction.
-
-As Co-Founder of Walker Lane, Sam helps shape the group's strategic vision and growth. As one of two Responsible Managers on the Walker Lane licence, he is committed to building a strong, supportive community of advice businesses.
-
-In his role as a Financial Adviser, Sam works with a diverse range of clients—from young professionals and families to business owners and retirees. He thrives on simplifying complex financial decisions and providing clear, personalised advice that helps clients build lasting financial confidence and security.`,
-    badges: ["Succession Planning", "Business Growth", "Financial Advice"],
-  },
-  {
-    id: 4,
-    name: "Joel Taylor",
-    role: "Head of Growth & Risk",
-    image: "/images/Joel Taylor_01.jpg",
-    alternativeImage: "/images/Joel Taylor_02.jpg",
-    quote: "Strategy turns dreams into reality",
-    icon: "star",
-    bio: `Joel Taylor is an accomplished financial services executive with 20 years' experience across financial advice, investments, and compliance. As Head of Growth at Walker Lane and a non-voting risk member of the AAC, he plays a key role in maintaining strong regulatory standards and governance frameworks.
-
-A specialist in Best Interests Duty and compliance, Joel has extensive experience designing risk frameworks and organisational structures, establishing and managing multiple investment services, and holding senior leadership roles—including Responsible Manager, General Manager, and Managing Director—across several AFSLs.
-
-His career spans both major institutions such as AMP, TAL, MLC, and CBA, as well as mid-tier AFSLs, giving him a comprehensive perspective on the financial services industry. Joel is recognised as a trusted authority in regulatory compliance, risk management, and financial services leadership.`,
-    badges: ["Risk Management", "Compliance", "Strategic Planning"],
-  },
-
-];
+const supabase = createClient();
 
 const TeamSection = () => {
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const memberRef = useRef<HTMLDivElement>(null);
+  const bioScrollRef = useRef<HTMLDivElement>(null);
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  // Fetch Leadership team data from database
+  useEffect(() => {
+    const fetchLeadershipTeam = async () => {
+      try {
+        setLoading(true);
+
+        // First, get the leadership section ID
+        const { data: leadershipSection, error: sectionError } = await supabase
+          .from("team_sections")
+          .select("id")
+          .eq("name", "leadership")
+          .single();
+
+        if (sectionError) throw sectionError;
+        if (!leadershipSection) {
+          console.warn("Leadership section not found");
+          setTeamMembers([]);
+          return;
+        }
+
+        // Fetch only leadership team members
+        const { data: membersData, error: membersError } = await supabase
+          .from("team_members")
+          .select("*")
+          .eq("section_id", leadershipSection.id)
+          .order("order_index", { ascending: true });
+
+        if (membersError) throw membersError;
+
+        setTeamMembers(membersData || []);
+      } catch (error) {
+        console.error("Error fetching leadership team data:", error);
+        setTeamMembers([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLeadershipTeam();
+  }, []);
+
+  // Check scroll position
+  useEffect(() => {
+    if (!selectedMember) return;
+
+    const getScrollElement = () => {
+      const isMobile = window.innerWidth < 768;
+      return isMobile ? mobileScrollRef.current : bioScrollRef.current;
+    };
+
+    const checkScrollPosition = () => {
+      const element = getScrollElement();
+      if (!element) return;
+      const { scrollTop, scrollHeight, clientHeight } = element;
+      const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
+      const isBottom = distanceFromBottom <= 10;
+      setIsAtBottom(isBottom);
+    };
+
+    const handleScroll = () => {
+      requestAnimationFrame(checkScrollPosition);
+    };
+
+    const handleResize = () => {
+      setTimeout(checkScrollPosition, 100);
+    };
+
+    const mobileElement = mobileScrollRef.current;
+    const bioElement = bioScrollRef.current;
+
+    if (mobileElement) {
+      mobileElement.addEventListener("scroll", handleScroll, { passive: true });
+    }
+    if (bioElement) {
+      bioElement.addEventListener("scroll", handleScroll, { passive: true });
+    }
+    window.addEventListener("resize", handleResize);
+
+    checkScrollPosition();
+    const timeout1 = setTimeout(checkScrollPosition, 100);
+    const timeout2 = setTimeout(checkScrollPosition, 300);
+
+    return () => {
+      if (mobileElement) {
+        mobileElement.removeEventListener("scroll", handleScroll);
+      }
+      if (bioElement) {
+        bioElement.removeEventListener("scroll", handleScroll);
+      }
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+    };
+  }, [selectedMember]);
+
+  const handleScrollClick = () => {
+    const isMobile = window.innerWidth < 768;
+    const scrollElement = isMobile
+      ? mobileScrollRef.current
+      : bioScrollRef.current;
+    if (!scrollElement) return;
+
+    if (isAtBottom) {
+      scrollElement.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      scrollElement.scrollTo({
+        top: scrollElement.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+
+    setTimeout(() => {
+      if (!scrollElement) return;
+      const { scrollTop, scrollHeight, clientHeight } = scrollElement;
+      const distanceFromBottom = scrollHeight - (scrollTop + clientHeight);
+      const isBottom = distanceFromBottom <= 10;
+      setIsAtBottom(isBottom);
+    }, 600);
+  };
+
+  if (loading) {
+    return (
+      <section className="bg-brand-cream py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <p className="text-brand-brown-dark">Loading team...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-brand-cream py-24">
@@ -169,60 +176,48 @@ const TeamSection = () => {
               <div className="relative aspect-[3/4] overflow-hidden group">
                 {/* Main Image */}
                 <Image
-                  src={member.image}
+                  src={member.image_url || "/placeholder.jpg"}
                   alt={member.name}
-                  fill
+                  width={800}
+                  height={800}
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
                   quality={100}
-                  className={`object-cover rounded-md transition-opacity duration-500 ${member.alternativeImage ? 'group-hover:opacity-0 delay-300' : ''
+                  style={{
+                    willChange: "opacity",
+                    transform: "translateZ(0)",
+                    filter: "blur(0.0001px)",
+                  }}
+                  className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${member.hover_image_url
+                      ? "group-hover:opacity-0 delay-300"
+                      : ""
                     }`}
                 />
 
-                {/* Alternative Image - shows after silver flash */}
-                {member.alternativeImage && (
+                {/* Hover Image - shows after silver flash */}
+                {member.hover_image_url && (
                   <Image
-                    src={member.alternativeImage}
+                    src={member.hover_image_url}
                     alt={member.name}
-                    fill
+                    width={800}
+                    height={800}
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
                     quality={100}
-                    className="object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
+                    loading="eager"
+                    style={{
+                      willChange: "opacity",
+                      transform: "translateZ(0)",
+                      filter: "blur(0.0001px)",
+                    }}
+                    className="absolute inset-0 w-full h-full object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
                   />
                 )}
 
                 {/* Quick Silver Flash */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent 
-                  opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full 
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent
+                  opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full
                   transition-all duration-500 ease-in-out"
                 />
-
-                {/* Main Blue Overlay */}
-                {/* <div
-                  className="absolute inset-0 bg-gradient-to-br from-brand-blue/95 to-brand-blue/90
-                  opacity-0 group-hover:opacity-100 translate-x-full group-hover:translate-x-0
-                  transition-all duration-500 ease-in-out delay-200
-                  flex flex-col justify-center items-center p-6 text-center backdrop-blur-[4px] cursor-pointer"
-                >
-                  <div className="flex flex-col items-center justify-center w-full space-y-4">
-
-                    <div className="text-white text-3xl transform -translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-300">
-                      {icons[member.icon]}
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 justify-center mt-2">
-                      {member.badges.map((badge) => (
-                        <span key={badge} className="px-3 py-1 bg-white/20 text-white rounded-full text-sm font-ttNorms font-bold">
-                          {badge}
-                        </span>
-                      ))}
-                    </div>
-
-                    <p className="text-white text-sm italic font-light transform translate-y-8 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-500">
-                      &ldquo;{member.quote}&rdquo;
-                    </p>
-                  </div>
-                </div> */}
               </div>
 
               {/* Name, Role and Plus Button Container */}
@@ -234,56 +229,138 @@ const TeamSection = () => {
                   <p className="text-gray-600 font-ttNorms">{member.role}</p>
                 </div>
 
-                {/* Plus Button */}
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedMember(member)}
-                  className="w-10 h-10 flex-shrink-0"
-                >
-                  <div className="relative w-full h-full">
-                    <div className="absolute inset-0 border border-[#4A3419] rounded-full" />
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{
-                        duration: 8,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      className="absolute inset-0 border border-[#4A3419] rounded-full"
-                    />
-                    <span className="absolute inset-0 flex items-center justify-center text-[#4A3419] text-2xl">
-                      +
-                    </span>
-                  </div>
-                </motion.button>
+                {/* Plus Button - only show if bio exists */}
+                {member.bio && member.bio.trim() && (
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedMember(member)}
+                    className="w-10 h-10 flex-shrink-0"
+                  >
+                    <div className="relative w-full h-full">
+                      <div className="absolute inset-0 border border-[#4A3419] rounded-full" />
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 8,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                        className="absolute inset-0 border border-[#4A3419] rounded-full"
+                      />
+                      <span className="absolute inset-0 flex items-center justify-center text-[#4A3419] text-2xl">
+                        +
+                      </span>
+                    </div>
+                  </motion.button>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Modal */}
-        {selectedMember && (
+        {/* Modal - only show if member has bio */}
+        {selectedMember && selectedMember.bio && selectedMember.bio.trim() && (
           <Modal
             isOpen={true}
             onClose={() => setSelectedMember(null)}
             title={selectedMember.name}
             buttonRef={memberRef}
           >
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6 lg:gap-8 -ml-4 md:-ml-6 lg:-ml-16 pl-4 md:pl-6 lg:pl-10 ">
+            {/* Mobile: Entire container scrollable */}
+            <div
+              ref={mobileScrollRef}
+              className="md:hidden overflow-y-auto overflow-x-hidden max-h-[70vh] scrollbar-hide relative w-full"
+            >
+              <div className="flex flex-col gap-4 pb-12 w-full">
+                {/* Image */}
+                <div className="relative w-full max-w-64 mx-auto aspect-[3/4]">
+                  <Image
+                    src={selectedMember.image_url || "/placeholder.jpg"}
+                    alt={selectedMember.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+
+                {/* Role */}
+                <div className="border-b border-brand-cream/20 pb-3">
+                  <p className="text-brand-cream/80 text-base font-medium">
+                    {selectedMember.role}
+                  </p>
+                </div>
+
+                {/* Bio */}
+                <div>
+                  <p className="text-brand-cream text-sm leading-relaxed whitespace-pre-line">
+                    {selectedMember.bio}
+                  </p>
+                </div>
+
+                {/* Qualifications */}
+                {selectedMember.qualifications &&
+                  selectedMember.qualifications.trim() && (
+                    <div className="border-t border-brand-cream/20 pt-4">
+                      <h4 className="text-brand-cream font-semibold text-base mb-3">
+                        Qualifications
+                      </h4>
+                      <ul className="space-y-2">
+                        {selectedMember.qualifications
+                          .split("\n")
+                          .filter((q) => q.trim())
+                          .map((qualification, idx) => (
+                            <li
+                              key={idx}
+                              className="text-brand-cream text-sm leading-relaxed flex items-start"
+                            >
+                              <span className="text-brand-cream mr-2 mt-[0.15em]">
+                                •
+                              </span>
+                              <span>{qualification.trim()}</span>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  )}
+              </div>
+
+              {/* Scroll Arrow Button - Mobile */}
+              <button
+                onClick={handleScrollClick}
+                className="fixed bottom-4 right-4 w-8 h-8 rounded-full border border-brand-cream/40 bg-brand-cream/10 hover:bg-brand-cream/20 transition-all duration-300 flex items-center justify-center group z-10"
+                aria-label={isAtBottom ? "Scroll to top" : "Scroll to bottom"}
+              >
+                <svg
+                  className={`w-4 h-4 text-brand-cream transition-transform duration-300 ${isAtBottom ? "rotate-180" : ""
+                    }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Desktop: Only bio section scrollable */}
+            <div className="hidden md:flex flex-row gap-4 md:gap-6 lg:gap-8 overflow-x-hidden w-full">
               {/* Image - Left Side */}
-              <div className="relative w-full md:w-72 lg:w-80 md:flex-shrink-0 aspect-[3/4] md:aspect-auto md:h-auto md:min-h-[400px] ">
+              <div className="relative w-64 md:w-72 lg:w-80 md:flex-shrink-0 aspect-[3/4] md:aspect-auto md:h-auto md:min-h-[400px]">
                 <Image
-                  src={selectedMember.image}
+                  src={selectedMember.image_url || "/placeholder.jpg"}
                   alt={selectedMember.name}
                   fill
-                  quality={100}
                   className="object-contain"
                 />
               </div>
 
               {/* Content - Right Side */}
-              <div className="flex-1 space-y-3 md:space-y-4 min-w-0">
+              <div className="flex-1 space-y-3 md:space-y-4 min-w-0 relative">
                 {/* Role */}
                 <div className="border-b border-brand-cream/20 pb-3 md:pb-4">
                   <p className="text-brand-cream/80 text-base md:text-lg font-medium">
@@ -292,11 +369,62 @@ const TeamSection = () => {
                 </div>
 
                 {/* Bio */}
-                <div className="overflow-y-auto max-h-[60vh] scrollbar-hide">
+                <div
+                  ref={bioScrollRef}
+                  className="overflow-y-auto max-h-[60vh] scrollbar-hide pr-10"
+                >
                   <p className="text-brand-cream text-sm md:text-base leading-relaxed whitespace-pre-line">
                     {selectedMember.bio}
                   </p>
+
+                  {/* Qualifications */}
+                  {selectedMember.qualifications &&
+                    selectedMember.qualifications.trim() && (
+                      <div className="border-t border-brand-cream/20 pt-4 mt-4">
+                        <h4 className="text-brand-cream font-semibold text-base md:text-lg mb-3">
+                          Qualifications
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedMember.qualifications
+                            .split("\n")
+                            .filter((q) => q.trim())
+                            .map((qualification, idx) => (
+                              <li
+                                key={idx}
+                                className="text-brand-cream text-sm md:text-base leading-relaxed flex items-start"
+                              >
+                                <span className="text-brand-cream mr-2 -mt-0.2">
+                                  •
+                                </span>
+                                <span>{qualification.trim()}</span>
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    )}
                 </div>
+
+                {/* Scroll Arrow Button - Desktop */}
+                <button
+                  onClick={handleScrollClick}
+                  className="absolute bottom-2 right-2 w-8 h-8 rounded-full border border-brand-cream/40 bg-brand-cream/10 hover:bg-brand-cream/20 transition-all duration-300 flex items-center justify-center group z-10"
+                  aria-label={isAtBottom ? "Scroll to top" : "Scroll to bottom"}
+                >
+                  <svg
+                    className={`w-4 h-4 text-brand-cream transition-transform duration-300 ${isAtBottom ? "rotate-180" : ""
+                      }`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
               </div>
             </div>
           </Modal>

@@ -81,3 +81,4 @@ CREATE POLICY "Authenticated users can read images"
 --    - You are logged in as an authenticated user
 -- ============================================
 
+

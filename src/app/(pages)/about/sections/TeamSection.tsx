@@ -331,7 +331,7 @@ const TeamSectionComponent = () => {
                         .filter((q) => q.trim())
                         .map((qualification, idx) => (
                           <li key={idx} className="text-brand-cream text-sm leading-relaxed flex items-start">
-                            <span className="text-brand-cream mr-2 mt-1.5">•</span>
+                            <span className="text-brand-cream mr-2 mt-[0.15em]">•</span>
                             <span>{qualification.trim()}</span>
                           </li>
                         ))}
@@ -405,7 +405,7 @@ const TeamSectionComponent = () => {
                           .filter((q) => q.trim())
                           .map((qualification, idx) => (
                             <li key={idx} className="text-brand-cream text-sm md:text-base leading-relaxed flex items-start">
-                              <span className="text-brand-cream mr-2 mt-1.5">•</span>
+                              <span className="text-brand-cream mr-2 -mt-0.2">•</span>
                               <span>{qualification.trim()}</span>
                             </li>
                           ))}
