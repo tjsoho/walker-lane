@@ -188,8 +188,8 @@ const TeamSection = () => {
                     filter: "blur(0.0001px)",
                   }}
                   className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${member.hover_image_url
-                      ? "group-hover:opacity-0 delay-300"
-                      : ""
+                    ? "group-hover:opacity-0 delay-300"
+                    : ""
                     }`}
                 />
 

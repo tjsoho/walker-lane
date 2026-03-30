@@ -201,14 +201,13 @@ const TeamSectionComponent = () => {
                       <Image
                         src={member.image_url || "/placeholder.jpg"}
                         alt={member.name}
-                        width={800}
-                        height={800}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         style={{
                           willChange: "opacity",
                           transform: "translateZ(0)",
-                          filter: "blur(0.0001px)",
                         }}
-                        className={`absolute inset-0 w-full h-full object-cover rounded-md transition-opacity duration-500 ${member.hover_image_url
+                        className={`object-cover rounded-md transition-opacity duration-500 ${member.hover_image_url
                           ? "group-hover:opacity-0 delay-300"
                           : ""
                           }`}
@@ -219,15 +218,14 @@ const TeamSectionComponent = () => {
                         <Image
                           src={member.hover_image_url}
                           alt={member.name}
-                          width={800}
-                          height={800}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                           loading="eager"
                           style={{
                             willChange: "opacity",
                             transform: "translateZ(0)",
-                            filter: "blur(0.0001px)",
                           }}
-                          className="absolute inset-0 w-full h-full object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
+                          className="object-cover rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"
                         />
                       )}
 
