@@ -13,7 +13,7 @@ interface MarketCardProps {
   title: string;
   subtitle: string;
   onModalOpen: () => void;
-  buttonRef: React.RefObject<HTMLDivElement>;
+  buttonRef: React.RefObject<HTMLButtonElement | null>;
 }
 
 const MarketCard = ({
@@ -48,12 +48,13 @@ const MarketCard = ({
       {title}
     </h3>
     <p className="text-brand-brown-dark mb-6 max-w-xs text-lg ">{subtitle}</p>
-    <div
+    <PlusIcon
       ref={buttonRef}
-      className="[&_*]:border-brand-brown-dark [&>div>div>div]:bg-brand-brown-dark"
-    >
-      <PlusIcon onClick={onModalOpen} size="sm" />
-    </div>
+      ariaLabel={`Learn more about ${title}`}
+      onClick={onModalOpen}
+      size="sm"
+      tone="brown"
+    />
   </motion.div>
 );
 
@@ -138,9 +139,9 @@ const marketData = [
 export function TargetMarket() {
   const [activeModal, setActiveModal] = useState<number | null>(null);
   const buttonRefs = [
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
+    useRef<HTMLButtonElement>(null),
+    useRef<HTMLButtonElement>(null),
+    useRef<HTMLButtonElement>(null),
   ];
 
   return (
@@ -163,7 +164,7 @@ export function TargetMarket() {
               {...item}
               index={index}
               onModalOpen={() => setActiveModal(index)}
-              buttonRef={buttonRefs[index] as React.RefObject<HTMLDivElement>}
+              buttonRef={buttonRefs[index]}
             />
           ))}
         </div>

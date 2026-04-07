@@ -197,19 +197,26 @@ const ValuesSection = () => {
           </div>
 
           {/* Pagination dots */}
-          <div className="mt-12 flex justify-center gap-3">
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-1">
             {values.map((_, index) => (
               <button
                 key={index}
+                type="button"
                 onClick={() => {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                  index === currentIndex ? "bg-white w-6" : "bg-white/50"
-                }`}
+                className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-transparent p-0 border-0 cursor-pointer"
                 aria-label={`Go to slide ${index + 1}`}
-              />
+                aria-current={index === currentIndex ? "true" : undefined}
+              >
+                <span
+                  className={`block h-2 rounded-full transition-all duration-500 ${
+                    index === currentIndex ? "bg-white w-6" : "w-2 bg-white/50"
+                  }`}
+                  aria-hidden
+                />
+              </button>
             ))}
           </div>
         </div>

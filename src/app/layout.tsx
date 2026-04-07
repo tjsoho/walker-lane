@@ -19,12 +19,27 @@ const geistMono = Geist_Mono({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL.replace(/\/$/, "")}`
+    : "https://walkerlane.com.au");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Walker Lane",
   description: "Financial Planning and Wealth Management",
+  openGraph: {
+    title: "Walker Lane",
+    description: "Financial Planning and Wealth Management",
+    url: "/",
+    siteName: "Walker Lane",
+    locale: "en_AU",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

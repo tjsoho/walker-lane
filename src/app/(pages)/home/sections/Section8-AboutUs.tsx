@@ -32,7 +32,7 @@ export function AboutMe() {
           {/* Content */}
           <div className="md:col-start-2 flex items-center px-4 lg:pl-16">
             <div className="max-w-xl py-12 md:py-0">
-              <motion.h3
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-100px" }}
@@ -40,7 +40,7 @@ export function AboutMe() {
                 className="text-xl text-brand-brown-dark mb-4 font-ttNorms"
               >
                 ABOUT US
-              </motion.h3>
+              </motion.p>
 
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
@@ -85,9 +85,9 @@ export function AboutMe() {
               >
                 <Link
                   href="/about"
-                  className="inline-block bg-brand-brown-dark text-brand-cream px-8 py-4 rounded-md text-lg font-kiona font-boldtransition-colors hover:bg-brand-brown-dark/80"
+                  className="inline-block bg-brand-brown-dark text-brand-cream px-8 py-4 rounded-md text-lg font-kiona font-bold transition-colors hover:bg-brand-brown-dark/80"
                 >
-                  Learn More
+                  About Walker Lane — our team and story
                 </Link>
               </motion.div>
             </div>

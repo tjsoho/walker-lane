@@ -23,8 +23,6 @@ export function HeroSection({
   content = defaultContent,
   onUpdate,
 }: HeroSectionProps) {
-  console.log("HeroSection rendering with:", { isEditing, content });
-
   const [userType, setUserType] = useState<"clients" | "advisors">("clients");
   const [hoveredButton, setHoveredButton] = useState<
     "clients" | "advisors" | null
@@ -51,24 +49,19 @@ export function HeroSection({
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      {/* Background Image Container */}
-      <motion.div
-        className="absolute inset-0"
-        initial={{ scale: 1.2 }}
-        animate={{ scale: 1 }}
-        transition={{
-          duration: 20,
-          ease: "easeOut",
-        }}
-      >
+      {/* Background image: static wrapper for faster LCP (no long scale animation on paint) */}
+      <div className="absolute inset-0">
         <Image
           src="/images/Group_04.jpg"
-          alt="Luxury Boat"
+          alt="Walker Lane — financial planning and wealth management, Sydney"
           fill
           priority
-          className="object-cover  object-[top]"
+          fetchPriority="high"
+          sizes="100vw"
+          quality={80}
+          className="object-cover object-[top]"
         />
-      </motion.div>
+      </div>
 
       {/* Overlay - Made darker */}
       <div className="absolute inset-0 lg:bg-black/55 bg-black/55 " />

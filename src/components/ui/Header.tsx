@@ -86,6 +86,8 @@ export function Header() {
           {/* Menu Button */}
           <div className="w-32 flex justify-end">
             <motion.button
+              type="button"
+              aria-label="Open menu"
               className="flex flex-col items-end cursor-pointer"
               variants={menuVariants}
               initial="initial"

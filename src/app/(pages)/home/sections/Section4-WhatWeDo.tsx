@@ -38,12 +38,12 @@ export function WhatWeDo() {
           className="text-center"
         >
           {/* Subtitle */}
-          <motion.h3
+          <motion.p
             variants={itemVariants}
             className="text-lg md:text-xl text-brand-cream mb-4 font-ttNorms"
           >
             WHAT WE DO
-          </motion.h3>
+          </motion.p>
           <div className="w-[60px] mx-auto h-[0.5px] bg-brand-cream mb-4 lg:mb-8"></div>
 
           {/* Main Title */}

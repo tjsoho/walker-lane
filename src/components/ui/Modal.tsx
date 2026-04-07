@@ -8,7 +8,7 @@ interface ModalProps {
   onClose: () => void;
   title: string;
   children: React.ReactNode;
-  buttonRef: React.RefObject<HTMLDivElement | null>;
+  buttonRef: React.RefObject<HTMLElement | null>;
 }
 
 export function Modal({ isOpen, onClose, title, children }: ModalProps) {
@@ -38,10 +38,12 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
               <div className="relative bg-brand-brown-dark p-4 md:p-6 lg:p-10 rounded-lg shadow-xl overflow-x-hidden">
                 {/* Close Button */}
                 <button
+                  type="button"
+                  aria-label="Close dialog"
                   onClick={onClose}
                   className="absolute top-4 right-4 text-brand-cream hover:text-brand-brown-light transition-colors"
                 >
-                  <RiCloseLine className="w-6 h-6" />
+                  <RiCloseLine className="w-6 h-6" aria-hidden />
                 </button>
 
                 {/* Title */}

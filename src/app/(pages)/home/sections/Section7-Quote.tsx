@@ -8,7 +8,7 @@ import { AnimatedListItem } from "@/components/ui/AnimatedListItem";
 
 export function QuoteSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const buttonRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const listItems = [
     "Clear, jargon-free communication",
@@ -20,7 +20,7 @@ export function QuoteSection() {
     <section className="relative bg-brand-blue py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col items-center text-center">
-          <motion.h2
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-100px" }}
@@ -28,17 +28,20 @@ export function QuoteSection() {
             className="text-3xl md:text-4xl lg:text-5xl font-kiona text-brand-cream mb-8"
           >
             &quot;Personalized, honest advice just for you.&quot;
-          </motion.h2>
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="[&_*]:border-brand-cream [&>div>div>div]:bg-brand-cream"
-            ref={buttonRef}
           >
-            <PlusIcon onClick={() => setIsModalOpen(true)} size="lg" />
+            <PlusIcon
+              ref={buttonRef}
+              ariaLabel="Learn more about personalized advice"
+              onClick={() => setIsModalOpen(true)}
+              size="lg"
+            />
           </motion.div>
         </div>
       </div>

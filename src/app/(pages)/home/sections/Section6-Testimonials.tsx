@@ -85,17 +85,24 @@ export function TestimonialsSection() {
           </AnimatePresence>
 
           {/* Dots */}
-          <div className="flex gap-3 mt-12">
+          <div className="flex flex-wrap items-center justify-start gap-1 mt-12">
             {testimonials.map((_, index) => (
               <button
                 key={index}
+                type="button"
                 onClick={() => setCurrent(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${index === current
-                    ? "w-8 bg-brand-cream"
-                    : "w-2 bg-brand-cream/50"
-                  }`}
+                className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-transparent p-0 border-0 cursor-pointer"
                 aria-label={`Go to testimonial ${index + 1}`}
-              />
+                aria-current={index === current ? "true" : undefined}
+              >
+                <span
+                  className={`block h-2 rounded-full transition-all duration-300 ${index === current
+                      ? "w-8 bg-brand-cream"
+                      : "w-2 bg-brand-cream/50"
+                    }`}
+                  aria-hidden
+                />
+              </button>
             ))}
           </div>
         </div>

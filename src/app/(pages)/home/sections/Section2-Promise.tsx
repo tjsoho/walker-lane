@@ -50,10 +50,11 @@ export function PromiseSection({
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/wallet.jpeg"
-          alt="Luxury Wallet"
+          alt="Personal wealth and financial planning"
           fill
           className="object-cover"
-          priority
+          sizes="100vw"
+          quality={80}
         />
         <div className="absolute inset-0 bg-black/55" />
       </div>
@@ -71,6 +72,7 @@ export function PromiseSection({
             <EditableText
               id="promise-heading"
               type="heading"
+              headingLevel={2}
               content={content["promise-heading"]}
               isEditing={isEditing}
               onUpdate={onUpdate}

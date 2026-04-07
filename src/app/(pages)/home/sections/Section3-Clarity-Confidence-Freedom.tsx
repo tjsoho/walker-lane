@@ -3,38 +3,8 @@
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { Modal } from "@/components/ui/Modal";
-import React from "react";
+import { PlusIcon } from "@/components/ui/PlusIcon";
 import { RiCheckLine } from "react-icons/ri";
-
-interface PlusIconProps {
-  onClick: () => void;
-  ref?: React.RefObject<HTMLDivElement>;
-}
-
-const PlusIcon = React.forwardRef<HTMLDivElement, Omit<PlusIconProps, "ref">>(
-  (props, ref) => (
-    <motion.div
-      ref={ref}
-      className="relative w-12 h-12 border border-brand-cream rounded-full cursor-pointer"
-      whileHover={{ rotate: 180 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
-      onClick={props.onClick}
-    >
-      <motion.div
-        className="absolute inset-0"
-        initial={{ rotate: 0 }}
-        whileInView={{ rotate: 180 }}
-        viewport={{ once: false, margin: "-100px" }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-[1px] bg-brand-cream" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-6 bg-brand-cream" />
-      </motion.div>
-    </motion.div>
-  )
-);
-
-PlusIcon.displayName = "PlusIcon";
 
 const ListItem = ({
   children,
@@ -123,9 +93,9 @@ export function SupportSection() {
   const [activeModal, setActiveModal] = useState<
     keyof typeof modalContent | null
   >(null);
-  const clarityButtonRef = useRef<HTMLDivElement>(null);
-  const confidenceButtonRef = useRef<HTMLDivElement>(null);
-  const freedomButtonRef = useRef<HTMLDivElement>(null);
+  const clarityButtonRef = useRef<HTMLButtonElement>(null);
+  const confidenceButtonRef = useRef<HTMLButtonElement>(null);
+  const freedomButtonRef = useRef<HTMLButtonElement>(null);
 
   const getActiveButtonRef = () => {
     switch (activeModal) {
@@ -166,6 +136,7 @@ export function SupportSection() {
   return (
     <section className="relative bg-brand-blue py-20 md:py-32">
       <div className="max-w-7xl mx-auto px-4">
+        <h2 className="sr-only">Clarity, confidence, and freedom</h2>
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -180,6 +151,7 @@ export function SupportSection() {
                 Clarity
               </h3>
               <PlusIcon
+                ariaLabel="Learn more about financial clarity"
                 onClick={() => setActiveModal("clarity")}
                 ref={clarityButtonRef}
               />
@@ -193,6 +165,7 @@ export function SupportSection() {
                 Confidence
               </h3>
               <PlusIcon
+                ariaLabel="Learn more about building financial confidence"
                 onClick={() => setActiveModal("confidence")}
                 ref={confidenceButtonRef}
               />
@@ -206,6 +179,7 @@ export function SupportSection() {
                 Freedom
               </h3>
               <PlusIcon
+                ariaLabel="Learn more about financial freedom"
                 onClick={() => setActiveModal("freedom")}
                 ref={freedomButtonRef}
               />

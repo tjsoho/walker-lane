@@ -1,14 +1,15 @@
 import { HeroSection } from "./sections/Section1-Hero";
 import { PromiseSection } from "./sections/Section2-Promise";
-import { SupportSection } from "./sections/Section3-Clarity-Confidence-Freedom";
-import { WhatWeDo } from "./sections/Section4-WhatWeDo";
-import { TargetMarket } from "./sections/Section5-WhoWeHelp";
-import { TestimonialsSection } from "./sections/Section6-Testimonials";
-import { QuoteSection } from "./sections/Section7-Quote";
-import { AboutMe } from "./sections/Section8-AboutUs";
-// import { DownloadSection } from "./sections/Section9-Download";
-import Section3a from "./sections/Section3a";
-import { CTASection } from "../about/sections/CTASection";
+import {
+  AboutMe,
+  CTASection,
+  QuoteSection,
+  Section3a,
+  SupportSection,
+  TargetMarket,
+  TestimonialsSection,
+  WhatWeDo,
+} from "./homeDynamicImports";
 
 export default function HomePage() {
   return (
@@ -22,7 +23,6 @@ export default function HomePage() {
       <TestimonialsSection />
       <QuoteSection />
       <AboutMe />
-      {/* <DownloadSection /> */}
       <CTASection />
     </main>
   );

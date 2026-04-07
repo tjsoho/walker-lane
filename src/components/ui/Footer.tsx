@@ -62,9 +62,9 @@ export function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-brand-cream font-kiona mb-6 text-lg">
+              <h3 className="text-brand-cream font-kiona mb-6 text-lg">
                 Quick Links
-              </h4>
+              </h3>
               <ul className="space-y-4">
                 {links.map((link) => (
                   <li key={link.name}>
@@ -81,9 +81,9 @@ export function Footer() {
 
             {/* Legal Links */}
             <div>
-              <h4 className="text-brand-cream font-kiona mb-6 text-lg">
+              <h3 className="text-brand-cream font-kiona mb-6 text-lg">
                 Legal
-              </h4>
+              </h3>
               <ul className="space-y-4">
                 {legalLinks.map((link) => (
                   <li key={link.name}>
@@ -111,9 +111,9 @@ export function Footer() {
 
             {/* Social Links & Newsletter */}
             <div className="lg:text-right">
-              <h4 className="text-brand-cream font-kiona mb-6 text-lg">
+              <h3 className="text-brand-cream font-kiona mb-6 text-lg">
                 Connect With Us
-              </h4>
+              </h3>
               <div className="flex lg:justify-end justify-start space-x-4 mb-8">
                 {socialLinks.map((social) => (
                   <a
@@ -135,9 +135,9 @@ export function Footer() {
                 Sydney NSW 2000</p>
               {/* Newsletter */}
               {/* <div className="ml-auto">
-                <h4 className="text-brand-cream font-kiona mb-6 text-lg">
+                <h3 className="text-brand-cream font-kiona mb-6 text-lg">
                   Financial Insights
-                </h4>
+                </h3>
                 <form
                   onSubmit={handleSubmit}
                   className="flex flex-col gap-3 w-[220px] ml-auto"

@@ -3,6 +3,8 @@
 interface EditableTextProps {
   id: string;
   type: "heading" | "paragraph" | "subtext";
+  /** When type is "heading", which level to render (default 1). */
+  headingLevel?: 1 | 2;
   content: string;
   isEditing?: boolean;
   onUpdate?: (id: string, value: string) => void;
@@ -11,21 +13,22 @@ interface EditableTextProps {
 export function EditableText({
   id,
   type,
+  headingLevel = 1,
   content,
   isEditing,
   onUpdate,
 }: EditableTextProps) {
-  console.log("EditableText rendering:", { id, type, content, isEditing });
-
   if (!isEditing) {
     // Regular display mode - using original text colors
     switch (type) {
-      case "heading":
-        return (
-          <h1 className="text-5xl md:text-7xl mb-4 font-kiona text-brand-brown-light">
-            {content || "No content"}
-          </h1>
-        );
+      case "heading": {
+        const className =
+          "text-5xl md:text-7xl mb-4 font-kiona text-brand-brown-light";
+        if (headingLevel === 2) {
+          return <h2 className={className}>{content || "No content"}</h2>;
+        }
+        return <h1 className={className}>{content || "No content"}</h1>;
+      }
       case "paragraph":
         return (
           <p className="text-lg md:text-2xl mb-12 max-w-3xl mx-auto leading-none font-inter text-brand-cream ">
