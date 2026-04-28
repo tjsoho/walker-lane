@@ -12,10 +12,6 @@ const advisers = [
     name: "Patrick Casey",
     url: "https://go.oncehub.com/patcasey",
   },
-  {
-    name: "Josh Cratchley",
-    url: "https://calendly.com/walkerlane-josh/30min",
-  },
 ];
 
 export const CTASection = () => {
@@ -65,7 +61,7 @@ export const CTASection = () => {
               <h3 className="text-3xl font-kiona text-brand-cream mb-8">
                 Choose who you&apos;d like to book a call with
               </h3>
-              <div className="grid gap-5 md:grid-cols-3">
+              <div className="grid gap-5 md:grid-cols-2">
                 {advisers.map((adviser) => (
                   <motion.button
                     key={adviser.name}
