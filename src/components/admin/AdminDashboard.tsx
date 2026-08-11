@@ -50,6 +50,18 @@ export function AdminDashboard() {
           </Link>
 
           <Link
+            href="/admin/legal"
+            className="block p-8 bg-white rounded-md shadow-md hover:shadow-xl transition-shadow"
+          >
+            <h2 className="text-2xl font-kiona text-brand-brown-dark mb-4">
+              Legal Documents
+            </h2>
+            <p className="text-brand-brown-dark/80">
+              Update the Financial Services Guide and Privacy Policy
+            </p>
+          </Link>
+
+          <Link
             href="/admin/team"
             className="block p-8 bg-white rounded-md shadow-md hover:shadow-xl transition-shadow"
           >

@@ -30,59 +30,58 @@ export function PageSectionEditor({
   const [content, setContent] = useState<Record<string, string> | null>(null);
   const [Component, setComponent] = useState<React.ComponentType<SectionComponentProps> | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState<string | null>(null);
   const [isEditing, setIsEditing] = useState(false);
 
   const loadSection = useCallback(async () => {
     setLoading(true);
+    setLoadError(null);
     try {
-      console.log("1. Starting to load section...");
-
-      // Load component first
       const section = await import(
         `@/app/(pages)/${pageId}/sections/${sectionId}.tsx`
       );
-      console.log("2. Loaded section component:", section);
 
-      // Fix: Get the HeroSection or PromiseSection component from the module
-      if (section.HeroSection) {
-        setComponent(() => section.HeroSection);
-      } else if (section.PromiseSection) {
-        setComponent(() => section.PromiseSection);
-      } else {
-        console.error("No component found in module:", section);
+      // Sections export their component under different names, so take the
+      // default export or the first exported function.
+      const component =
+        section.default ??
+        Object.values(section).find((value) => typeof value === "function");
+
+      if (!component) {
+        throw new Error(`No component exported by ${sectionId}`);
       }
+      setComponent(() => component as React.ComponentType<SectionComponentProps>);
 
-      // Get content
       const { data, error } = await supabase
         .from("page_content")
         .select("content")
         .eq("page_id", pageId)
         .eq("section_id", sectionId)
-        .single();
+        .maybeSingle();
 
-      console.log("3. Supabase response:", { data, error });
+      if (error) throw error;
 
-      if (error) {
-        console.log("4a. Creating new content with:", section.defaultContent);
+      if (data) {
+        setContent(data.content);
+      } else {
         const { data: newData, error: insertError } = await supabase
           .from("page_content")
           .insert({
             page_id: pageId,
             section_id: sectionId,
-            content: section.defaultContent,
+            content: section.defaultContent ?? {},
           })
           .select("content")
           .single();
 
         if (insertError) throw insertError;
-        console.log("4b. Created new content:", newData);
         setContent(newData.content);
-      } else {
-        console.log("4c. Using existing content:", data.content);
-        setContent(data.content);
       }
     } catch (error) {
       console.error("Error loading section:", error);
+      setLoadError(
+        error instanceof Error ? error.message : "Failed to load section"
+      );
     } finally {
       setLoading(false);
     }
@@ -113,6 +112,21 @@ export function PageSectionEditor({
       console.error("Error saving changes:", error);
       toast.error("Failed to save changes");
     }
+  }
+
+  if (loadError) {
+    return (
+      <div className="p-8 text-center">
+        <p className="text-red-600 mb-2">Couldn&apos;t load this section.</p>
+        <p className="text-brand-brown-dark/70 text-sm mb-4">{loadError}</p>
+        <button
+          onClick={() => loadSection()}
+          className="px-4 py-2 bg-brand-brown-dark text-white rounded-md hover:bg-brand-brown-dark/90"
+        >
+          Retry
+        </button>
+      </div>
+    );
   }
 
   if (loading || !Component || !content) {
@@ -149,6 +163,11 @@ export function PageSectionEditor({
             </div>
 
             <div className="space-y-4">
+              {Object.keys(content).length === 0 && (
+                <p className="text-brand-brown-dark/70">
+                  This section doesn&apos;t have editable content yet.
+                </p>
+              )}
               {Object.entries(content).map(([key, value]) => (
                 <div key={key}>
                   <label className="block text-sm font-medium text-brand-brown-dark mb-2">

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-// import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 import {
   RiLinkedinBoxLine,
 } from "react-icons/ri";
@@ -15,9 +16,10 @@ const links = [
   { name: "Admin", href: "/admin" },
 ];
 
-const legalLinks = [
-  { name: "Privacy Policy", href: "/documents/Privacy_Policy.pdf", isPdf: true },
-  { name: "Financial Services Guide", href: "/documents/Financial_Services_Guide.pdf", isPdf: true },
+// Fallback if the legal_documents table can't be reached
+const defaultLegalLinks = [
+  { name: "Privacy Policy", href: "/documents/Privacy_Policy.pdf" },
+  { name: "Financial Services Guide", href: "/documents/Financial_Services_Guide.pdf" },
 ];
 
 const socialLinks = [
@@ -29,13 +31,19 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  // const [email, setEmail] = useState("");
+  const [legalLinks, setLegalLinks] = useState(defaultLegalLinks);
 
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   console.log("Newsletter signup:", email);
-  //   setEmail("");
-  // };
+  useEffect(() => {
+    supabase
+      .from("legal_documents")
+      .select("name, url")
+      .order("sort_order")
+      .then(({ data, error }) => {
+        if (!error && data && data.length > 0) {
+          setLegalLinks(data.map((doc) => ({ name: doc.name, href: doc.url })));
+        }
+      });
+  }, []);
 
   return (
     <>
@@ -87,23 +95,14 @@ export function Footer() {
               <ul className="space-y-4">
                 {legalLinks.map((link) => (
                   <li key={link.name}>
-                    {link.isPdf ? (
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-brand-cream/70 hover:text-brand-cream transition-colors duration-300 text-sm tracking-wide"
-                      >
-                        {link.name}
-                      </a>
-                    ) : (
-                      <Link
-                        href={link.href}
-                        className="text-brand-cream/70 hover:text-brand-cream transition-colors duration-300 text-sm tracking-wide"
-                      >
-                        {link.name}
-                      </Link>
-                    )}
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-brand-cream/70 hover:text-brand-cream transition-colors duration-300 text-sm tracking-wide"
+                    >
+                      {link.name}
+                    </a>
                   </li>
                 ))}
               </ul>

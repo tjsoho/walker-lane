@@ -6,7 +6,10 @@ export async function middleware(request: NextRequest) {
   const supabase = await createClient();
   
   // Only run on admin routes
-  if (request.nextUrl.pathname.startsWith("/admin")) {
+  if (
+    request.nextUrl.pathname.startsWith("/admin") ||
+    request.nextUrl.pathname.startsWith("/editor")
+  ) {
     // Allow access to login page
     if (request.nextUrl.pathname === "/admin/login") {
       return NextResponse.next();
@@ -31,5 +34,5 @@ export async function middleware(request: NextRequest) {
 
 // Configure which routes to run middleware on
 export const config = {
-  matcher: ["/admin", "/admin/:path*"],
+  matcher: ["/admin", "/admin/:path*", "/editor", "/editor/:path*"],
 };
