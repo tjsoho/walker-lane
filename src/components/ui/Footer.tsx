@@ -13,7 +13,6 @@ const links = [
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
-  { name: "Admin", href: "/admin" },
 ];
 
 // Fallback if the legal_documents table can't be reached

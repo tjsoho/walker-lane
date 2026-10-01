@@ -22,4 +22,31 @@ const PAGES = {
 
 export function getPageSections(pageId: string): Section[] {
   return PAGES[pageId as keyof typeof PAGES] || [];
-} 
+}
+
+// Explicit loader map so webpack only bundles section files into the
+// editor, not every .tsx under (pages) (a template-string import() pulls
+// the whole directory into the client bundle).
+export const sectionLoaders: Record<
+  string,
+  () => Promise<Record<string, unknown>>
+> = {
+  "home/Section1-Hero": () =>
+    import("@/app/(pages)/home/sections/Section1-Hero"),
+  "home/Section2-Promise": () =>
+    import("@/app/(pages)/home/sections/Section2-Promise"),
+  "home/Section3-Clarity-Confidence-Freedom": () =>
+    import("@/app/(pages)/home/sections/Section3-Clarity-Confidence-Freedom"),
+  "home/Section4-WhatWeDo": () =>
+    import("@/app/(pages)/home/sections/Section4-WhatWeDo"),
+  "home/Section5-WhoWeHelp": () =>
+    import("@/app/(pages)/home/sections/Section5-WhoWeHelp"),
+  "home/Section6-Testimonials": () =>
+    import("@/app/(pages)/home/sections/Section6-Testimonials"),
+  "home/Section7-Quote": () =>
+    import("@/app/(pages)/home/sections/Section7-Quote"),
+  "home/Section8-AboutUs": () =>
+    import("@/app/(pages)/home/sections/Section8-AboutUs"),
+  "home/Section9-Download": () =>
+    import("@/app/(pages)/home/sections/Section9-Download"),
+}; 

@@ -8,7 +8,8 @@ export async function middleware(request: NextRequest) {
   // Only run on admin routes
   if (
     request.nextUrl.pathname.startsWith("/admin") ||
-    request.nextUrl.pathname.startsWith("/editor")
+    request.nextUrl.pathname.startsWith("/editor") ||
+    request.nextUrl.pathname.startsWith("/blog-editor")
   ) {
     // Allow access to login page
     if (request.nextUrl.pathname === "/admin/login") {
@@ -34,5 +35,12 @@ export async function middleware(request: NextRequest) {
 
 // Configure which routes to run middleware on
 export const config = {
-  matcher: ["/admin", "/admin/:path*", "/editor", "/editor/:path*"],
+  matcher: [
+    "/admin",
+    "/admin/:path*",
+    "/editor",
+    "/editor/:path*",
+    "/blog-editor",
+    "/blog-editor/:path*",
+  ],
 };

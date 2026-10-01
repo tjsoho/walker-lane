@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
+import { sectionLoaders } from "@/lib/pageSections";
 import { Edit2, X } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -37,9 +38,11 @@ export function PageSectionEditor({
     setLoading(true);
     setLoadError(null);
     try {
-      const section = await import(
-        `@/app/(pages)/${pageId}/sections/${sectionId}.tsx`
-      );
+      const loadSectionModule = sectionLoaders[`${pageId}/${sectionId}`];
+      if (!loadSectionModule) {
+        throw new Error(`Unknown section: ${pageId}/${sectionId}`);
+      }
+      const section = await loadSectionModule();
 
       // Sections export their component under different names, so take the
       // default export or the first exported function.

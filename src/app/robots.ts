@@ -1,23 +1,16 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/siteUrl";
 
-function getSiteUrl(): string {
-  if (process.env.NEXT_PUBLIC_SITE_URL) {
-    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "");
-  }
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL.replace(/\/$/, "")}`;
-  }
-  return "https://walkerlane.com.au";
-}
-
+// Admin routes are intentionally not listed here — listing them in
+// robots.txt advertises their location. They are kept out of search
+// results with X-Robots-Tag: noindex headers (see next.config.ts) and
+// are behind the auth middleware.
 export default function robots(): MetadataRoute.Robots {
-  const base = getSiteUrl();
   return {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/admin/", "/blog-editor/", "/api/"],
     },
-    sitemap: `${base}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

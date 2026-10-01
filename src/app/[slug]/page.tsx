@@ -2,6 +2,8 @@ import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { TipTapContent } from "@/components/blog/TipTapContent";
+import { cache } from "react";
+import type { Metadata } from "next";
 
 
 interface BlogPost {
@@ -16,7 +18,8 @@ interface BlogPost {
   created_at: string;
 }
 
-async function getBlogPost(slug: string) {
+// cache() dedupes the fetch between generateMetadata and the page render
+const getBlogPost = cache(async (slug: string) => {
   const { data, error } = await supabase
     .from("blog_posts")
     .select("*")
@@ -27,18 +30,41 @@ async function getBlogPost(slug: string) {
     return null;
   }
 
-  // Increment view count
-  await supabase
-    .from("blog_posts")
-    .update({ views: (data.views || 0) + 1 })
-    .eq("id", data.id);
-
   return data as BlogPost;
-}
+});
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
+
+  if (!post) {
+    return { title: "Post Not Found" };
+  }
+
+  return {
+    title: post.title,
+    description: post.subtitle,
+    alternates: { canonical: `/${post.slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.subtitle,
+      url: `/${post.slug}`,
+      type: "article",
+      publishedTime: post.created_at,
+      ...(post.image_url ? { images: [{ url: post.image_url }] } : {}),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.subtitle,
+      ...(post.image_url ? { images: [post.image_url] } : {}),
+    },
+  };
+}
 
 export default async function BlogPost({ params }: Props) {
   const resolvedParams = await params;
@@ -48,8 +74,30 @@ export default async function BlogPost({ params }: Props) {
     notFound();
   }
 
+  // Increment view count (moved out of the cached fetch so metadata
+  // generation doesn't double-count)
+  await supabase
+    .from("blog_posts")
+    .update({ views: (post.views || 0) + 1 })
+    .eq("id", post.id);
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.subtitle,
+    datePublished: post.created_at,
+    ...(post.image_url ? { image: post.image_url } : {}),
+    author: { "@type": "Organization", name: "Walker Lane" },
+    publisher: { "@type": "Organization", name: "Walker Lane" },
+  };
+
   return (
     <article className="min-h-screen bg-brand-cream">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Hero Section with Featured Image */}
       <div className="relative h-[60vh] w-full">
         {post.image_url ? (
