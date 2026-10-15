@@ -7,7 +7,11 @@ import TextAlign from "@tiptap/extension-text-align";
 import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import { FontFamily } from "@tiptap/extension-font-family";
+import Link from "@tiptap/extension-link";
+import Underline from "@tiptap/extension-underline";
 
+// Must include every extension the blog editor (TipTapEditor) can save,
+// or generateHTML throws and the raw JSON would be shown instead.
 const extensions = [
   StarterKit,
   Image,
@@ -17,19 +21,24 @@ const extensions = [
   TextStyle,
   Color,
   FontFamily,
+  Link,
+  Underline,
 ];
 
 export function TipTapContent({ content }: { content: string }) {
   let html = content;
 
-  try {
-    // Try to parse as JSON first
-    const jsonContent = JSON.parse(content);
-    html = generateHTML(jsonContent, extensions);
-  } catch {
-    // If parsing fails, assume content is already HTML
-    console.log("Content is already HTML");
+  if (content.trim().startsWith("{")) {
+    // Stored as TipTap JSON — render it to HTML
+    try {
+      html = generateHTML(JSON.parse(content), extensions);
+    } catch (error) {
+      // Never fall through to printing raw JSON on the page
+      console.error("Failed to render blog content:", error);
+      html = "";
+    }
   }
+  // Otherwise the content is legacy HTML and is rendered as-is
 
   return (
     <div
