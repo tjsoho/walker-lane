@@ -1,199 +1,68 @@
-"use client";
+import { createClient } from "@supabase/supabase-js";
+import { JournalList, type BlogPost } from "@/components/blog/JournalList";
+import { SITE_URL } from "@/lib/siteUrl";
 
-import { supabase } from "@/lib/supabase";
-import Image from "next/image";
-import Link from "next/link";
-import { formatDistanceToNow } from "date-fns";
-import { BlogFilter } from "@/components/blog/BlogFilter";
-import { useState, useEffect } from "react";
+// Server-rendered so the article list is in the HTML for search engines
+export const revalidate = 600;
 
-interface BlogPost {
-  id: string;
-  title: string;
-  subtitle: string;
-  slug: string;
-  content: string;
-  tags: string[];
-  image_url: string;
-  status: "draft" | "published";
-  created_at: string;
+async function getPosts(): Promise<BlogPost[]> {
+  try {
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!
+    );
+    const { data } = await supabase
+      .from("blog_posts")
+      .select("id, title, subtitle, slug, tags, image_url, created_at")
+      .eq("status", "published")
+      .order("created_at", { ascending: false });
+    return data || [];
+  } catch {
+    return [];
+  }
 }
 
-export default function BlogPage() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+export default async function JournalPage() {
+  const posts = await getPosts();
 
-  useEffect(() => {
-    async function loadPosts() {
-      const { data, error } = await supabase
-        .from("blog_posts")
-        .select("*")
-        .eq("status", "published")
-        .order("created_at", { ascending: false });
-
-      if (!error && data) {
-        setPosts(data);
-      }
-    }
-
-    loadPosts();
-  }, []);
-
-  // Get unique tags from all posts
-  const uniqueTags = Array.from(
-    new Set(posts.flatMap((post) => post.tags))
-  ).sort();
-
-  // Get the latest post
-  const latestPost = posts[0];
-
-  // Filter other posts based on selected tags
-  const filteredPosts = posts.slice(1).filter((post) => {
-    if (selectedTags.length === 0) return true;
-    return selectedTags.some((tag) => post.tags.includes(tag));
-  });
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Walker Lane Journal",
+    url: `${SITE_URL}/blog`,
+    publisher: { "@type": "Organization", name: "Walker Lane" },
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      url: `${SITE_URL}/${post.slug}`,
+      datePublished: post.created_at,
+    })),
+  };
 
   return (
     <div className="min-h-screen bg-brand-cream">
-      {/* Hero Section */}
-      <div className="relative h-[50vh] bg-brand-brown-dark">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/boatHero.jpeg"
-            alt="Blog Hero"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/60" />
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-kiona text-brand-cream text-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
+
+      {/* Page Header */}
+      <header className="pt-32 pb-12 md:pt-40 md:pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-sm tracking-[0.3em] uppercase text-brand-blue mb-4 font-inter">
+            Walker Lane
+          </p>
+          <h1 className="text-4xl md:text-5xl font-kiona text-brand-brown-dark mb-4">
             Our Journal
           </h1>
+          <p className="text-brand-brown-dark/80 max-w-2xl mx-auto">
+            Insights and ideas from our team on wealth, advice and the
+            business of financial planning.
+          </p>
         </div>
-      </div>
+      </header>
 
-      {/* Featured Post Card - Overlapping Hero */}
-      {latestPost && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="absolute -top-4 -left-4 z-50">
-            <span className="px-6 py-3 bg-brand-blue text-brand-brown-dark rounded-md text-xl font-bold font-kiona shadow-lg transform -rotate-2">
-              Latest Post
-            </span>
-          </div>
-          <div className="-mt-32 mb-16">
-            <div className="bg-white/90 backdrop-blur-md rounded-md shadow-xl overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="relative w-full md:w-2/3 h-72 md:h-96">
-                  {latestPost.image_url ? (
-                    <Image
-                      src={latestPost.image_url}
-                      alt={latestPost.title}
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-brand-brown-dark/10" />
-                  )}
-                </div>
-                <div className="w-full md:w-1/3 p-8">
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {latestPost.tags.map((tag: string) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-brand-brown-dark/5 text-brand-brown-dark rounded-full text-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h2 className="text-2xl font-kiona text-brand-brown-dark mb-4">
-                    {latestPost.title}
-                  </h2>
-                  <p className="text-brand-brown-dark/70 mb-6 line-clamp-3">
-                    {latestPost.subtitle}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <Link
-                      href={`/${latestPost.slug}`}
-                      className="px-4 py-2 bg-brand-brown-dark text-brand-cream rounded-md hover:bg-brand-brown-dark/90 transition-colors"
-                    >
-                      Read More
-                    </Link>
-                    <span className="text-sm text-brand-brown-dark/50">
-                      {formatDistanceToNow(new Date(latestPost.created_at), {
-                        addSuffix: true,
-                      })}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Sidebar */}
-          <div className="w-full lg:w-1/4">
-            <BlogFilter tags={uniqueTags} onTagsChange={setSelectedTags} />
-          </div>
-
-          {/* Posts Grid */}
-          <div className="w-full lg:w-3/4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {filteredPosts.map((post) => (
-                <Link
-                  key={post.id}
-                  href={`/${post.slug}`}
-                  className="group block bg-white/90 backdrop-blur-md rounded-md overflow-hidden shadow-sm hover:shadow-md transition-all"
-                >
-                  <div className="relative h-64">
-                    {post.image_url ? (
-                      <Image
-                        src={post.image_url}
-                        alt={post.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        unoptimized
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-brand-brown-dark/10" />
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {post.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 bg-brand-brown-dark/5 text-brand-brown-dark rounded-md text-sm"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h3 className="text-xl font-kiona text-brand-brown-dark mb-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-brand-brown-dark/70 mb-4 line-clamp-2">
-                      {post.subtitle}
-                    </p>
-                    <div className="text-sm text-brand-brown-dark/50">
-                      {formatDistanceToNow(new Date(post.created_at), {
-                        addSuffix: true,
-                      })}
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+      <JournalList posts={posts} />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TipTapContent } from "@/components/blog/TipTapContent";
 import { cache } from "react";
@@ -98,60 +99,65 @@ export default async function BlogPost({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
-      {/* Hero Section with Featured Image */}
-      <div className="relative h-[60vh] w-full">
-        {post.image_url ? (
-          <Image
-            src={post.image_url}
-            alt={post.title}
-            fill
-            className="object-cover"
-            priority
-          />
-        ) : (
-          <div className="absolute inset-0 bg-brand-brown-dark/10" />
-        )}
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="max-w-4xl mx-auto px-4 text-center text-white">
-            <h1 className="text-5xl font-kiona mb-4">{post.title}</h1>
-            <p className="text-xl opacity-90">{post.subtitle}</p>
-          </div>
-        </div>
-      </div>
 
-      {/* Content Section */}
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-8">
-          {post.tags.map((tag: string) => (
-            <span
-              key={tag}
-              className="px-3 py-1 bg-brand-brown-dark/10 text-brand-brown-dark rounded-md text-sm"
+      {/* Article Header */}
+      <header className="pt-32 md:pt-40 pb-10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          {post.tags.length > 0 && (
+            <p className="text-xs tracking-[0.25em] uppercase text-brand-blue mb-5 font-inter text-center">
+              {post.tags.join(" · ")}
+            </p>
+          )}
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-kiona text-brand-brown-dark text-center leading-tight mb-5">
+            {post.title}
+          </h1>
+          {post.subtitle && (
+            <p className="text-lg text-brand-brown-dark/80 text-center max-w-2xl mx-auto mb-6">
+              {post.subtitle}
+            </p>
+          )}
+          <p className="text-center">
+            <time
+              dateTime={post.created_at}
+              className="text-sm text-brand-brown-dark/70"
             >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Post Content */}
-        <div className="prose prose-lg max-w-none">
-          <TipTapContent content={post.content} />
-        </div>
-
-        {/* Metadata */}
-        <div className="mt-12 pt-6 border-t border-brand-brown-dark/10">
-          <div className="flex justify-between items-center text-sm text-brand-brown-dark/60">
-            <span>
-              Published{" "}
-              {new Date(post.created_at).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
+              {new Date(post.created_at).toLocaleDateString("en-AU", {
                 day: "numeric",
+                month: "long",
+                year: "numeric",
               })}
-            </span>
-            <span>{post.views || 0} views</span>
+            </time>
+          </p>
+        </div>
+      </header>
+
+      {/* Featured Image */}
+      {post.image_url && (
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 mb-12">
+          <div className="relative aspect-[2/1] rounded-lg overflow-hidden">
+            <Image
+              src={post.image_url}
+              alt={post.title}
+              fill
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-cover"
+              priority
+            />
           </div>
+        </div>
+      )}
+
+      {/* Article Body */}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 pb-20">
+        <TipTapContent content={post.content} />
+
+        <div className="mt-16 pt-8 border-t border-brand-brown-dark/15 text-center">
+          <Link
+            href="/blog"
+            className="inline-block px-6 py-3 bg-brand-brown-dark text-brand-cream rounded-full text-sm hover:bg-brand-brown-dark/90 transition-colors"
+          >
+            Back to the Journal
+          </Link>
         </div>
       </div>
     </article>

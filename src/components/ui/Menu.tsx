@@ -7,7 +7,7 @@ import {
   RiHome5Line,
   RiInformationLine,
   RiBriefcase2Line,
-  // RiNewspaperLine,
+  RiNewspaperLine,
   RiMailLine,
   RiLinkedinBoxLine,
   // RiTwitterXLine,
@@ -53,7 +53,7 @@ export function Menu({
     { title: "Home", href: "/", icon: RiHome5Line },
     { title: "About", href: "/about", icon: RiInformationLine },
     { title: "Services", href: "/services", icon: RiBriefcase2Line },
-    // { title: "Blog", href: "/blog", icon: RiNewspaperLine },
+    { title: "Journal", href: "/blog", icon: RiNewspaperLine },
     { title: "Contact", href: "/contact", icon: RiMailLine },
   ];
 

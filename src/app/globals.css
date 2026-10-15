@@ -78,25 +78,84 @@ body {
   min-height: 200px;
 }
 
-/* Add these styles for the TipTap content */
+/* Article body typography (blog posts). The site-wide p style uses a
+   very light weight and wide letter-spacing, which is unreadable for
+   long-form text, so it is overridden here. */
 .tiptap-content {
-  color: #4A3419; /* brand-brown-dark */
+  color: #694837; /* brand-brown-dark */
+  font-family: var(--font-inter);
+  font-size: 1.125rem;
+  line-height: 1.8;
 
   & img {
     max-width: 100%;
     height: auto;
-    margin: 1rem 0;
+    margin: 2rem auto;
+    border-radius: 0.5rem;
   }
 
   & p {
-    margin: 1rem 0;
-    color: inherit; /* This will inherit the dark brown unless overridden */
+    margin: 1.25rem 0;
+    color: inherit;
+    font-weight: 300 !important;
+    letter-spacing: normal !important;
+    line-height: 1.8;
   }
 
   & h1, & h2, & h3, & h4, & h5, & h6 {
-    margin: 2rem 0 1rem;
-    font-weight: bold;
+    margin: 2.5rem 0 1rem;
     color: inherit;
+    line-height: 1.3;
+  }
+
+  & h1 { font-size: 1.875rem; }
+  & h2 { font-size: 1.5rem; }
+  & h3 { font-size: 1.25rem; }
+
+  & a {
+    color: #4b637e; /* brand-blue */
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  & a:hover {
+    color: #694837;
+  }
+
+  & strong {
+    font-weight: 600;
+  }
+
+  & blockquote {
+    margin: 2rem 0;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    border-left: 3px solid #a58d75; /* brand-brown */
+    font-style: italic;
+  }
+
+  & blockquote p {
+    color: rgba(105, 72, 55, 0.85);
+  }
+
+  & ul, & ol {
+    margin: 1.25rem 0;
+    padding-left: 1.5rem;
+    letter-spacing: normal !important;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  & ul { list-style: disc; }
+  & ol { list-style: decimal; }
+
+  & li {
+    margin: 0.5rem 0;
+  }
+
+  & hr {
+    margin: 2.5rem 0;
+    border: none;
+    border-top: 1px solid rgba(105, 72, 55, 0.2);
   }
 
   /* Preserve user-specified colors */

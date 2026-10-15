@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog & Insights",
+  title: "Journal",
   description:
-    "Financial insights, guides and news from the Walker Lane team — practical advice on wealth, superannuation and financial planning.",
+    "Insights and ideas from the Walker Lane team on wealth, financial advice and the business of financial planning.",
   alternates: { canonical: "/blog" },
 };
 
